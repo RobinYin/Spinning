@@ -1,0 +1,18 @@
+[
+ [
+  {
+  "link" : "CompanyViewController",
+  "title" : "公司"
+  },
+  {
+  "link" : "VersionViewController",
+  "title" : "版本"
+  }
+  ],
+ [
+  {
+  "link" : "FeedbackViewController",
+  "title" : "意见反馈"
+  }
+  ]
+]

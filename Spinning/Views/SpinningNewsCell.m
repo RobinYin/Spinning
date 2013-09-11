@@ -1,0 +1,47 @@
+//
+//  SpinningNewsCell.m
+//  Spinning
+//
+//  Created by Robin on 8/29/13.
+//  Copyright (c) 2013 Robin. All rights reserved.
+//
+
+#import "SpinningNewsCell.h"
+
+@implementation SpinningNewsCell
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        [self configurationCellContent];
+    }
+    return self;
+}
+
+- (void)configurationCellContent
+{
+    [super configurationCellContent];
+    [self.titleLabel setFrame:CGRectMake(NewsCellGap, NewsCellGap, ScreenWidth - 3*NewsCellGap - NewsCellImageWith, 18)];
+    [self.cxtLabel setFrame:CGRectMake(NewsCellGap, NewsCellGap + 18, ScreenWidth - 3*NewsCellGap - NewsCellImageWith, 32)];
+    [self.cxtImgView setFrame:CGRectMake(ScreenWidth - NewsCellGap - NewsCellImageWith, NewsCellGap, NewsCellImageWith, 50)];
+    [self.cxtImgView setImage:[UIImage imageNamed:@"img_defaul"]];
+    [self.seperateImgView setFrame:CGRectMake(0, NewsCellHeight - 1, ScreenWidth, 1)];
+    
+}
+
+- (void)dealloc
+{
+    RbSuperDealoc;
+}
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end
