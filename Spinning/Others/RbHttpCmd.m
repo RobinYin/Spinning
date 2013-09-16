@@ -8,7 +8,7 @@
 
 #import "RbHttpCmd.h"
 @interface RbHttpCmd()
-
+@property (nonatomic, retain)ASIFormDataRequest *request;
 @property (nonatomic, retain)NSDictionary* resultDict;
 - (void) parseHttpData:(NSData*) data;
 - (NSString*) cacheKey;
@@ -21,6 +21,7 @@
 @synthesize errorDict = _errorDict;
 @synthesize isFromCache = _isFromCache;
 @synthesize delegate = _delegate;
+@synthesize request = _request;
 
 - (id)init
 {
@@ -209,20 +210,6 @@
         }
     }
     
-//    [self parseHttpDataAll:responseData];
-//    
-//    if (nil != apiClient) {
-//        // call apiClient first
-//        [apiClient apiNotifyResult:self error:nil];
-//    }
-//    
-//    if (nil != delegate) {
-//        // call delegate
-//        [delegate apiNotifyResult:self error:nil];
-//    }else{
-//        [self apiNotifyResult:self error:nil];
-//    }
-    
 }
 
 /**
@@ -255,22 +242,28 @@
     }
     
     if (nil != _delegate) {
-        if ([_delegate performSelector:@selector(httpResult:error:)]) {
+        if ([_delegate respondsToSelector:@selector(httpResult:error:)]) {
             [_delegate httpResult:self error:error];
         }
     }
-    
-//    if (nil != delegate) {
-//        // call delegate
-//        [delegate apiNotifyResult:self error:error];
-//    }else{
-//        [self apiNotifyResult:self error:error];
-//    }
 }
 
+- (void)setHttpRequest:(ASIFormDataRequest *)req
+{
+    if (_request != req) {
+        if (_request) {
+            [_request clearDelegatesAndCancel];
+        }
+        self.request = req;
+    }
+}
 
 - (void)dealloc
 {
+    if (_request) {
+        [_request clearDelegatesAndCancel];
+    }
+    RbSafeRelease(_request);
     RbSafeRelease(_resultDict);
     RbSafeRelease(_errorDict);
     RbSuperDealoc;

@@ -12,9 +12,11 @@
 @synthesize tabBarController = _tabBarController;
 - (void)dealloc
 {
+    
     RbSafeRelease(_tabBarController);
     RbSafeRelease(_window);
     RbSuperDealoc;
+    
 }
 
 

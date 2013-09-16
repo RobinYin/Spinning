@@ -20,8 +20,25 @@ NSString* const kSpinningHttpKeyTime = @"time" ;
 NSString* const kSpinningHttpKeyTitle = @"title" ;
 NSString* const kSpinningHttpKeySource = @"source" ;
 NSString* const kSpinningHttpKeyHeader = @"header" ;
+NSString* const kSpinningHttpKeyData = @"data" ;
+NSString* const kSpinningHttpKeyTopic = @"topic" ;
+NSString* const kSpinningHttpKeyNotice = @"notice" ;
+NSString* const kSpinningHttpKeyUser = @"user" ;
 
 NSString* const kSpinningHttpRequestKeyId = @"id";
 NSString* const kSpinningHttpRequestKeyUserid = @"userid";
 NSString* const kSpinningHttpRequestKeyTypeid = @"typeid";
 NSString* const kSpinningHttpRequestKeySuggestion = @"suggestion" ;
+NSString* const kSpinningHttpRequestKeyNoticeid = @"noticeid";
+NSString* const kSpinningHttpRequestKeyTopicid = @"topicid";
+NSString* const kSpinningHttpRequestKeyMeetingcode = @"meetingcode";
+
+NSString* const kSpinningHttpRequestKeyUsername = @"username";
+NSString* const kSpinningHttpRequestKeyPassword = @"password";
+NSString* const kSpinningHttpRequestKeyRealname = @"realname";
+NSString* const kSpinningHttpRequestKeyAddress = @"address";
+NSString* const kSpinningHttpRequestKeyEmail = @"email";
+NSString* const kSpinningHttpRequestKeyCompany = @"company";
+NSString* const kSpinningHttpRequestKeyPosition = @"position";
+NSString* const kSpinningHttpRequestKeyUsercell = @"usercell";
+

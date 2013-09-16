@@ -15,6 +15,7 @@
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
 @property (nonatomic, retain)NSMutableArray *arrayContainer;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
+@property (nonatomic, retain)NSMutableArray *arrayCursor;
 @property (nonatomic, retain)RbHttpCmd *httpCmd;
 
 @end
@@ -24,6 +25,7 @@
 @synthesize tableView = _tableView;
 @synthesize arrayContainer = _arrayContainer;
 @synthesize arrayCurrent = _arrayCurrent;
+@synthesize arrayCursor = _arrayCursor;
 @synthesize httpCmd = _httpCmd;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,7 +65,8 @@
 {
     RbScorllSecletView *selectView = [[RbScorllSecletView alloc]initWithFrame:CGRectMake(0, NavigationHeight, ScrollSelectWidth, ScrollSelectHeight)];
     [selectView setSelectDelegate:self];
-    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿",@"跨界观察",@"专题聚焦",@"数据挖掘"]];
+//    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿",@"跨界观察",@"专题聚焦",@"数据挖掘"]];
+    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿"]];
     
     [self.view addSubview:selectView];
     [selectView release];
@@ -115,13 +118,17 @@
 
 - (void)configureOriginData
 {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:7];
-    for (int i = 0; i < 7; i ++) {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:4];
+    NSMutableArray *cursor = [NSMutableArray arrayWithCapacity:4];
+    for (int i = 0; i < 4; i ++) {
         NSMutableArray *subArray = [NSMutableArray array];
+        NSMutableString *string = [NSMutableString stringWithFormat:@"0"];
+        [cursor addObject:string];
         [array addObject:subArray];
     }
     self.arrayContainer = array;
     self.arrayCurrent = [array objectAtIndex:0];
+    self.arrayCursor = cursor;
 }
 
 
@@ -197,7 +204,8 @@
         NewsHttpCmd *cmd = [[[NewsHttpCmd alloc]init]autorelease];
         self.httpCmd = cmd;
         cmd.delegate = self;
-        cmd.cursor = @"0";
+        cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]]];
+        cmd.userId = [RbUser sharedInstance].userid;
         cmd.typeId = [NSString stringWithFormat:@"%d",index +1];
         [client onPostCmdAsync:self.httpCmd];
     }else
@@ -207,28 +215,52 @@
     }
     NSLog(@"%@",self.arrayContainer);
 }
+
+- (void)onUpdateAtIndex:(NSUInteger)index
+{
+    RbHttpClient *client = [RbHttpClient sharedInstance];
+    NewsHttpCmd *cmd = [[[NewsHttpCmd alloc]init]autorelease];
+    self.httpCmd = cmd;
+    cmd.delegate = self;
+    cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]]];
+    cmd.userId = [RbUser sharedInstance].userid;
+    cmd.typeId = [NSString stringWithFormat:@"%d",index +1];
+    [client onPostCmdAsync:self.httpCmd];
+}
 #pragma mark -
 #pragma mark httpDelegate -----------
 - (void) httpResult:(id)cmd  error:(NSError*)error
 {
     NSLog(@"%@",NSStringFromClass([cmd class]));
     NewsHttpCmd *httpcmd = (NewsHttpCmd *)cmd;
-    NSLog(@"%@",httpcmd);
     NSLog(@"%@",httpcmd.lists);
-    NSLog(@"%@",httpcmd.typeId);
-    NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
-    [self.arrayContainer replaceObjectAtIndex:[httpcmd.typeId intValue] -1 withObject:array];
-    self.arrayCurrent = array;
+    NSString *msg = nil;
+    if (error) {
+        msg = [error localizedDescription];
+    }else
+    {
+        msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+    }
+    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
     
-//    if (![[self.arrayContainer objectAtIndex:index]count]) {
-//        NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[self onNewsListJson:index]];
-//        NSMutableArray *array = [NSMutableArray arrayWithArray:[dic objectForKey:@"list"]];
-//        [self.arrayContainer replaceObjectAtIndex:index withObject:array];
-//        self.arrayCurrent = array;
-//    }else
-//    {
-//        self.arrayCurrent = [self.arrayContainer objectAtIndex:index];
-//    }
+    NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
+    NSLog(@"%@",[self.arrayCursor objectAtIndex:[httpcmd.typeId intValue] -1]);
+    if ([[self.arrayCursor objectAtIndex:[httpcmd.typeId intValue] -1] isEqualToString:@"0"]) {
+        [self.arrayContainer replaceObjectAtIndex:[httpcmd.typeId intValue] -1 withObject:array];
+    }else
+    {
+        [[self.arrayContainer objectAtIndex:[httpcmd.typeId intValue] -1]addObjectsFromArray:array];
+    }
+    self.arrayCurrent = [self.arrayContainer objectAtIndex:[httpcmd.typeId intValue] -1];
+    if ([self.arrayCurrent count]) {
+        ListModel *model = [self.arrayCurrent lastObject];
+        if (model.mid) {
+        NSMutableString *string =[NSMutableString stringWithFormat:@"%@", model.mid];
+        [self.arrayCursor replaceObjectAtIndex:[httpcmd.typeId intValue] -1 withObject:string];
+        }
+        NSLog(@"%@",[self.arrayCursor objectAtIndex:[httpcmd.typeId intValue] -1]);
+    }
+    [self.tableView tableViewDidFinishedLoading];
     [self.tableView reloadData];
 }
 
@@ -236,13 +268,15 @@
 #pragma mark pullingTableViewDelegate -----------
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    NSMutableString *string = [NSMutableString stringWithFormat:@"0"];
+    [self.arrayCursor replaceObjectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent] withObject:string];
+    [self onUpdateAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]];
 }
 
 
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    [self onUpdateAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]];
 }
 
 - (NSDate *)pullingTableViewRefreshingFinishedDate
@@ -292,6 +326,7 @@
 - (void)dealloc
 {
     RbSafeRelease(_httpCmd);
+    RbSafeRelease(_arrayCursor);
     RbSafeRelease(_arrayCurrent);
     RbSafeRelease(_arrayContainer);
     RbSafeRelease(_tableView);

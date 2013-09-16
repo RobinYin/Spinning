@@ -1,23 +1,46 @@
 //
-//  BindViewController.m
+//  RegisterViewController.m
 //  Spinning
 //
-//  Created by Robin on 8/30/13.
+//  Created by Robin on 9/15/13.
 //  Copyright (c) 2013 Robin. All rights reserved.
 //
 
-#import "BindViewController.h"
+#import "RegisterViewController.h"
 #import "RbEditCell.h"
 #import "UITableView+RbEditTextTableView.h"
+#import "RegisterHttpCmd.h"
 
-@interface BindViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddressRow, kPhoneRow,kEmailRow};
+
+@interface RegisterViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,RbHttpDelegate>
 @property (nonatomic, retain)UITableView *tableView;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
+@property (nonatomic, retain)RbHttpCmd *httpCmd;
+
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *password;
+@property (nonatomic, retain) NSString *realname;
+@property (nonatomic, retain) NSString *address;
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *company;
+@property (nonatomic, retain) NSString *position;
+@property (nonatomic, retain) NSString *usercell;
+
 @end
 
-@implementation BindViewController
+@implementation RegisterViewController
+@synthesize httpCmd = _httpCmd;
 @synthesize tableView = _tableView;
 @synthesize arrayCurrent = _arrayCurrent;
+@synthesize username = _username;
+@synthesize password = _password;
+@synthesize realname = _realname;
+@synthesize address = _address;
+@synthesize email = _email;
+@synthesize company = _company;
+@synthesize position = _position;
+@synthesize usercell = _usercell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,7 +99,7 @@
 
 - (void)configureTableView{
     
-    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight) style:UITableViewStyleGrouped];
+    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight) style:UITableViewStyleGrouped];
     tmpTable.separatorColor = [UIColor grayColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
@@ -145,13 +168,16 @@
     if ([self.arrayCurrent count]) {
         cell.textLabel.text = [[self.arrayCurrent objectAtIndex:indexPath.row] objectForKey:kSpinningHttpKeyTitle];
         cell.textField.placeholder = [[self.arrayCurrent objectAtIndex:indexPath.row] objectForKey:kSpinningHttpKeyMsg];
+        if (indexPath.row ==1) {
+            [cell.textField setSecureTextEntry:YES];
+        }
     }
     cell.textField.delegate = self;
     if (indexPath.row == [self.arrayCurrent count] -1) {
         cell.textField.returnKeyType = UIReturnKeyDone;
     }else
     {
-       cell.textField.returnKeyType = UIReturnKeyNext; 
+        cell.textField.returnKeyType = UIReturnKeyNext;
     }
     [cell.textField setFont:[UIFont systemFontOfSize:15]];
     cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -175,6 +201,44 @@
     return BindCellHeight;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 54;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *tmpView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)]autorelease];
+    [tmpView setBackgroundColor:[UIColor clearColor]];
+    
+    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextBtn setFrame:CGRectMake(92.25, 13.5, 135.5, 27)];
+    [nextBtn setBackgroundImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
+    [nextBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [nextBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [nextBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
+    [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
+    [tmpView addSubview:nextBtn];
+    
+    return tmpView;
+}
+
+- (void)next:(id)sender
+{
+    for (UIView *view in [[self tableView]subviews]){
+        if ([view isKindOfClass:[RbEditCell class]]) {
+            RbEditCell *cell = (RbEditCell *)view;
+            [cell.textField resignFirstResponder];
+        }
+    }
+    if ([self canSignup]) {
+        [self onRegisterData];
+    }else
+    {
+        [self.view makeToast:@"输入的注册信息不全。"];
+    }
+}
 #pragma mark-
 #pragma mark UITextFieldDelegate -----------
 
@@ -183,31 +247,52 @@
 	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
 	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
 	
-//	if( [indexPath row] == kUsernameRow )
-//	{
-//		self.username = text;
-//	}
-//	else if( [indexPath row] == kAccountFirstNameRow )
-//	{
-//		self.firstName = text;
-//	}
-//	else if( [indexPath row] == kAccountLastNameRow )
-//	{
-//		self.lastName = text;
-//	}
-//	else if( [indexPath row] == kAccountPasswordRow )
-//	{
-//		self.password = text;
-//	}
-//	
-//	[self setButtonStates];
+	if( [indexPath row] == kAccountRow )
+	{
+		self.username = text;
+	}
+	else if( [indexPath row] == kPasswordRow )
+	{
+		self.password = md5(text);
+	}
+	else if( [indexPath row] == kNameRow )
+	{
+		self.realname = text;
+	}
+	else if( [indexPath row] == kPositionRow )
+	{
+		self.position = text;
+	}
+    else if( [indexPath row] == kCompanyRow )
+	{
+		self.company = text;
+	}
+    else if( [indexPath row] == kAddressRow )
+	{
+		self.address = text;
+	}
+    else if( [indexPath row] == kPhoneRow )
+	{
+		self.usercell = text;
+	}
+    else if( [indexPath row] == kEmailRow )
+	{
+		self.email = text;
+	}
+    
 	return YES;
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
+    [textField resignFirstResponder];
     if (textField.returnKeyType == UIReturnKeyDone ) {
-
+        if ([self canSignup]) {
+            [self onRegisterData];
+        }else
+        {
+            [self.view makeToast:@"输入的注册信息不全。"];
+        }
     }else
     {
         [[self tableView] makeNextCellWithTextFieldFirstResponder];
@@ -215,6 +300,58 @@
 	return YES;
 }
 
+-(BOOL) canSignup
+{
+	return [[self username] length] && [[self password] length] && [[self realname] length] && [[self address] length]&& [[self email] length]&& [[self company] length]&& [[self position] length]&& [[self usercell] length];
+}
 
+- (void)onRegisterData
+{
+    RbHttpClient *client = [RbHttpClient sharedInstance];
+    RegisterHttpCmd *cmd = [[[RegisterHttpCmd alloc]init]autorelease];
+    self.httpCmd = cmd;
+    cmd.username = self.username;
+    cmd.password = self.password;
+    cmd.realname = self.realname;
+    cmd.address = self.address;
+    cmd.email = self.email;
+    cmd.company = self.company;
+    cmd.position = self.position;
+    cmd.usercell = self.usercell;
+    cmd.delegate = self;
+    [client onPostCmdAsync:self.httpCmd];
+}
+
+
+- (void) httpResult:(id)cmd  error:(NSError*)error
+{
+    NSLog(@"%@",NSStringFromClass([cmd class]));
+    NSString *msg = nil;
+    RegisterHttpCmd *httpcmd = (RegisterHttpCmd *)cmd;
+    if (error) {
+        msg = [error localizedDescription];
+    }else
+    {
+        msg = httpcmd.model.msg;
+    }
+    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    
+}
+
+- (void)dealloc
+{
+    RbSafeRelease(_tableView);
+    RbSafeRelease(_arrayCurrent);
+    RbSafeRelease(_httpCmd);
+    RbSafeRelease(_username);
+    RbSafeRelease(_password);
+    RbSafeRelease(_realname);
+    RbSafeRelease(_address);
+    RbSafeRelease(_email);
+    RbSafeRelease(_company);
+    RbSafeRelease(_position);
+    RbSafeRelease(_usercell);
+    RbSuperDealoc;
+}
 
 @end

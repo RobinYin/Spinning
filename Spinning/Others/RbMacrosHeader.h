@@ -97,7 +97,7 @@
 #define ScrollSelectWidth 300
 #define ScrollSelectOtherWidth 20
 #define ScrollSelectHeight 25
-#define ScrollSelectGap 5
+#define ScrollSelectGap 15
 #define ScrollSelectFont 14
 #define ScrollSelectBgNormalColor ([UIColor colorWithRed:45./255. green:35./255 blue:35./255 alpha:1])
 #define ScrollSelectBgSelectColor ([UIColor whiteColor])
@@ -116,7 +116,7 @@
 
 #pragma mark - NotificationCell constants ---------------------------------------------------------------------------------------------
 #define NotificationCellGap 10
-#define NotificationCellTitleWith 150
+#define NotificationCellTitleWith 200
 #define NotificationCellHeight 72
 
 #pragma mark - MoreCell constants ---------------------------------------------------------------------------------------------
@@ -134,10 +134,17 @@
 #define TopicCellHeight 257
 
 #pragma mark - LoginView constants ---------------------------------------------------------------------------------------------
-#define LoginViewVerticalGap 40
+#define LoginViewVerticalGap 20
 #define LoginViewHorizontalGap 10
 #define LoginViewTextWidth 300
 #define LoginViewTextHeight 44
-#define LoginViewOriginY 100
+#define LoginViewOriginY 65
+
+#pragma mark - BindViewController constants ---------------------------------------------------------------------------------------------
+#define BindCellHeight 44
+#define LoginViewHorizontalGap 10
+#define LoginViewTextWidth 300
+#define LoginViewTextHeight 44
+//#define LoginViewOriginY 100
 
 #endif

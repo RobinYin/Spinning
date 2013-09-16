@@ -99,15 +99,15 @@
 - (void)adjustScrollViewContentX:(UIButton *)sender
 {
     
-    CGFloat conOffset_x;
-    if (sender.frame.origin.x+sender.frame.size.width/2<ScrollSelectWidth/2) {
-        conOffset_x = 0;
-    }else if(sender.frame.origin.x+sender.frame.size.width/2>ScrollSelectWidth/2 && sender.frame.origin.x+sender.frame.size.width/2<self.contentSize.width-ScrollSelectWidth/2){
-        conOffset_x = -ScrollSelectWidth/2+sender.frame.origin.x+sender.frame.size.width/2;
-    }else{
-        conOffset_x = self.contentSize.width-ScrollSelectWidth;
-    }
-     [self setContentOffset:CGPointMake(conOffset_x , 0)  animated:YES];
+//    CGFloat conOffset_x;
+//    if (sender.frame.origin.x+sender.frame.size.width/2<ScrollSelectWidth/2) {
+//        conOffset_x = 0;
+//    }else if(sender.frame.origin.x+sender.frame.size.width/2>ScrollSelectWidth/2 && sender.frame.origin.x+sender.frame.size.width/2<self.contentSize.width-ScrollSelectWidth/2){
+//        conOffset_x = -ScrollSelectWidth/2+sender.frame.origin.x+sender.frame.size.width/2;
+//    }else{
+//        conOffset_x = self.contentSize.width-ScrollSelectWidth;
+//    }
+//     [self setContentOffset:CGPointMake(conOffset_x , 0)  animated:YES];
   
 }
 /*

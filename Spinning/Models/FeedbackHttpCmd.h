@@ -8,7 +8,9 @@
 
 #import "SingleHttpCmd.h"
 
+@interface FeedbackModel :SingleModel
+@end
+
 @interface FeedbackHttpCmd : SingleHttpCmd
-@property (nonatomic, retain)NSString *userId;
 @property (nonatomic, retain)NSString *suggestion;
 @end

@@ -9,6 +9,7 @@
 #ifndef Spinning_RbConfigureHeader_h
 #define Spinning_RbConfigureHeader_h
 
+#import "Toast+UIView.h"
 #import "RbWebViewController.h"
 #import "UIImageView+WebCache.h"
 #import "RbMacrosHeader.h"
@@ -35,5 +36,6 @@
 #import "MoreViewController.h"
 #import "NotificationViewController.h"
 #import "PHViewController.h"
+#import "RbUser.h"
 
 #endif

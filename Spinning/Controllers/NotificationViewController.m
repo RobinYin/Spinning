@@ -14,6 +14,8 @@
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
 @property (nonatomic, retain)NotifyHttpCmd *httpCmd;
+@property (nonatomic, retain)NSString *cursor;
+
 
 @end
 
@@ -22,6 +24,7 @@
 @synthesize tableView = _tableView;
 @synthesize arrayCurrent = _arrayCurrent;
 @synthesize httpCmd = _httpCmd;
+@synthesize cursor = _cursor;
 
 - (void)viewDidLoad
 {
@@ -83,6 +86,7 @@
 {
     NSMutableArray *subArray = [NSMutableArray array];
     self.arrayCurrent = subArray;
+    self.cursor = [NSString stringWithFormat:@"0"];
 }
 
 
@@ -112,8 +116,7 @@
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
             [cell.titleLabel setText:model.title];
-            [cell.cxtLabel setText:model.content];
-            [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
+            [cell.cxtLabel setText:model.time];
         }
     }
     
@@ -151,7 +154,9 @@
     NotifyHttpCmd *cmd = [[[NotifyHttpCmd alloc]init]autorelease];
     self.httpCmd = cmd;
     cmd.delegate = self;
-    cmd.cursor = @"0";
+    cmd.cursor = self.cursor;
+    NSLog(@"%@",[RbUser sharedInstance].userid);
+    cmd.userId = [RbUser sharedInstance].userid;
     [client onPostCmdAsync:self.httpCmd];
 }
 
@@ -159,12 +164,28 @@
 #pragma mark httpDelegate -----------
 - (void) httpResult:(id)cmd  error:(NSError*)error
 {
-    NSLog(@"%@",NSStringFromClass([cmd class]));
     NotifyHttpCmd *httpcmd = (NotifyHttpCmd *)cmd;
-    NSLog(@"%@",httpcmd);
-    NSLog(@"%@",httpcmd.lists);
+    [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
-    self.arrayCurrent = array;
+    if ([self.cursor isEqualToString:@"0"]) {
+        self.arrayCurrent = array;
+    }else
+    {
+        [self.arrayCurrent addObjectsFromArray:array];
+    }
+    if ([self.arrayCurrent count]) {
+         ListModel *model = [self.arrayCurrent lastObject];
+        if (model.mid) {
+            self.cursor = model.mid;
+        }
+    }
+    [self.tableView tableViewDidFinishedLoading];
+    if ([array count] ==10) {
+        self.tableView.reachedTheEnd  = NO;
+    }else
+    {
+        self.tableView.reachedTheEnd  = YES;
+    }
     [self.tableView reloadData];
 }
 
@@ -173,13 +194,14 @@
 #pragma mark pullingTableViewDelegate -----------
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    self.cursor = [NSString stringWithFormat:@"0"];
+    [self onGetData];
 }
 
 
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    [self onGetData];
 }
 
 - (NSDate *)pullingTableViewRefreshingFinishedDate
@@ -199,13 +221,6 @@
     NSString *dateStr = [df stringFromDate:[NSDate date]];
     NSDate *date = [df dateFromString:dateStr];
     return date;
-}
-
-- (void)loadData
-{
-    [self.tableView tableViewDidFinishedLoading];
-    self.tableView.reachedTheEnd  = NO;
-    [self.tableView reloadData];
 }
 
 
@@ -230,6 +245,7 @@
 
 - (void)dealloc
 {
+    RbSafeRelease(_cursor);
     RbSafeRelease(_httpCmd);
     RbSafeRelease(_tableView);
     RbSafeRelease(_arrayCurrent);

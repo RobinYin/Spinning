@@ -1,47 +1,47 @@
 //
-//  FeedbackHttpCmd.m
+//  CheckinHttpCmd.m
 //  Spinning
 //
-//  Created by Robin on 9/3/13.
+//  Created by Robin on 9/14/13.
 //  Copyright (c) 2013 Robin. All rights reserved.
 //
 
-#import "FeedbackHttpCmd.h"
-@implementation FeedbackModel
+#import "CheckinHttpCmd.h"
 
+@implementation CheckinModel
 @end
 
-@implementation FeedbackHttpCmd
-@synthesize suggestion = _suggestion;
+@implementation CheckinHttpCmd
+@synthesize meetingcode = _meetingcode;
 
 -(id)init{
     self = [super init];
     if (self) {
-        self.suggestion = nil;
+        self.meetingcode = nil;
     }
     return self;
 }
 
 - (NSString*)onSuffixUrl
 {
-    return kSpinningSuggestion;
+    return kSpinningJoinConference;
 }
 
 - (NSMutableDictionary *)paramDict
 {
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.suggestion forKey:kSpinningHttpRequestKeySuggestion];
     if (self.userId) {
         [dic setObject:self.userId forKey:kSpinningHttpRequestKeyUserid];
     }
+    [dic setObject:self.meetingcode forKey:kSpinningHttpRequestKeyMeetingcode];
     
     return dic;
 }
 
 - (void)dealloc
 {
-    RbSafeRelease(_suggestion);
+    RbSafeRelease(_meetingcode);
     RbSuperDealoc;
 }
 

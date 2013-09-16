@@ -7,12 +7,17 @@
 //
 
 #import "LoginViewController.h"
-
-@interface LoginViewController ()<UITextFieldDelegate>
-
+#import "LoginHttpCmd.h"
+@interface LoginViewController ()<UITextFieldDelegate,RbHttpDelegate>
+@property (nonatomic, retain) UITextField *usernameTextField;
+@property (nonatomic, retain) UITextField *passwordTextField;
+@property (nonatomic, retain)RbHttpCmd *httpCmd;
 @end
 
 @implementation LoginViewController
+@synthesize usernameTextField = _usernameTextField;
+@synthesize passwordTextField = _passwordTextField;
+@synthesize httpCmd = _httpCmd;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     [self configureAllViews];
+    [self configureAllViews];
 	// Do any additional setup after loading the view.
 }
 
@@ -70,6 +75,7 @@
 - (void)configureInputViews
 {
     UITextField* field1 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, LoginViewOriginY   , LoginViewTextWidth, LoginViewTextHeight)];
+    self.usernameTextField = field1;
     [field1 setBorderStyle:UITextBorderStyleRoundedRect];
     field1.font = [UIFont systemFontOfSize:16];
     field1.delegate = self;
@@ -81,6 +87,8 @@
     
     
     UITextField* field2 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, LoginViewOriginY+ LoginViewTextHeight + LoginViewVerticalGap   , LoginViewTextWidth, LoginViewTextHeight)];
+    self.passwordTextField = field2;
+    [field2 setSecureTextEntry:YES];
     [field2 setBorderStyle:UITextBorderStyleRoundedRect];
     field2.font = [UIFont systemFontOfSize:16];
     field2.delegate = self;
@@ -89,25 +97,90 @@
     [field2 setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:field2];
     [field2 release];
+    
+    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextBtn setFrame:CGRectMake(92.25, 184, 135.5, 27)];
+    [nextBtn setBackgroundImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
+    [nextBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [nextBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [nextBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
+    [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextBtn];
+}
+
+- (void)next:(id)sender
+{
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    if ([self canNext]) {
+        [self onLoginData];
+    }else
+    {
+        [self.view makeToast:@"输入的反馈信息不能为空。"];
+    }
+}
+
+- (BOOL)canNext
+{
+    return [self.usernameTextField.text length] &&[self.passwordTextField.text length] ;
+}
+
+- (void)onLoginData
+{
+    RbHttpClient *client = [RbHttpClient sharedInstance];
+    LoginHttpCmd *cmd = [[[LoginHttpCmd alloc]init]autorelease];
+    cmd.username = [self.usernameTextField text];
+    cmd.password = md5(self.passwordTextField.text);
+    self.httpCmd = cmd;
+    cmd.delegate = self;
+    [client onPostCmdAsync:self.httpCmd];
+}
+
+
+- (void) httpResult:(id)cmd  error:(NSError*)error
+{
+    NSLog(@"%@",NSStringFromClass([cmd class]));
+    NSString *msg = nil;
+    LoginHttpCmd *httpcmd = (LoginHttpCmd *)cmd;
+    if (error) {
+        msg = [error localizedDescription];
+    }else
+    {
+        msg = httpcmd.model.msg;
+    }
+    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    
 }
 
 #pragma mark -
-#pragma TextFieldDelegate
+#pragma UITextField Delegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    return YES;
-}
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
 }
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [textField resignFirstResponder];
+    if ([self canNext]) {
+        [self onLoginData];
+    }else
+    {
+        [self.view makeToast:@"输入的反馈信息不能为空。"];
+    }
     return YES;
 }
-- (void)textFieldDidEndEditing:(UITextField *)textField
+
+
+- (void)dealloc
 {
+    RbSafeRelease(_httpCmd);
+    RbSafeRelease(_passwordTextField);
+    RbSafeRelease(_usernameTextField);
+    RbSuperDealoc;
 }
+
 
 @end

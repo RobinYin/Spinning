@@ -81,6 +81,7 @@
     NSURL *url = [NSURL URLWithString:[[NSString stringWithFormat:@"%@%@%@",[RbHttpConfig onApiRequestUrlPrefix],[RbHttpConfig onApiAppId],_suffixUrlString]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [cmd setHttpRequest:request];
     [request setDelegate:cmd];
     
 
@@ -115,6 +116,12 @@
     return request;
 }
 
+//[self parseHttpData:responseData];
+//if (nil != _delegate) {
+//    if ([_delegate respondsToSelector:@selector(httpResult:error:)]) {
+//        [_delegate httpResult:self error:nil];
+//    }
+//}
 - (void)dealloc
 {
     RbSuperDealoc;
