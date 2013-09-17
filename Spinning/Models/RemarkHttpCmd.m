@@ -32,9 +32,12 @@
 - (NSMutableDictionary *)paramDict
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.suggestion forKey:kSpinningHttpRequestKeyId];
-    [dic setObject:self.userId forKey:kSpinningHttpRequestKeyUserid];
+    [dic setObject:self.suggestion forKey:kSpinningHttpRequestKeySuggestion];
+    if (self.userId) {
+        [dic setObject:self.userId forKey:kSpinningHttpRequestKeyUserid];
+    }
     [dic setObject:self.mid forKey:kSpinningHttpKeyId];
+    NSLog(@"dic = %@",dic);
     return dic;
 }
 

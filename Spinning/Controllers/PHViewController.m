@@ -16,6 +16,7 @@
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
 @property (nonatomic, retain)PHValueHttpCmd *httpCmd;
+@property (nonatomic, retain)NSString *cursor;
 
 @end
 
@@ -24,6 +25,7 @@
 @synthesize tableView = _tableView;
 @synthesize arrayCurrent = _arrayCurrent;
 @synthesize httpCmd = _httpCmd;
+@synthesize cursor = _cursor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,6 +95,7 @@
 {
     NSMutableArray *subArray = [NSMutableArray array];
     self.arrayCurrent = subArray;
+    self.cursor = [NSString stringWithFormat:@"0"];
 }
 
 
@@ -161,7 +164,7 @@
     PHValueHttpCmd *cmd = [[[PHValueHttpCmd alloc]init]autorelease];
     self.httpCmd = cmd;
     cmd.delegate = self;
-    cmd.cursor = @"0";
+    cmd.cursor = self.cursor;
     [client onPostCmdAsync:cmd];
 }
 
@@ -172,11 +175,29 @@
 {
     NSLog(@"%@",NSStringFromClass([cmd class]));
     PHValueHttpCmd *httpcmd = (PHValueHttpCmd *)cmd;
-    NSLog(@"%@",httpcmd);
-    NSLog(@"%@",httpcmd.lists);
+    
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
-    self.arrayCurrent = array;
+    if ([self.cursor isEqualToString:@"0"]) {
+        self.arrayCurrent = array;
+    }else
+    {
+        [self.arrayCurrent addObjectsFromArray:array];
+    }
+    if ([self.arrayCurrent count]) {
+        ListModel *model = [self.arrayCurrent lastObject];
+        if (model.mid) {
+            self.cursor = model.mid;
+        }
+    }
+    [self.tableView tableViewDidFinishedLoading];
+    if ([array count] ==10) {
+        self.tableView.reachedTheEnd  = NO;
+    }else
+    {
+        self.tableView.reachedTheEnd  = YES;
+    }
     [self.tableView reloadData];
+
     
 }
 
@@ -186,13 +207,14 @@
 #pragma mark pullingTableViewDelegate -----------
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    self.cursor = [NSString stringWithFormat:@"0"];
+    [self onGetData];
 }
 
 
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    [self onGetData];
 }
 
 - (NSDate *)pullingTableViewRefreshingFinishedDate
@@ -242,6 +264,7 @@
 
 - (void)dealloc
 {
+    RbSafeRelease(_cursor);
     RbSafeRelease(_httpCmd);
     RbSafeRelease(_tableView);
     RbSafeRelease(_arrayCurrent);

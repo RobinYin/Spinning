@@ -17,6 +17,7 @@
 @property (nonatomic, retain)NSString *content;
 @property (nonatomic, retain)NSString *source;
 @property (nonatomic, retain)NSString *articleurl;
+@property (nonatomic, retain)NSString *totalcount;
 
 @end
 

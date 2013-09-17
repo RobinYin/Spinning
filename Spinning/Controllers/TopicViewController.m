@@ -9,6 +9,7 @@
 #import "TopicViewController.h"
 #import "SpinningTopicCell.h"
 #import "TopicHttpCmd.h"
+#import "TopicWebViewController.h"
 
 @interface TopicViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -46,7 +47,7 @@
 
 - (void)configureAllViews
 {
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ph_bg"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self configureNavigationView];
     [self configureTableView];
 }
@@ -126,6 +127,7 @@
             [cell.titleLabel setText:model.title];
             [cell.cxtLabel setText:model.content];
             [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
+            [cell.subLabel setText:[NSString stringWithFormat:@"已有%@人参与评论",model.totalcount]];
         }
     }
     
@@ -141,7 +143,8 @@
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
             NSLog(@"%@",model.articleurl);
-            RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            TopicWebViewController *webViewController = [[TopicWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            webViewController.mid = model.mid;
             webViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webViewController animated:YES];
             [webViewController release];
@@ -175,6 +178,13 @@
     TopicHttpCmd *httpcmd = (TopicHttpCmd *)cmd;
     NSLog(@"%@",httpcmd);
     NSLog(@"%@",httpcmd.lists);
+    if (httpcmd.errorDict) {
+        if ([httpcmd.errorDict objectForKey:kSpinningHttpKeyCode]) {
+            if (![[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
+                [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
+            }
+        }
+    }
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     if ([self.cursor isEqualToString:@"0"]) {
         self.arrayCurrent = array;
@@ -186,6 +196,11 @@
         ListModel *model = [self.arrayCurrent lastObject];
         if (model.mid) {
             self.cursor = model.mid;
+        }
+        ListModel *info = [self.arrayCurrent objectAtIndex:0];
+        if (info.mid) {
+            [InfoCountSingleton sharedInstance].topic = info.mid;
+            [[InfoCountSingleton sharedInstance] save];
         }
     }
     [self.tableView tableViewDidFinishedLoading];

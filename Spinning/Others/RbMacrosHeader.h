@@ -131,7 +131,7 @@
 #define TopicCellGap 10
 #define TopicCellImgWith 300
 #define TopicCellImgheight 150
-#define TopicCellHeight 257
+#define TopicCellHeight 277
 
 #pragma mark - LoginView constants ---------------------------------------------------------------------------------------------
 #define LoginViewVerticalGap 20

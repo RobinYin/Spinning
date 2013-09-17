@@ -10,9 +10,11 @@
 
 @implementation AppDelegate
 @synthesize tabBarController = _tabBarController;
+@synthesize httpCmd = _httpCmd;
 - (void)dealloc
 {
     
+    RbSafeRelease(_httpCmd);
     RbSafeRelease(_tabBarController);
     RbSafeRelease(_window);
     RbSuperDealoc;
@@ -74,6 +76,7 @@
     [self configureTabBarController];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    [self onGetData];
     return YES;
 }
 
@@ -103,5 +106,32 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark -
+#pragma mark datasource -----------
+
+- (void)onGetData
+{
+    [InfoCountSingleton sharedInstance];
+    RbHttpClient *client = [RbHttpClient sharedInstance];
+    InfoCountHttpCmd *cmd = [[[InfoCountHttpCmd alloc]init]autorelease];
+    self.httpCmd = cmd;
+    cmd.noticeid = [InfoCountSingleton sharedInstance].notice;
+    cmd.topicid = [InfoCountSingleton sharedInstance].topic;
+    cmd.delegate = self;
+    [client onPostCmdAsync:self.httpCmd];
+}
+
+#pragma mark -
+#pragma mark httpDelegate -----------
+- (void) httpResult:(id)cmd  error:(NSError*)error
+{
+    NSLog(@"%@",NSStringFromClass([cmd class]));
+    InfoCountHttpCmd *httpcmd = (InfoCountHttpCmd *)cmd;
+    InfoCountModel *model = (InfoCountModel *)httpcmd.model;
+    NSLog(@"%@  ---  %@",model.topic,model.notice);
+     
+}
+
 
 @end

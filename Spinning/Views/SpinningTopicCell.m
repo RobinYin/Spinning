@@ -9,6 +9,7 @@
 #import "SpinningTopicCell.h"
 
 @implementation SpinningTopicCell
+@synthesize subLabel = _subLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -25,15 +26,26 @@
 {
     [super configurationCellContent];
     [self.titleLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap +TopicCellImgheight + 5 , TopicCellImgWith, 18)];
-    [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 33, TopicCellImgWith, 64)];
+//    [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 33, TopicCellImgWith, 64)];
+    [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 23, TopicCellImgWith, 64)];
     [self.cxtImgView setFrame:CGRectMake(TopicCellGap, TopicCellGap, TopicCellImgWith, TopicCellImgheight)];
     [self.cxtImgView setImage:[UIImage imageNamed:@"img_defaul"]];
-    [self.seperateImgView setFrame:CGRectMake(0, TopicCellGap +TopicCellImgheight + 28, ScreenWidth, 1)];
+//    [self.seperateImgView setFrame:CGRectMake(10, TopicCellGap +TopicCellImgheight + 28, ScreenWidth, 1)];
+    
+    _subLabel = [[UILabel alloc] initWithFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 90, TopicCellImgWith, 16)];
+    [_subLabel setFont: [UIFont systemFontOfSize:13]];
+    [_subLabel setBackgroundColor:[UIColor clearColor]];
+    [_subLabel setNumberOfLines:0];
+    [_subLabel setTextColor:[UIColor colorWithRed:192./255 green:202./255 blue:110./255 alpha:1]];
+    [self.contentView addSubview:_subLabel];
+    
+    [self.seperateImgView setFrame:CGRectMake(10, TopicCellGap + TopicCellImgheight + 110, TopicCellImgWith, 1)];
     
 }
 
 - (void)dealloc
 {
+    RbSafeRelease(_subLabel);
     RbSuperDealoc;
 }
 

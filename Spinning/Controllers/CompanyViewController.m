@@ -50,8 +50,28 @@
 {
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self configureNavigationView];
+    [self configureOtherView];
 }
 
+- (void)configureOtherView
+{
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 54, 300, 20)];
+    [label1 setFont: [UIFont systemFontOfSize:15]];
+    [label1 setTextAlignment:UITextAlignmentCenter];
+    [label1 setBackgroundColor:[UIColor clearColor]];
+    [label1 setNumberOfLines:0];
+    [label1 setTextColor:[UIColor whiteColor]];
+    [label1 setText:@"中国针织工业协会"];
+    [self.view addSubview:label1];
+    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 85, 300, 96)];
+    [label2 setFont: [UIFont systemFontOfSize:13]];
+    [label2 setBackgroundColor:[UIColor clearColor]];
+    [label2 setNumberOfLines:0];
+    [label2 setTextColor:[UIColor whiteColor]];
+    [label2 setText:@"中国针织工业协会定位于打造专业、即时、客观、准确，具有公信力的协会网络服务平台，紧密围绕针织行业，以新闻聚合、独家专访、热点话题讨论为特色逐步向移动互联延伸，成为针织人每日必读的行业网站。同时，兼具行业协会的网络服务功能，不断完善与会员的远程互动。"];
+    [self.view addSubview:label2];
+}
 - (void)configureNavigationView
 {
     [super configureNavigationView];

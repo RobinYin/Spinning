@@ -17,6 +17,7 @@
 @synthesize content = _content;
 @synthesize mid = _mid;
 @synthesize articleurl = _articleurl;
+@synthesize totalcount = _totalcount;
 
 - (id)init
 {
@@ -28,6 +29,7 @@
         self.content = nil;
         self.icon = nil;
         self.articleurl = nil;
+        self.totalcount = nil;
     }
     return self;
 }
@@ -45,11 +47,13 @@
     self.content = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyContent]);
     self.mid = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyId]);
     self.articleurl = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyArticleurl]);
+    self.totalcount = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyTotalcount]);
     
 }
 
 - (void)dealloc
 {
+    RbSafeRelease(_totalcount);
     RbSafeRelease(_mid);
     RbSafeRelease(_source);
     RbSafeRelease(_icon);

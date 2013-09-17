@@ -11,11 +11,13 @@
 extern NSString* const kSpinningHttpKeyExcutecmd;
 extern NSString* const kSpinningHttpKeyMsg;
 extern NSString* const kSpinningHttpKeyCode;
+extern NSString* const kSpinningHttpKeyOk;
 extern NSString* const kSpinningHttpKeyList;
 extern NSString* const kSpinningHttpKeyContent;
 extern NSString* const kSpinningHttpKeyIcon;
 extern NSString* const kSpinningHttpKeyId;
 extern NSString* const kSpinningHttpKeyArticleurl;
+extern NSString* const kSpinningHttpKeyTotalcount;
 extern NSString* const kSpinningHttpKeyTime;
 extern NSString* const kSpinningHttpKeyTitle;
 extern NSString* const kSpinningHttpKeySource;
@@ -24,6 +26,10 @@ extern NSString* const kSpinningHttpKeyData;
 extern NSString* const kSpinningHttpKeyTopic;
 extern NSString* const kSpinningHttpKeyNotice;
 extern NSString* const kSpinningHttpKeyUser;
+extern NSString* const kSpinningHttpKeyCommentip;
+extern NSString* const kSpinningHttpKeyCommentid;
+extern NSString* const kSpinningHttpKeySaveUser;
+extern NSString* const kSpinningHttpKeyInfoCountShared;
 
 extern NSString* const kSpinningHttpRequestKeyId;
 extern NSString* const kSpinningHttpRequestKeyUserid;

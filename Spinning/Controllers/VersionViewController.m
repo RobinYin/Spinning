@@ -50,6 +50,7 @@
 {
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self configureNavigationView];
+    [self configureOtherView];
 }
 
 - (void)configureNavigationView
@@ -64,6 +65,18 @@
     [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"nav_left_btn.png"] forState:UIControlStateNormal];
     [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"nav_left_btn_sel.png"] forState:UIControlStateHighlighted];
     [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"nav_left_btn_sel.png"] forState:UIControlStateSelected];
+}
+
+- (void)configureOtherView
+{
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 54, 300, 20)];
+    [label1 setFont: [UIFont systemFontOfSize:15]];
+    [label1 setTextAlignment:UITextAlignmentCenter];
+    [label1 setBackgroundColor:[UIColor clearColor]];
+    [label1 setNumberOfLines:0];
+    [label1 setTextColor:[UIColor whiteColor]];
+    [label1 setText:@"中国针织工业协会CKIAv1.0版本"];
+    [self.view addSubview:label1];
 }
 
 @end

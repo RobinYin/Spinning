@@ -53,7 +53,9 @@
     
     if (dic) {
         RbUser *user = [RbUser sharedInstance];
+        user.password = self.password;
         [user parseResultData:dic];
+        [user save];
         self.model = user;
     }
     

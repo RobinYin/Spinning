@@ -11,11 +11,13 @@
 NSString* const kSpinningHttpKeyExcutecmd = @"excutecmd" ;
 NSString* const kSpinningHttpKeyMsg = @"msg" ;
 NSString* const kSpinningHttpKeyCode = @"code" ;
+NSString* const kSpinningHttpKeyOk = @"200" ;
 NSString* const kSpinningHttpKeyList = @"list" ;
 NSString* const kSpinningHttpKeyContent = @"content" ;
 NSString* const kSpinningHttpKeyIcon = @"icon" ;
 NSString* const kSpinningHttpKeyId = @"id" ;
 NSString* const kSpinningHttpKeyArticleurl = @"articleurl" ;
+NSString* const kSpinningHttpKeyTotalcount = @"totalcount" ;
 NSString* const kSpinningHttpKeyTime = @"time" ;
 NSString* const kSpinningHttpKeyTitle = @"title" ;
 NSString* const kSpinningHttpKeySource = @"source" ;
@@ -24,6 +26,10 @@ NSString* const kSpinningHttpKeyData = @"data" ;
 NSString* const kSpinningHttpKeyTopic = @"topic" ;
 NSString* const kSpinningHttpKeyNotice = @"notice" ;
 NSString* const kSpinningHttpKeyUser = @"user" ;
+NSString* const kSpinningHttpKeyCommentip = @"commentip";
+NSString* const kSpinningHttpKeyCommentid = @"commentid";
+NSString* const kSpinningHttpKeySaveUser = @"spinningsaveuer";
+NSString* const kSpinningHttpKeyInfoCountShared = @"spinninginfocount";
 
 NSString* const kSpinningHttpRequestKeyId = @"id";
 NSString* const kSpinningHttpRequestKeyUserid = @"userid";

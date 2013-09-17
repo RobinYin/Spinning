@@ -37,5 +37,6 @@
 #import "NotificationViewController.h"
 #import "PHViewController.h"
 #import "RbUser.h"
+#import "InfoCountSingleton.h"
 
 #endif

@@ -20,5 +20,7 @@
 @property (nonatomic, retain) NSString *userid;
 
 +(RbUser *)sharedInstance;
+-(void)save;
+-(void)clear;
 
 @end

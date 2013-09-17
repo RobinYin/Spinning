@@ -17,7 +17,7 @@ enum {
 
 typedef NSUInteger RbWebViewControllerAvailableActions;
 @interface RbWebViewController : RbBaseViewController
-
+@property (nonatomic, retain) NSString *mid;
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
 

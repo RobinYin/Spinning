@@ -41,6 +41,7 @@
         self.position = nil;
         self.usercell = nil;
         self.userid = nil;
+        [self update];
     }
     return self;
 }
@@ -53,13 +54,49 @@
     [super parseResultData:dictionary];
     self.userid = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyUserid]);
     self.username = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyUsername]);
-    self.password = defaultEmptyString(md5([dictionary objectForKey:kSpinningHttpRequestKeyRealname]));
     self.realname = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyRealname]);
     self.address = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyAddress]);
     self.email = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyEmail]);
     self.company = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyCompany]);
     self.position = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyPosition]);
     self.usercell = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyUsercell]);
+}
+
+- (void)update
+{
+    NSDictionary *dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kSpinningHttpKeySaveUser];
+    if (dictionary) {
+        self.userid = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyUserid]);
+        self.username = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyUsername]);
+        self.password = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyPassword]);
+        self.realname = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyRealname]);
+        self.address = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyAddress]);
+        self.email = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyEmail]);
+        self.company = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyCompany]);
+        self.position = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyPosition]);
+        self.usercell = defaultEmptyString([dictionary objectForKey:kSpinningHttpRequestKeyUsercell]);
+    }
+}
+- (void)save
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.userid, kSpinningHttpRequestKeyUserid,self.username ,kSpinningHttpRequestKeyUsername ,self.password,kSpinningHttpRequestKeyPassword, self.realname,kSpinningHttpRequestKeyRealname,self.address, kSpinningHttpRequestKeyAddress,self.email,kSpinningHttpRequestKeyEmail,self.position,kSpinningHttpRequestKeyPosition,self.company,kSpinningHttpRequestKeyCompany,self.usercell,kSpinningHttpRequestKeyUsercell,nil];
+    [[NSUserDefaults standardUserDefaults] setObject:dictionary forKey:kSpinningHttpKeySaveUser];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)clear
+{
+    self.username = nil;
+    self.password = nil;
+    self.realname = nil;
+    self.address = nil;
+    self.email = nil;
+    self.company = nil;
+    self.position = nil;
+    self.usercell = nil;
+    self.userid = nil;
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kSpinningHttpKeySaveUser];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)dealloc

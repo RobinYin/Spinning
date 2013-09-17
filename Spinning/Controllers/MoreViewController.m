@@ -13,6 +13,8 @@
 #import "HistoryViewController.h"
 #import "CollectionViewController.h"
 #import "AboutViewController.h"
+#import "CompanyViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @interface MoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
@@ -32,6 +34,13 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -132,6 +141,11 @@
         if ([self.arrayCurrent count]) {
             NSDictionary *dic = [[self.arrayCurrent objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
             [cell.textLabel setText:[dic objectForKey:@"title"]];
+            if (indexPath.section == 0 && indexPath.row ==0) {
+                if ([RbUser sharedInstance].userid) {
+                    [cell.textLabel setText:[NSString stringWithFormat:@"%@(已登录)",[RbUser sharedInstance].username]];
+                }
+            }
         }
     }
     
@@ -143,6 +157,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0 && indexPath.section ==0) {
+        if ([RbUser sharedInstance].userid) {
+            
+            [UIAlertView alertViewWithTitle:@"您是否要退出登录?"
+                                    message:@"退出登录后，你不能进行评论等相应操作，并且清除您的相关个人信息。"
+                          cancelButtonTitle:@"取消"
+                          otherButtonTitles:[NSArray arrayWithObjects:@"退出登录", nil]
+                                  onDismiss:^(int buttonIndex)
+             {
+                 [[RbUser sharedInstance] clear];
+                 [self.tableView reloadData];
+             }
+                                   onCancel:^()
+             {
+             }
+             ];
+            return;
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *dic = [[self.arrayCurrent objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     NSString *string = [dic objectForKey:@"link"];

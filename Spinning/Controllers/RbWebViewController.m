@@ -37,7 +37,7 @@
 @implementation RbWebViewController
 
 @synthesize availableActions;
-
+@synthesize mid = _mid;
 @synthesize URL = _URL, mainWebView = _mainWebView;
 @synthesize backBarButtonItem = _backBarButtonItem, forwardBarButtonItem = _forwardBarButtonItem, refreshBarButtonItem = _refreshBarButtonItem, stopBarButtonItem = _stopBarButtonItem, actionBarButtonItem = _actionBarButtonItem, pageActionSheet = _pageActionSheet;
 
@@ -153,11 +153,6 @@
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_nomal"] forState:UIControlStateNormal];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateHighlighted];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateSelected];
-    
-    
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"nav_left_btn.png"] forState:UIControlStateNormal];
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"nav_left_btn_sel.png"] forState:UIControlStateHighlighted];
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"nav_left_btn_sel.png"] forState:UIControlStateSelected];
 }
 
 
@@ -167,6 +162,7 @@
     
     _mainWebView.delegate = nil;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    RbSafeRelease(_mid);
     RbSafeRelease(_URL);
     RbSafeRelease(_mainWebView);
     RbSafeRelease(_backBarButtonItem);
@@ -274,6 +270,7 @@
         }
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
+        [toolbar setBarStyle:UIBarStyleBlack];
         toolbar.items = items;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     }

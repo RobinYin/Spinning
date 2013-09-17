@@ -150,6 +150,10 @@
         msg = httpcmd.model.msg;
     }
     [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
+         [RbUser sharedInstance].password = md5(self.passwordTextField.text);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 

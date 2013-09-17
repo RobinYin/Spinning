@@ -9,5 +9,5 @@
 #import "SpinningBaseCell.h"
 
 @interface SpinningTopicCell : SpinningBaseCell
-
+@property (nonatomic, retain) UILabel *subLabel;
 @end

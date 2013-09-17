@@ -241,6 +241,7 @@
     {
         msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
     }
+    
     [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
     
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];

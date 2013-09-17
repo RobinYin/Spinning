@@ -165,7 +165,13 @@
 - (void) httpResult:(id)cmd  error:(NSError*)error
 {
     NotifyHttpCmd *httpcmd = (NotifyHttpCmd *)cmd;
-    [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
+    if (httpcmd.errorDict) {
+        if ([httpcmd.errorDict objectForKey:kSpinningHttpKeyCode]) {
+            if (![[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
+                    [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
+            }
+        }
+    }
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     if ([self.cursor isEqualToString:@"0"]) {
         self.arrayCurrent = array;
@@ -177,6 +183,13 @@
          ListModel *model = [self.arrayCurrent lastObject];
         if (model.mid) {
             self.cursor = model.mid;
+            [InfoCountSingleton sharedInstance].notice = model.mid;
+        }
+        ListModel *info = [self.arrayCurrent objectAtIndex:0];
+        if (info.mid) {
+            [InfoCountSingleton sharedInstance].notice = info.mid;
+            NSLog(@"%@",info.mid);
+            [[InfoCountSingleton sharedInstance] save];
         }
     }
     [self.tableView tableViewDidFinishedLoading];

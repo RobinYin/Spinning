@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "InfoCountHttpCmd.h"
+#import "InfoCountSingleton.h"
+@interface AppDelegate : UIResponder <UIApplicationDelegate,RbHttpDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain)InfoCountHttpCmd *httpCmd;
 @property (nonatomic, strong) RbTabBarViewController *tabBarController;
 @end
