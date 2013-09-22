@@ -180,7 +180,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    _mainWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - NavigationHeight)];
+    _mainWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight)];
     _mainWebView.delegate = self;
     _mainWebView.scalesPageToFit = YES;
     [_mainWebView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];

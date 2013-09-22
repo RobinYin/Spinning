@@ -20,6 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        [self setBackgroundColor:[UIColor clearColor]];
         [self configurationCellContent];
     }
     return self;

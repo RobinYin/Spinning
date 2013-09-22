@@ -75,11 +75,6 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    NSString *string = [NSString stringWithFormat:@"测试活动1活动简介\r\n内容简介123456\r\n哈哈哈哈哈哈"];
-    CGSize size = [string sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(284, NSIntegerMax) lineBreakMode:NSLineBreakByCharWrapping];
-    NSLog(@"%@",NSStringFromCGSize(size));
-    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     [self configureTabBarController];

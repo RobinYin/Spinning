@@ -77,7 +77,7 @@
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height 
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
-#define StatusBarHeight 20
+#define StatusBarHeight (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 0 : 20)
 
 
 
