@@ -97,10 +97,10 @@
 #define ScrollSelectWidth 300
 #define ScrollSelectOtherWidth 20
 #define ScrollSelectHeight 25
-#define ScrollSelectGap 15
+#define ScrollSelectGap 5
 #define ScrollSelectFont 14
-#define ScrollSelectBgNormalColor ([UIColor colorWithRed:45./255. green:35./255 blue:35./255 alpha:1])
-#define ScrollSelectBgSelectColor ([UIColor whiteColor])
+#define ScrollSelectBgNormalColor ([UIColor whiteColor])
+#define ScrollSelectBgSelectColor ([UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1])
 
 
 #pragma mark - NewsCell constants ---------------------------------------------------------------------------------------------
@@ -146,5 +146,17 @@
 #define LoginViewTextWidth 300
 #define LoginViewTextHeight 44
 //#define LoginViewOriginY 100
+
+#pragma mark - ModifypwdViewController constants ---------------------------------------------------------------------------------------------
+#define ModifypwdViewHorizontalGap 10
+#define ModifypwdViewTextWidth 300
+#define ModifypwdViewTextHeight 44
+#define ModifypwdOriginY 50
+#define ModifypwdViewVerticalGap 10
+
+
+#pragma mark - CheckDetailViewController constants ---------------------------------------------------------------------------------------------
+#define CheckDetailViewHorizontalGap 10
+#define CheckDetailViewVerticalGap 15
 
 #endif

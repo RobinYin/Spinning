@@ -11,8 +11,8 @@
    ],
   [
    {
-   "link" : "BindViewController",
-   "title" : "绑定账号"
+   "link" : "ModifypwdViewController",
+   "title" : "修改密码"
    },
    {
    "link" : "CheckinViewController",

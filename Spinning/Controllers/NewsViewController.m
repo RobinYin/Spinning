@@ -65,8 +65,8 @@
 {
     RbScorllSecletView *selectView = [[RbScorllSecletView alloc]initWithFrame:CGRectMake(0, NavigationHeight, ScrollSelectWidth, ScrollSelectHeight)];
     [selectView setSelectDelegate:self];
-//    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿",@"跨界观察",@"专题聚焦",@"数据挖掘"]];
-    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿"]];
+    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿",@"跨界观察",@"专题聚焦",@"数据挖掘",@"商务圈子"]];
+//    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿"]];
     
     [self.view addSubview:selectView];
     [selectView release];
@@ -118,9 +118,9 @@
 
 - (void)configureOriginData
 {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:4];
-    NSMutableArray *cursor = [NSMutableArray arrayWithCapacity:4];
-    for (int i = 0; i < 4; i ++) {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:8];
+    NSMutableArray *cursor = [NSMutableArray arrayWithCapacity:8];
+    for (int i = 0; i < 8; i ++) {
         NSMutableArray *subArray = [NSMutableArray array];
         NSMutableString *string = [NSMutableString stringWithFormat:@"0"];
         [cursor addObject:string];

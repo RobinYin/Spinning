@@ -26,10 +26,16 @@ NSString* const kSpinningHttpKeyData = @"data" ;
 NSString* const kSpinningHttpKeyTopic = @"topic" ;
 NSString* const kSpinningHttpKeyNotice = @"notice" ;
 NSString* const kSpinningHttpKeyUser = @"user" ;
+NSString* const kSpinningHttpKeyMeeting = @"meeting" ;
 NSString* const kSpinningHttpKeyCommentip = @"commentip";
 NSString* const kSpinningHttpKeyCommentid = @"commentid";
 NSString* const kSpinningHttpKeySaveUser = @"spinningsaveuer";
 NSString* const kSpinningHttpKeyInfoCountShared = @"spinninginfocount";
+NSString* const kSpinningHttpKeyAddress = @"address";
+NSString* const kSpinningHttpKeyDate = @"date";
+NSString* const kSpinningHttpKeyDescrpition = @"description";
+NSString* const kSpinningHttpKeyName = @"name";
+NSString* const kSpinningHttpKeySponsor = @"sponsor";
 
 NSString* const kSpinningHttpRequestKeyId = @"id";
 NSString* const kSpinningHttpRequestKeyUserid = @"userid";
@@ -41,6 +47,8 @@ NSString* const kSpinningHttpRequestKeyMeetingcode = @"meetingcode";
 
 NSString* const kSpinningHttpRequestKeyUsername = @"username";
 NSString* const kSpinningHttpRequestKeyPassword = @"password";
+NSString* const kSpinningHttpRequestKeyNewpwd = @"newpwd";
+NSString* const kSpinningHttpRequestKeyOldpwd = @"oldpwd";
 NSString* const kSpinningHttpRequestKeyRealname = @"realname";
 NSString* const kSpinningHttpRequestKeyAddress = @"address";
 NSString* const kSpinningHttpRequestKeyEmail = @"email";

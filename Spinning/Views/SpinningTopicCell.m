@@ -36,7 +36,7 @@
     [_subLabel setFont: [UIFont systemFontOfSize:13]];
     [_subLabel setBackgroundColor:[UIColor clearColor]];
     [_subLabel setNumberOfLines:0];
-    [_subLabel setTextColor:[UIColor colorWithRed:192./255 green:202./255 blue:110./255 alpha:1]];
+    [_subLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
     [self.contentView addSubview:_subLabel];
     
     [self.seperateImgView setFrame:CGRectMake(10, TopicCellGap + TopicCellImgheight + 110, TopicCellImgWith, 1)];

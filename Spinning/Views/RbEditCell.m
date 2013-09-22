@@ -19,8 +19,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 		_textField = [[UITextField alloc] initWithFrame: CGRectZero];
-//		_textField.minimumFontSize = 12;
-//		_textField.adjustsFontSizeToFitWidth = YES;
 		[self addSubview: _textField];
     }
     return self;

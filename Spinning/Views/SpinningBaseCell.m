@@ -33,14 +33,14 @@
     [_titleLabel setFont: [UIFont systemFontOfSize:15]];
     [_titleLabel setBackgroundColor:[UIColor clearColor]];
     [_titleLabel setNumberOfLines:0];
-    [_titleLabel setTextColor:[UIColor colorWithRed:192./255 green:202./255 blue:110./255 alpha:1]];
+    [_titleLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
     [self.contentView addSubview:_titleLabel];
     
     _cxtLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_cxtLabel setFont: [UIFont systemFontOfSize:13]];
     [_cxtLabel setBackgroundColor:[UIColor clearColor]];
     [_cxtLabel setNumberOfLines:0];
-    [_cxtLabel setTextColor:[UIColor grayColor]];
+    [_cxtLabel setTextColor:[UIColor whiteColor]];
     [self.contentView addSubview:_cxtLabel];
     
     _cxtImgView=[[UIImageView alloc]initWithFrame:CGRectZero];

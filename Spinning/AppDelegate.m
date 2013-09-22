@@ -11,9 +11,13 @@
 @implementation AppDelegate
 @synthesize tabBarController = _tabBarController;
 @synthesize httpCmd = _httpCmd;
+@synthesize timer = _timer;
 - (void)dealloc
 {
-    
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
     RbSafeRelease(_httpCmd);
     RbSafeRelease(_tabBarController);
     RbSafeRelease(_window);
@@ -71,12 +75,18 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    NSString *string = [NSString stringWithFormat:@"测试活动1活动简介\r\n内容简介123456\r\n哈哈哈哈哈哈"];
+    CGSize size = [string sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(284, NSIntegerMax) lineBreakMode:NSLineBreakByCharWrapping];
+    NSLog(@"%@",NSStringFromCGSize(size));
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     [self configureTabBarController];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [self onGetData];
+    [self handleInfo];
     return YES;
 }
 
@@ -110,6 +120,10 @@
 #pragma mark -
 #pragma mark datasource -----------
 
+- (void)handleInfo
+{
+    _timer = [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(onGetData) userInfo:nil repeats:YES];
+}
 - (void)onGetData
 {
     [InfoCountSingleton sharedInstance];
@@ -129,6 +143,26 @@
     NSLog(@"%@",NSStringFromClass([cmd class]));
     InfoCountHttpCmd *httpcmd = (InfoCountHttpCmd *)cmd;
     InfoCountModel *model = (InfoCountModel *)httpcmd.model;
+    
+    RbBadgeView *topic = (RbBadgeView *)[self.tabBarController.tabBarBadgesArray objectAtIndex:1];
+    if (model.topic) {
+        if ([model.topic intValue]) {
+            [topic setBadgeString:model.topic];
+        }else
+        {
+            [topic setBadgeString:@""];
+        }
+    }
+    
+    RbBadgeView *notice = (RbBadgeView *)[self.tabBarController.tabBarBadgesArray objectAtIndex:3];
+    if (model.notice) {
+        if ([model.notice intValue]) {
+            [notice setBadgeString:model.notice];
+        }else
+        {
+            [notice setBadgeString:@""];
+        }
+    }
     NSLog(@"%@  ---  %@",model.topic,model.notice);
      
 }

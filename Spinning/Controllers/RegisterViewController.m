@@ -104,6 +104,8 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
     tmpTable.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"news_bg"]]autorelease];
+    [tmpTable setBackgroundView:imageView];
     [self.view addSubview:tmpTable];
     self.tableView = tmpTable;
     RbSafeRelease(tmpTable);

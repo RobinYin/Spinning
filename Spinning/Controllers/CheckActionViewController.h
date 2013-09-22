@@ -9,5 +9,5 @@
 #import "RbBaseViewController.h"
 
 @interface CheckActionViewController : RbBaseViewController
-
+@property (nonatomic, retain)NSString *meetingcode;
 @end

@@ -63,7 +63,8 @@
     tmpTable.separatorColor = [UIColor grayColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
-    tmpTable.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"news_bg"]]autorelease];
+    [tmpTable setBackgroundView:imageView];
     [self.view addSubview:tmpTable];
     self.tableView = tmpTable;
     RbSafeRelease(tmpTable);
@@ -157,6 +158,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.row == 0 && indexPath.section ==0) {
         if ([RbUser sharedInstance].userid) {
             
@@ -176,7 +179,27 @@
             return;
         }
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 1 && indexPath.section ==1) {
+        if (![RbUser sharedInstance].userid) {
+            
+            [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                    message:@"请先登录后，才能进行签到操作。"
+                          cancelButtonTitle:@"取消"
+                          otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                                  onDismiss:^(int buttonIndex)
+             {
+                 LoginViewController *viewController = [[LoginViewController new]autorelease];
+                 [self.navigationController pushViewController:viewController animated:YES];
+             }
+                                   onCancel:^()
+             {
+             }
+             ];
+            return;
+        }
+    }
+
     NSDictionary *dic = [[self.arrayCurrent objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     NSString *string = [dic objectForKey:@"link"];
     UIViewController *viewController = (UIViewController *)[[NSClassFromString(string) alloc]init];
