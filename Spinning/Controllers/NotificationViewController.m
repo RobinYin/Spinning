@@ -11,6 +11,9 @@
 #import "NotifyHttpCmd.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "LoginViewController.h"
+#import "ReadModel.h"
+#import "NotifyReadModel.h"
+
 @interface NotificationViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
@@ -27,6 +30,14 @@
 @synthesize arrayCurrent = _arrayCurrent;
 @synthesize httpCmd = _httpCmd;
 @synthesize cursor = _cursor;
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -138,6 +149,20 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[NotifyReadModel class]];
+            ReadModel *obj = [[[NotifyReadModel alloc]init]autorelease];
+            obj.mid = model.mid;
+            NSString *search = [NSString stringWithFormat:@"mid = %@",model.mid];
+            NSMutableArray* arr = [NotifyReadModel searchWithWhere:search orderBy:nil offset:0 count:NSIntegerMax];
+            if ([arr count]) {
+                [cell.titleLabel setTextColor:[UIColor whiteColor]];
+            }else
+            {
+                [cell.titleLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
+            }
+            
             [cell.titleLabel setText:model.title];
             [cell.cxtLabel setText:model.time];
         }
@@ -155,6 +180,13 @@
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
             NSLog(@"%@",model.articleurl);
+            
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[NotifyReadModel class]];
+            ReadModel *data = [[[NotifyReadModel alloc]init]autorelease ];
+            data.mid = model.mid;
+            [globalHelper insertToDB:data];
+            
             RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;

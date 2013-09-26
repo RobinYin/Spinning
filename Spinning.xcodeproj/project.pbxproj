@@ -218,6 +218,18 @@
 		00A09CAF17F45EC900B99367 /* UMSocialSnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA717F45EC900B99367 /* UMSocialSnsViewController.m */; };
 		00A09CB017F45EC900B99367 /* UMSocialSnsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A09CA817F45EC900B99367 /* UMSocialSnsViewController.xib */; };
 		00A09CB117F45EC900B99367 /* UMSocialTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CAA17F45EC900B99367 /* UMSocialTabBarController.m */; };
+		00A09CB417F4865E00B99367 /* ReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CB317F4865E00B99367 /* ReadModel.m */; };
+		00A09CB717F4876F00B99367 /* NewsReadModel0.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CB617F4876F00B99367 /* NewsReadModel0.m */; };
+		00A09CBA17F4878E00B99367 /* NewsReadModel1.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CB917F4878E00B99367 /* NewsReadModel1.m */; };
+		00A09CBD17F4879900B99367 /* NewsReadModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CBC17F4879900B99367 /* NewsReadModel2.m */; };
+		00A09CC017F487A400B99367 /* NewsReadModel3.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CBF17F487A400B99367 /* NewsReadModel3.m */; };
+		00A09CC317F487AF00B99367 /* NewsReadModel4.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CC217F487AF00B99367 /* NewsReadModel4.m */; };
+		00A09CC617F487BA00B99367 /* NewsReadModel5.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CC517F487BA00B99367 /* NewsReadModel5.m */; };
+		00A09CC917F487C600B99367 /* NewsReadModel6.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CC817F487C600B99367 /* NewsReadModel6.m */; };
+		00A09CCC17F487D100B99367 /* NewsReadModel7.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CCB17F487D100B99367 /* NewsReadModel7.m */; };
+		00A09CCF17F4958F00B99367 /* TopicReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CCE17F4958F00B99367 /* TopicReadModel.m */; };
+		00A09CD217F495B700B99367 /* PHReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CD117F495B700B99367 /* PHReadModel.m */; };
+		00A09CD517F495CB00B99367 /* NotifyReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CD417F495CB00B99367 /* NotifyReadModel.m */; };
 		00A26DBB17E820CA00DE46E5 /* TopicWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */; };
 		00A26DBE17E8237900DE46E5 /* SpinningCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBD17E8237800DE46E5 /* SpinningCommentCell.m */; };
 		00A26DC117E82F9F00DE46E5 /* GrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DC017E82F9E00DE46E5 /* GrowingTextView.m */; };
@@ -603,6 +615,30 @@
 		00A09CA817F45EC900B99367 /* UMSocialSnsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSocialSnsViewController.xib; sourceTree = "<group>"; };
 		00A09CA917F45EC900B99367 /* UMSocialTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialTabBarController.h; sourceTree = "<group>"; };
 		00A09CAA17F45EC900B99367 /* UMSocialTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialTabBarController.m; sourceTree = "<group>"; };
+		00A09CB217F4865E00B99367 /* ReadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadModel.h; sourceTree = "<group>"; };
+		00A09CB317F4865E00B99367 /* ReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModel.m; sourceTree = "<group>"; };
+		00A09CB517F4876F00B99367 /* NewsReadModel0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel0.h; sourceTree = "<group>"; };
+		00A09CB617F4876F00B99367 /* NewsReadModel0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel0.m; sourceTree = "<group>"; };
+		00A09CB817F4878E00B99367 /* NewsReadModel1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel1.h; sourceTree = "<group>"; };
+		00A09CB917F4878E00B99367 /* NewsReadModel1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel1.m; sourceTree = "<group>"; };
+		00A09CBB17F4879900B99367 /* NewsReadModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel2.h; sourceTree = "<group>"; };
+		00A09CBC17F4879900B99367 /* NewsReadModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel2.m; sourceTree = "<group>"; };
+		00A09CBE17F487A400B99367 /* NewsReadModel3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel3.h; sourceTree = "<group>"; };
+		00A09CBF17F487A400B99367 /* NewsReadModel3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel3.m; sourceTree = "<group>"; };
+		00A09CC117F487AF00B99367 /* NewsReadModel4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel4.h; sourceTree = "<group>"; };
+		00A09CC217F487AF00B99367 /* NewsReadModel4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel4.m; sourceTree = "<group>"; };
+		00A09CC417F487BA00B99367 /* NewsReadModel5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel5.h; sourceTree = "<group>"; };
+		00A09CC517F487BA00B99367 /* NewsReadModel5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel5.m; sourceTree = "<group>"; };
+		00A09CC717F487C600B99367 /* NewsReadModel6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel6.h; sourceTree = "<group>"; };
+		00A09CC817F487C600B99367 /* NewsReadModel6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel6.m; sourceTree = "<group>"; };
+		00A09CCA17F487D100B99367 /* NewsReadModel7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsReadModel7.h; sourceTree = "<group>"; };
+		00A09CCB17F487D100B99367 /* NewsReadModel7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsReadModel7.m; sourceTree = "<group>"; };
+		00A09CCD17F4958F00B99367 /* TopicReadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicReadModel.h; sourceTree = "<group>"; };
+		00A09CCE17F4958F00B99367 /* TopicReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicReadModel.m; sourceTree = "<group>"; };
+		00A09CD017F495B700B99367 /* PHReadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHReadModel.h; sourceTree = "<group>"; };
+		00A09CD117F495B700B99367 /* PHReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHReadModel.m; sourceTree = "<group>"; };
+		00A09CD317F495CB00B99367 /* NotifyReadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyReadModel.h; sourceTree = "<group>"; };
+		00A09CD417F495CB00B99367 /* NotifyReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyReadModel.m; sourceTree = "<group>"; };
 		00A26DB917E820CA00DE46E5 /* TopicWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicWebViewController.h; sourceTree = "<group>"; };
 		00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicWebViewController.m; sourceTree = "<group>"; };
 		00A26DBC17E8237800DE46E5 /* SpinningCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinningCommentCell.h; sourceTree = "<group>"; };
@@ -872,6 +908,30 @@
 		0099C88017A40D40001516C2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00A09CB217F4865E00B99367 /* ReadModel.h */,
+				00A09CB317F4865E00B99367 /* ReadModel.m */,
+				00A09CD317F495CB00B99367 /* NotifyReadModel.h */,
+				00A09CD417F495CB00B99367 /* NotifyReadModel.m */,
+				00A09CD017F495B700B99367 /* PHReadModel.h */,
+				00A09CD117F495B700B99367 /* PHReadModel.m */,
+				00A09CCD17F4958F00B99367 /* TopicReadModel.h */,
+				00A09CCE17F4958F00B99367 /* TopicReadModel.m */,
+				00A09CB517F4876F00B99367 /* NewsReadModel0.h */,
+				00A09CB617F4876F00B99367 /* NewsReadModel0.m */,
+				00A09CB817F4878E00B99367 /* NewsReadModel1.h */,
+				00A09CB917F4878E00B99367 /* NewsReadModel1.m */,
+				00A09CBB17F4879900B99367 /* NewsReadModel2.h */,
+				00A09CBC17F4879900B99367 /* NewsReadModel2.m */,
+				00A09CBE17F487A400B99367 /* NewsReadModel3.h */,
+				00A09CBF17F487A400B99367 /* NewsReadModel3.m */,
+				00A09CC117F487AF00B99367 /* NewsReadModel4.h */,
+				00A09CC217F487AF00B99367 /* NewsReadModel4.m */,
+				00A09CC417F487BA00B99367 /* NewsReadModel5.h */,
+				00A09CC517F487BA00B99367 /* NewsReadModel5.m */,
+				00A09CC717F487C600B99367 /* NewsReadModel6.h */,
+				00A09CC817F487C600B99367 /* NewsReadModel6.m */,
+				00A09CCA17F487D100B99367 /* NewsReadModel7.h */,
+				00A09CCB17F487D100B99367 /* NewsReadModel7.m */,
 				00AD3AF617D2F1FF00CC4188 /* SpinningHttpSuffix.h */,
 				00AD3AF717D2F1FF00CC4188 /* SpinningHttpSuffix.m */,
 				00AD3AF917D3564F00CC4188 /* SpinningHttpKey.h */,
@@ -1497,6 +1557,7 @@
 				0099C9B817A41535001516C2 /* SDImageCache.m in Sources */,
 				0099C9B917A41535001516C2 /* SDWebImageDecoder.m in Sources */,
 				0099C9BA17A41535001516C2 /* SDWebImageDownloader.m in Sources */,
+				00A09CD517F495CB00B99367 /* NotifyReadModel.m in Sources */,
 				0099C9BB17A41535001516C2 /* SDWebImageManager.m in Sources */,
 				0099C9BC17A41535001516C2 /* SDWebImagePrefetcher.m in Sources */,
 				00961CF617F1721500863246 /* FMDatabaseQueue.m in Sources */,
@@ -1504,6 +1565,7 @@
 				0099C9BF17A41535001516C2 /* UIImageView+WebCache.m in Sources */,
 				0099C9EE17A41622001516C2 /* EGORefreshTableHeaderView.m in Sources */,
 				0099C9EF17A41622001516C2 /* EGOTableFootView.m in Sources */,
+				00A09CB717F4876F00B99367 /* NewsReadModel0.m in Sources */,
 				00961CFB17F1721500863246 /* LKDBUtils.m in Sources */,
 				0099C9F217A41622001516C2 /* PullingRefreshTableView.m in Sources */,
 				00A09CAB17F45EC900B99367 /* UMSocialBarViewController.m in Sources */,
@@ -1517,6 +1579,7 @@
 				0099C9FA17A41622001516C2 /* SBJsonParser.m in Sources */,
 				0099C9FB17A41622001516C2 /* SBJsonWriter.m in Sources */,
 				0099C9FE17A419E5001516C2 /* RbBaseViewController.m in Sources */,
+				00A09CBD17F4879900B99367 /* NewsReadModel2.m in Sources */,
 				0099CA0417A42683001516C2 /* NewsViewController.m in Sources */,
 				0099CA0717A4280B001516C2 /* TopicViewController.m in Sources */,
 				0099CA0A17A4281D001516C2 /* MoreViewController.m in Sources */,
@@ -1524,10 +1587,12 @@
 				0099CA1017A42850001516C2 /* PHViewController.m in Sources */,
 				00961CF217F1721500863246 /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				0099CA1317A428DE001516C2 /* RbBaseModel.m in Sources */,
+				00A09CCF17F4958F00B99367 /* TopicReadModel.m in Sources */,
 				00961CFD17F1721500863246 /* NSObject+LKModel.m in Sources */,
 				0099CA1717A42E7C001516C2 /* RbUser.m in Sources */,
 				0099CA1A17A43109001516C2 /* NSFileManager+Utilities.m in Sources */,
 				0099CA2917A43868001516C2 /* RbUtility.m in Sources */,
+				00A09CB417F4865E00B99367 /* ReadModel.m in Sources */,
 				00961CF917F1721500863246 /* LKDB+Mapping.m in Sources */,
 				0099CA2C17A438C2001516C2 /* RbConstant.m in Sources */,
 				00961CF817F1721500863246 /* LKDB+Manager.m in Sources */,
@@ -1535,16 +1600,21 @@
 				0092825A17A56A8900B845AA /* RbScorllSecletView.m in Sources */,
 				009775E217B77AD600333ED2 /* RbTabBarItem.m in Sources */,
 				000E095917B7ACF40066A80C /* RbBadgeView.m in Sources */,
+				00A09CBA17F4878E00B99367 /* NewsReadModel1.m in Sources */,
+				00A09CC017F487A400B99367 /* NewsReadModel3.m in Sources */,
 				003AA2F517CE2AAC00B2689B /* SpinningBaseCell.m in Sources */,
 				0001222617CF1CF9000FFA2E /* SpinningNewsCell.m in Sources */,
+				00A09CC317F487AF00B99367 /* NewsReadModel4.m in Sources */,
 				00961CF317F1721500863246 /* FMDatabase.m in Sources */,
 				00A09CAF17F45EC900B99367 /* UMSocialSnsViewController.m in Sources */,
 				0001224717CF73FB000FFA2E /* SpinningPHCell.m in Sources */,
+				00A09CD217F495B700B99367 /* PHReadModel.m in Sources */,
 				0001224A17CF7691000FFA2E /* SpinningNotificationCell.m in Sources */,
 				008FCFEA17D0C85800AF7201 /* CollectionViewController.m in Sources */,
 				008FCFED17D0C86A00AF7201 /* HistoryViewController.m in Sources */,
 				008FCFF017D0C8D400AF7201 /* AboutViewController.m in Sources */,
 				008FCFF317D0C8E800AF7201 /* CheckinViewController.mm in Sources */,
+				00A09CC617F487BA00B99367 /* NewsReadModel5.m in Sources */,
 				008FCFF617D0C8FD00AF7201 /* LoginViewController.m in Sources */,
 				008FCFF917D0C93000AF7201 /* BindViewController.m in Sources */,
 				008FCFFE17D0CF7200AF7201 /* SpinningHistoryCell.m in Sources */,
@@ -1556,6 +1626,7 @@
 				008FD02917D0D90700AF7201 /* CheckActionViewController.m in Sources */,
 				00AD3AE317D115BB00CC4188 /* RbHttpClient.m in Sources */,
 				00AD3AE617D116C400CC4188 /* RbHttpCmd.m in Sources */,
+				00A09CCC17F487D100B99367 /* NewsReadModel7.m in Sources */,
 				00AD3AE917D182CB00CC4188 /* SpinningTopicCell.m in Sources */,
 				00AD3AEC17D19BF700CC4188 /* RbHttpConfig.m in Sources */,
 				00AD3AEF17D1A23500CC4188 /* RbHttpLog.m in Sources */,
@@ -1571,6 +1642,7 @@
 				00ADB5C417D6358100B32C39 /* FeedbackHttpCmd.m in Sources */,
 				009C544517DF6042000CECA8 /* RbWebViewController.m in Sources */,
 				002A807917E07D8C00555DFE /* RbEditCell.m in Sources */,
+				00A09CC917F487C600B99367 /* NewsReadModel6.m in Sources */,
 				002A807C17E07E3C00555DFE /* UITableView+RbEditTextTableView.m in Sources */,
 				002A807F17E07EF500555DFE /* UIView+HierarchyAdditions.m in Sources */,
 				0099E85517E45BBF00BDEB91 /* RemarkHttpCmd.m in Sources */,

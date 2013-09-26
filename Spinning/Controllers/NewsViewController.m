@@ -9,7 +9,15 @@
 #import "NewsViewController.h"
 #import "SpinningNewsCell.h"
 #import "NewsHttpCmd.h"
-
+#import "ReadModel.h"
+#import "NewsReadModel0.h"
+#import "NewsReadModel1.h"
+#import "NewsReadModel2.h"
+#import "NewsReadModel3.h"
+#import "NewsReadModel4.h"
+#import "NewsReadModel5.h"
+#import "NewsReadModel6.h"
+#import "NewsReadModel7.h"
 
 @interface NewsViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -38,6 +46,13 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -158,6 +173,24 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            
+            NSString *string = [NSString stringWithFormat:@"NewsReadModel%d",[self.arrayContainer indexOfObject:self.arrayCurrent]];
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[NSClassFromString(string) class]];
+            ReadModel *obj = [[[[NSClassFromString(string) class] alloc]init]autorelease];
+            obj.mid = model.mid;
+            NSString *search = [NSString stringWithFormat:@"mid = %@",model.mid];
+            NSMutableArray* arr = [[NSClassFromString(string) class] searchWithWhere:search orderBy:nil offset:0 count:NSIntegerMax];
+            if ([arr count]) {
+                [cell.titleLabel setTextColor:[UIColor whiteColor]];
+            }else
+            {
+                [cell.titleLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
+            }
+            
+            
+            
             [cell.titleLabel setText:model.title];
             [cell.cxtLabel setText:model.content];
             [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
@@ -175,6 +208,16 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            
+            
+            NSString *string = [NSString stringWithFormat:@"NewsReadModel%d",[self.arrayContainer indexOfObject:self.arrayCurrent]];
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[NSClassFromString(string) class]];
+            ReadModel *data = [[[[NSClassFromString(string) class] alloc]init]autorelease ];
+            data.mid = model.mid;
+            [globalHelper insertToDB:data];
+            
             RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;

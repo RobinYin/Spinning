@@ -8,6 +8,19 @@
 
 #import "AppDelegate.h"
 #import "NewsHttpCmd.h"
+
+#import "NewsReadModel0.h"
+#import "NewsReadModel1.h"
+#import "NewsReadModel2.h"
+#import "NewsReadModel3.h"
+#import "NewsReadModel4.h"
+#import "NewsReadModel5.h"
+#import "NewsReadModel6.h"
+#import "NewsReadModel7.h"
+#import "PHReadModel.h"
+#import "TopicReadModel.h"
+#import "NotifyReadModel.h"
+
 @implementation AppDelegate
 @synthesize tabBarController = _tabBarController;
 @synthesize httpCmd = _httpCmd;
@@ -121,6 +134,17 @@
 {
     LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
     [globalHelper createTableWithModelClass:[ListModel class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel0 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel1 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel2 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel3 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel4 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel5 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel6 class]];
+    [globalHelper createTableWithModelClass:[NewsReadModel7 class]];
+    [globalHelper createTableWithModelClass:[PHReadModel class]];
+    [globalHelper createTableWithModelClass:[TopicReadModel class]];
+    [globalHelper createTableWithModelClass:[NotifyReadModel class]];
 }
 
 #pragma mark -

@@ -10,6 +10,8 @@
 #import "SpinningPHCell.h"
 #import "PullingRefreshTableView.h"
 #import "PHValueHttpCmd.h"
+#import "PHReadModel.h"
+#import "ReadModel.h"
 
 @interface PHViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -34,6 +36,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)viewDidLoad
@@ -124,6 +134,21 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[PHReadModel class]];
+            ReadModel *obj = [[[PHReadModel alloc]init]autorelease];
+            obj.mid = model.mid;
+            NSString *search = [NSString stringWithFormat:@"mid = %@",model.mid];
+            NSMutableArray* arr = [PHReadModel searchWithWhere:search orderBy:nil offset:0 count:NSIntegerMax];
+            if ([arr count]) {
+                [cell.titleLabel setTextColor:[UIColor whiteColor]];
+            }else
+            {
+                [cell.titleLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
+            }
+            
             [cell.titleLabel setText:model.title];
             [cell.cxtLabel setText:model.content];
             [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
@@ -141,6 +166,13 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[PHReadModel class]];
+            ReadModel *data = [[[PHReadModel alloc]init]autorelease ];
+            data.mid = model.mid;
+            [globalHelper insertToDB:data];
+            
             NSLog(@"%@",model.articleurl);
             RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.model = model;

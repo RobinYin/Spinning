@@ -10,6 +10,8 @@
 #import "SpinningTopicCell.h"
 #import "TopicHttpCmd.h"
 #import "TopicWebViewController.h"
+#import "ReadModel.h"
+#import "TopicReadModel.h"
 
 @interface TopicViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -34,6 +36,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)viewDidLoad
@@ -124,6 +134,23 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[TopicReadModel class]];
+            ReadModel *obj = [[[TopicReadModel alloc]init]autorelease];
+            obj.mid = model.mid;
+            NSString *search = [NSString stringWithFormat:@"mid = %@",model.mid];
+            NSMutableArray* arr = [TopicReadModel searchWithWhere:search orderBy:nil offset:0 count:NSIntegerMax];
+            if ([arr count]) {
+                [cell.titleLabel setTextColor:[UIColor whiteColor]];
+                [cell.subLabel setTextColor:[UIColor whiteColor]];
+            }else
+            {
+                [cell.titleLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
+                [cell.subLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
+            }
+            
             [cell.titleLabel setText:model.title];
             [cell.cxtLabel setText:model.content];
             [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
@@ -142,6 +169,14 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            
+            
+            LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+            [globalHelper createTableWithModelClass:[TopicReadModel class]];
+            ReadModel *data = [[[TopicReadModel alloc]init]autorelease ];
+            data.mid = model.mid;
+            [globalHelper insertToDB:data];
+            
             NSLog(@"%@",model.articleurl);
             TopicWebViewController *webViewController = [[TopicWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.mid = model.mid;

@@ -56,19 +56,6 @@
 }
 
 
-//+(NSDictionary *)getTableMapping
-//{
-//    return @{@"mid":LKSQLInherit,
-//             @"title":LKSQLInherit,
-//             @"time":LKSQLInherit,
-//             @"icon":LKSQLInherit,
-//             @"content":LKSQLInherit,
-//             @"articleurl":LKSQLInherit,
-//             @"totalcount":LKSQLInherit,
-//             @"source":LKSQLInherit
-//             };
-//}
-
 +(NSString *)getPrimaryKey
 {
     return @"mid";
