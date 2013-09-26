@@ -7,7 +7,7 @@
 //
 
 #import "RbHttpCmd.h"
-
+#import "RbBaseModel.h"
 @interface ListModel : RbBaseModel
 
 @property (nonatomic, retain)NSString *title;

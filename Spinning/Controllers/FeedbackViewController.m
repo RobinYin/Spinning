@@ -73,7 +73,7 @@
 
 - (void)configureOtherViews
 {
-    UITextField* textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 54, 300, 300)];
+    UITextField* textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 54+ StatusHeaderHight, 300, 300)];
     textField.font = [UIFont systemFontOfSize:14];
     textField.delegate = self;
     [textField setBackgroundColor:[UIColor whiteColor]];
@@ -85,7 +85,7 @@
     
     
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextBtn setFrame:CGRectMake(92.25, 364, 135.5, 27)];
+    [nextBtn setFrame:CGRectMake(92.25, 364+ StatusHeaderHight, 135.5, 27)];
     [nextBtn setBackgroundImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
     [nextBtn setTitle:@"提交" forState:UIControlStateNormal];
     [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

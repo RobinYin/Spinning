@@ -7,19 +7,11 @@
 //
 
 #import "RbBaseViewController.h"
-
-enum {
-    RbWebViewControllerAvailableActionsNone             = 0,
-    RbWebViewControllerAvailableActionsOpenInSafari     = 1 << 0,
-    RbWebViewControllerAvailableActionsMailLink         = 1 << 1,
-    RbWebViewControllerAvailableActionsCopyLink         = 1 << 2
-};
-
+#import "ListHttpCmd.h"
 typedef NSUInteger RbWebViewControllerAvailableActions;
 @interface RbWebViewController : RbBaseViewController
 @property (nonatomic, retain) NSString *mid;
+@property (nonatomic, retain) ListModel *model;
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
-
-@property (nonatomic, assign) RbWebViewControllerAvailableActions availableActions;
 @end

@@ -62,7 +62,7 @@
 
 - (void)configureTableView{
     
-    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight)];
+    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight  + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - StatusHeaderHight)];
     tmpTable.separatorColor = [UIColor clearColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
@@ -145,6 +145,7 @@
             NSLog(@"%@",model.articleurl);
             TopicWebViewController *webViewController = [[TopicWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.mid = model.mid;
+            webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webViewController animated:YES];
             [webViewController release];

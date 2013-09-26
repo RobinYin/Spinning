@@ -74,7 +74,7 @@
 
 - (void)configureInputViews
 {
-    UITextField* field1 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, LoginViewOriginY   , LoginViewTextWidth, LoginViewTextHeight)];
+    UITextField* field1 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, LoginViewOriginY + StatusHeaderHight  , LoginViewTextWidth, LoginViewTextHeight)];
     self.usernameTextField = field1;
     [field1 setBorderStyle:UITextBorderStyleRoundedRect];
     field1.font = [UIFont systemFontOfSize:16];
@@ -86,7 +86,7 @@
     [field1 release];
     
     
-    UITextField* field2 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, LoginViewOriginY+ LoginViewTextHeight + LoginViewVerticalGap   , LoginViewTextWidth, LoginViewTextHeight)];
+    UITextField* field2 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, field1.frame.origin.y+ field1.frame.size.height + LoginViewVerticalGap   , LoginViewTextWidth, LoginViewTextHeight)];
     self.passwordTextField = field2;
     [field2 setSecureTextEntry:YES];
     [field2 setBorderStyle:UITextBorderStyleRoundedRect];
@@ -99,7 +99,7 @@
     [field2 release];
     
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextBtn setFrame:CGRectMake(92.25, 184, 135.5, 27)];
+    [nextBtn setFrame:CGRectMake(92.25, field2.frame.origin.y+ field2.frame.size.height + LoginViewVerticalGap , 135.5, 27)];
     [nextBtn setBackgroundImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
     [nextBtn setTitle:@"登录" forState:UIControlStateNormal];
     [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

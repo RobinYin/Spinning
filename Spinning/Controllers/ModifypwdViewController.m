@@ -77,7 +77,7 @@
 
 - (void)configureInputViews
 {
-    UITextField* field1 = [[UITextField alloc]initWithFrame:CGRectMake(ModifypwdViewHorizontalGap, ModifypwdOriginY   , ModifypwdViewTextWidth, ModifypwdViewTextHeight)];
+    UITextField* field1 = [[UITextField alloc]initWithFrame:CGRectMake(ModifypwdViewHorizontalGap, ModifypwdOriginY + StatusHeaderHight  , ModifypwdViewTextWidth, ModifypwdViewTextHeight)];
     self.usernameTextField = field1;
     [field1 setBorderStyle:UITextBorderStyleRoundedRect];
     field1.font = [UIFont systemFontOfSize:16];
@@ -86,10 +86,9 @@
     [field1 setPlaceholder:@"账号:"];
     [field1 setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:field1];
-    [field1 release];
     
     
-    UITextField* field2 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, ModifypwdOriginY+ ModifypwdViewTextHeight + ModifypwdViewVerticalGap, ModifypwdViewTextWidth, ModifypwdViewTextHeight)];
+    UITextField* field2 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, field1.frame.origin.y + field1.frame.size.height + ModifypwdViewVerticalGap, ModifypwdViewTextWidth, ModifypwdViewTextHeight)];
     self.oldpwdTextField = field2;
     [field2 setSecureTextEntry:YES];
     [field2 setBorderStyle:UITextBorderStyleRoundedRect];
@@ -99,10 +98,10 @@
     [field2 setPlaceholder:@"原始密码:"];
     [field2 setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:field2];
-    [field2 release];
+    [field1 release];
     
     
-    UITextField* field3 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, ModifypwdOriginY+ 2*ModifypwdViewTextHeight + 2*ModifypwdViewVerticalGap, ModifypwdViewTextWidth, ModifypwdViewTextHeight)];
+    UITextField* field3 = [[UITextField alloc]initWithFrame:CGRectMake(LoginViewHorizontalGap, field2.frame.origin.y + field2.frame.size.height +  ModifypwdViewVerticalGap, ModifypwdViewTextWidth, ModifypwdViewTextHeight)];
     self.passwordTextField = field3;
     [field3 setSecureTextEntry:YES];
     [field3 setBorderStyle:UITextBorderStyleRoundedRect];
@@ -112,10 +111,10 @@
     [field3 setPlaceholder:@"新密码:"];
     [field3 setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:field3];
-    [field3 release];
+    [field2 release];
     
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextBtn setFrame:CGRectMake(92.25, 208, 135.5, 27)];
+    [nextBtn setFrame:CGRectMake(92.25, field3.frame.origin.y + field3.frame.size.height + ModifypwdViewVerticalGap, 135.5, 27)];
     [nextBtn setBackgroundImage:[UIImage imageNamed:@"btn_normal"] forState:UIControlStateNormal];
     [nextBtn setTitle:@"确定" forState:UIControlStateNormal];
     [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -123,6 +122,7 @@
     [nextBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
     [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextBtn];
+    [field3 release];
 }
 
 - (void)next:(id)sender

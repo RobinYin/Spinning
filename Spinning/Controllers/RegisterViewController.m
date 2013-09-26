@@ -99,7 +99,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 
 - (void)configureTableView{
     
-    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight) style:UITableViewStyleGrouped];
+    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - StatusHeaderHight) style:UITableViewStyleGrouped];
     tmpTable.separatorColor = [UIColor grayColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;

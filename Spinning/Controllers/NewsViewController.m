@@ -10,6 +10,7 @@
 #import "SpinningNewsCell.h"
 #import "NewsHttpCmd.h"
 
+
 @interface NewsViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
@@ -63,7 +64,7 @@
 
 - (void)configureOtherViews
 {
-    RbScorllSecletView *selectView = [[RbScorllSecletView alloc]initWithFrame:CGRectMake(0, NavigationHeight, ScrollSelectWidth, ScrollSelectHeight)];
+    RbScorllSecletView *selectView = [[RbScorllSecletView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight, ScrollSelectWidth, ScrollSelectHeight)];
     [selectView setSelectDelegate:self];
     [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿",@"跨界观察",@"专题聚焦",@"数据挖掘",@"商务圈子"]];
 //    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿"]];
@@ -71,7 +72,7 @@
     [self.view addSubview:selectView];
     [selectView release];
     
-    UIView *arrowView = [[UIView alloc]initWithFrame:CGRectMake(ScrollSelectWidth, NavigationHeight, ScrollSelectOtherWidth, ScrollSelectHeight)];
+    UIView *arrowView = [[UIView alloc]initWithFrame:CGRectMake(ScrollSelectWidth, NavigationHeight+ StatusHeaderHight, ScrollSelectOtherWidth, ScrollSelectHeight)];
     [arrowView setBackgroundColor:[UIColor colorWithRed:0./255. green:55./255 blue:110./255 alpha:1]];
     
     UIImageView *arrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(4, 6.5, 12, 12)];
@@ -87,7 +88,7 @@
 
 - (void)configureTableView{
     
-    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + ScrollSelectHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - ScrollSelectHeight)];
+    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + ScrollSelectHeight +StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - ScrollSelectHeight - StatusHeaderHight)];
     tmpTable.separatorColor = [UIColor clearColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
@@ -174,8 +175,8 @@
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
             ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
-            NSLog(@"%@",model.articleurl);
             RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webViewController animated:YES];
             [webViewController release];

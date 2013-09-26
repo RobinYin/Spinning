@@ -69,7 +69,7 @@
 
 - (void)configureOtherView
 {
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 54, 300, 20)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 54 + StatusHeaderHight, 300, 20)];
     [label1 setFont: [UIFont systemFontOfSize:15]];
     [label1 setTextAlignment:UITextAlignmentCenter];
     [label1 setBackgroundColor:[UIColor clearColor]];

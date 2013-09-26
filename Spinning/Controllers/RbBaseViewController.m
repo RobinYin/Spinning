@@ -31,8 +31,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ) {
+         [self setNeedsStatusBarAppearanceUpdate];
+    }
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 
 
 - (void)configureNavigationView
@@ -43,7 +49,7 @@
     navbgImageView.image = [UIImage imageNamed:@"nav_bg"];
     navbgImageView.userInteractionEnabled = YES;
     
-    UIImageView *headerbgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavigationHeight)];
+    UIImageView *headerbgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, StatusHeaderHight, ScreenWidth, NavigationHeight)];
     headerbgImageView.userInteractionEnabled = YES;
     [navbgImageView addSubview:headerbgImageView];
     self.headerImageView = headerbgImageView;
@@ -53,7 +59,7 @@
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.backgroundColor = [UIColor clearColor];
-    backBtn.frame = CGRectMake(NavigationHorizonGap, NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
+    backBtn.frame = CGRectMake(NavigationHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
     [backBtn addTarget:self action:@selector(onLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     [navbgImageView addSubview:backBtn];
     self.leftBtn = backBtn;
@@ -61,7 +67,7 @@
     
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     nextBtn.backgroundColor = [UIColor clearColor];
-    nextBtn.frame = CGRectMake(ScreenWidth - NavigationBtnWith -NavigationHorizonGap, 0, NavigationBtnWith, NavigationBtnheight);
+    nextBtn.frame = CGRectMake(ScreenWidth - NavigationBtnWith -NavigationHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
     [nextBtn addTarget:self action:@selector(onRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     [navbgImageView addSubview:nextBtn];
     self.rightBtn = nextBtn;

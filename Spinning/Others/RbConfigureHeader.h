@@ -9,6 +9,8 @@
 #ifndef Spinning_RbConfigureHeader_h
 #define Spinning_RbConfigureHeader_h
 
+#import "LKDBHelper.h"
+#import "NSObject+LKModel.h"
 #import "Toast+UIView.h"
 #import "RbWebViewController.h"
 #import "UIImageView+WebCache.h"

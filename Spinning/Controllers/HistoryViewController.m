@@ -63,7 +63,7 @@
 
 - (void)configureTableView{
     
-    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight)];
+    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight  + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - StatusHeaderHight)];
     tmpTable.separatorColor = [UIColor clearColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;

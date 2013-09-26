@@ -88,6 +88,18 @@
 		0092E7D717E6D147006C674F /* LoginHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0092E7D617E6D146006C674F /* LoginHttpCmd.m */; };
 		0092E7DD17E6FB02006C674F /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0092E7DC17E6FB00006C674F /* CommentViewController.m */; };
 		0092E7E017E6FB31006C674F /* CommentHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0092E7DF17E6FB2F006C674F /* CommentHttpCmd.m */; };
+		00961CD317F1720700863246 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00961CD217F1720700863246 /* libsqlite3.dylib */; };
+		00961CF217F1721500863246 /* FMDatabase+InMemoryOnDiskIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CD917F1721400863246 /* FMDatabase+InMemoryOnDiskIO.m */; };
+		00961CF317F1721500863246 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CDC17F1721400863246 /* FMDatabase.m */; };
+		00961CF417F1721500863246 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CDE17F1721400863246 /* FMDatabaseAdditions.m */; };
+		00961CF517F1721500863246 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CE017F1721500863246 /* FMDatabasePool.m */; };
+		00961CF617F1721500863246 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CE217F1721500863246 /* FMDatabaseQueue.m */; };
+		00961CF717F1721500863246 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CE417F1721500863246 /* FMResultSet.m */; };
+		00961CF817F1721500863246 /* LKDB+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CE717F1721500863246 /* LKDB+Manager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		00961CF917F1721500863246 /* LKDB+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CE917F1721500863246 /* LKDB+Mapping.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		00961CFA17F1721500863246 /* LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CEB17F1721500863246 /* LKDBHelper.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		00961CFB17F1721500863246 /* LKDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CED17F1721500863246 /* LKDBUtils.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		00961CFD17F1721500863246 /* NSObject+LKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CF117F1721500863246 /* NSObject+LKModel.m */; };
 		009775E217B77AD600333ED2 /* RbTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 009775E117B77AD600333ED2 /* RbTabBarItem.m */; };
 		0099C86017A40C3C001516C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C85F17A40C3C001516C2 /* UIKit.framework */; };
 		0099C86217A40C3C001516C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C86117A40C3C001516C2 /* Foundation.framework */; };
@@ -182,6 +194,8 @@
 		00A08BD917A6151500D5B941 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A08BD817A6151500D5B941 /* AVFoundation.framework */; };
 		00A08BDB17A6152200D5B941 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A08BDA17A6152200D5B941 /* CoreVideo.framework */; };
 		00A08BDD17A6153500D5B941 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A08BDC17A6153500D5B941 /* libiconv.dylib */; };
+		00A09C6617F44E8700B99367 /* NSObject+LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09C6517F44E8700B99367 /* NSObject+LKDBHelper.m */; };
+		00A09C6917F457B000B99367 /* CollectionWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09C6817F457B000B99367 /* CollectionWebViewController.m */; };
 		00A26DBB17E820CA00DE46E5 /* TopicWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */; };
 		00A26DBE17E8237900DE46E5 /* SpinningCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBD17E8237800DE46E5 /* SpinningCommentCell.m */; };
 		00A26DC117E82F9F00DE46E5 /* GrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DC017E82F9E00DE46E5 /* GrowingTextView.m */; };
@@ -345,6 +359,29 @@
 		0092E7DC17E6FB00006C674F /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		0092E7DE17E6FB2E006C674F /* CommentHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHttpCmd.h; sourceTree = "<group>"; };
 		0092E7DF17E6FB2F006C674F /* CommentHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHttpCmd.m; sourceTree = "<group>"; };
+		00961CD217F1720700863246 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		00961CD817F1721400863246 /* FMDatabase+InMemoryOnDiskIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+InMemoryOnDiskIO.h"; sourceTree = "<group>"; };
+		00961CD917F1721400863246 /* FMDatabase+InMemoryOnDiskIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+InMemoryOnDiskIO.m"; sourceTree = "<group>"; };
+		00961CDB17F1721400863246 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		00961CDC17F1721400863246 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		00961CDD17F1721400863246 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		00961CDE17F1721400863246 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		00961CDF17F1721400863246 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		00961CE017F1721500863246 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		00961CE117F1721500863246 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		00961CE217F1721500863246 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		00961CE317F1721500863246 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		00961CE417F1721500863246 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		00961CE617F1721500863246 /* LKDB+Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LKDB+Manager.h"; sourceTree = "<group>"; };
+		00961CE717F1721500863246 /* LKDB+Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LKDB+Manager.m"; sourceTree = "<group>"; };
+		00961CE817F1721500863246 /* LKDB+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LKDB+Mapping.h"; sourceTree = "<group>"; };
+		00961CE917F1721500863246 /* LKDB+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LKDB+Mapping.m"; sourceTree = "<group>"; };
+		00961CEA17F1721500863246 /* LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBHelper.h; sourceTree = "<group>"; };
+		00961CEB17F1721500863246 /* LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBHelper.m; sourceTree = "<group>"; };
+		00961CEC17F1721500863246 /* LKDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBUtils.h; sourceTree = "<group>"; };
+		00961CED17F1721500863246 /* LKDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBUtils.m; sourceTree = "<group>"; };
+		00961CF017F1721500863246 /* NSObject+LKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKModel.h"; sourceTree = "<group>"; };
+		00961CF117F1721500863246 /* NSObject+LKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKModel.m"; sourceTree = "<group>"; };
 		009775E017B77AD600333ED2 /* RbTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RbTabBarItem.h; sourceTree = "<group>"; };
 		009775E117B77AD600333ED2 /* RbTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RbTabBarItem.m; sourceTree = "<group>"; };
 		0099C85C17A40C3C001516C2 /* Spinning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spinning.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -499,6 +536,10 @@
 		00A08BD817A6151500D5B941 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		00A08BDA17A6152200D5B941 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		00A08BDC17A6153500D5B941 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		00A09C6417F44E8700B99367 /* NSObject+LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKDBHelper.h"; sourceTree = "<group>"; };
+		00A09C6517F44E8700B99367 /* NSObject+LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKDBHelper.m"; sourceTree = "<group>"; };
+		00A09C6717F457B000B99367 /* CollectionWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionWebViewController.h; sourceTree = "<group>"; };
+		00A09C6817F457B000B99367 /* CollectionWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionWebViewController.m; sourceTree = "<group>"; };
 		00A26DB917E820CA00DE46E5 /* TopicWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicWebViewController.h; sourceTree = "<group>"; };
 		00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicWebViewController.m; sourceTree = "<group>"; };
 		00A26DBC17E8237800DE46E5 /* SpinningCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinningCommentCell.h; sourceTree = "<group>"; };
@@ -545,6 +586,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00961CD317F1720700863246 /* libsqlite3.dylib in Frameworks */,
 				00482CEA17E96C15002B3D90 /* libZXingWidget.a in Frameworks */,
 				00482CBC17E96A13002B3D90 /* AssetsLibrary.framework in Frameworks */,
 				00482CBA17E960A3002B3D90 /* AddressBookUI.framework in Frameworks */,
@@ -581,6 +623,69 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		00961CD517F1721400863246 /* LKDBHelper */ = {
+			isa = PBXGroup;
+			children = (
+				00961CD617F1721400863246 /* FMDB */,
+				00961CE517F1721500863246 /* Helper */,
+			);
+			path = LKDBHelper;
+			sourceTree = "<group>";
+		};
+		00961CD617F1721400863246 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				00961CD717F1721400863246 /* extra */,
+				00961CDA17F1721400863246 /* src */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		00961CD717F1721400863246 /* extra */ = {
+			isa = PBXGroup;
+			children = (
+				00961CD817F1721400863246 /* FMDatabase+InMemoryOnDiskIO.h */,
+				00961CD917F1721400863246 /* FMDatabase+InMemoryOnDiskIO.m */,
+			);
+			path = extra;
+			sourceTree = "<group>";
+		};
+		00961CDA17F1721400863246 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				00961CDB17F1721400863246 /* FMDatabase.h */,
+				00961CDC17F1721400863246 /* FMDatabase.m */,
+				00961CDD17F1721400863246 /* FMDatabaseAdditions.h */,
+				00961CDE17F1721400863246 /* FMDatabaseAdditions.m */,
+				00961CDF17F1721400863246 /* FMDatabasePool.h */,
+				00961CE017F1721500863246 /* FMDatabasePool.m */,
+				00961CE117F1721500863246 /* FMDatabaseQueue.h */,
+				00961CE217F1721500863246 /* FMDatabaseQueue.m */,
+				00961CE317F1721500863246 /* FMResultSet.h */,
+				00961CE417F1721500863246 /* FMResultSet.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		00961CE517F1721500863246 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				00961CE617F1721500863246 /* LKDB+Manager.h */,
+				00961CE717F1721500863246 /* LKDB+Manager.m */,
+				00961CE817F1721500863246 /* LKDB+Mapping.h */,
+				00961CE917F1721500863246 /* LKDB+Mapping.m */,
+				00961CEA17F1721500863246 /* LKDBHelper.h */,
+				00961CEB17F1721500863246 /* LKDBHelper.m */,
+				00961CEC17F1721500863246 /* LKDBUtils.h */,
+				00961CED17F1721500863246 /* LKDBUtils.m */,
+				00A09C6417F44E8700B99367 /* NSObject+LKDBHelper.h */,
+				00A09C6517F44E8700B99367 /* NSObject+LKDBHelper.m */,
+				00961CF017F1721500863246 /* NSObject+LKModel.h */,
+				00961CF117F1721500863246 /* NSObject+LKModel.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		0099C85317A40C3C001516C2 = {
 			isa = PBXGroup;
 			children = (
@@ -602,6 +707,7 @@
 		0099C85E17A40C3C001516C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00961CD217F1720700863246 /* libsqlite3.dylib */,
 				00482CBB17E96A13002B3D90 /* AssetsLibrary.framework */,
 				00482CB917E960A2002B3D90 /* AddressBookUI.framework */,
 				00482CB717E9609A002B3D90 /* AddressBook.framework */,
@@ -749,6 +855,8 @@
 				0099CA2F17A50C32001516C2 /* RbTabBarViewController.m */,
 				009775E017B77AD600333ED2 /* RbTabBarItem.h */,
 				009775E117B77AD600333ED2 /* RbTabBarItem.m */,
+				00A09C6717F457B000B99367 /* CollectionWebViewController.h */,
+				00A09C6817F457B000B99367 /* CollectionWebViewController.m */,
 				0099C9FC17A419E5001516C2 /* RbBaseViewController.h */,
 				0099C9FD17A419E5001516C2 /* RbBaseViewController.m */,
 				009C544317DF6040000CECA8 /* RbWebViewController.h */,
@@ -800,6 +908,7 @@
 		0099C97817A410C9001516C2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				00961CD517F1721400863246 /* LKDBHelper */,
 				0099C9C417A41621001516C2 /* EGO */,
 				0099C9D617A41621001516C2 /* HUD */,
 				0099C9D917A41622001516C2 /* SBJson */,
@@ -1185,6 +1294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0099C86C17A40C3C001516C2 /* main.mm in Sources */,
+				00A09C6917F457B000B99367 /* CollectionWebViewController.m in Sources */,
 				0099C87017A40C3C001516C2 /* AppDelegate.m in Sources */,
 				0099C98E17A410F0001516C2 /* ASIAuthenticationDialog.m in Sources */,
 				0099C98F17A410F0001516C2 /* ASIDataCompressor.m in Sources */,
@@ -1193,6 +1303,7 @@
 				0099C99217A410F0001516C2 /* ASIFormDataRequest.m in Sources */,
 				0099C99317A410F0001516C2 /* ASIHTTPRequest.m in Sources */,
 				0099C99417A410F0001516C2 /* ASIInputStream.m in Sources */,
+				00961CF717F1721500863246 /* FMResultSet.m in Sources */,
 				0099C99517A410F0001516C2 /* ASINetworkQueue.m in Sources */,
 				0099C99917A41132001516C2 /* Reachability.m in Sources */,
 				0099C9B717A41535001516C2 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1201,16 +1312,20 @@
 				0099C9BA17A41535001516C2 /* SDWebImageDownloader.m in Sources */,
 				0099C9BB17A41535001516C2 /* SDWebImageManager.m in Sources */,
 				0099C9BC17A41535001516C2 /* SDWebImagePrefetcher.m in Sources */,
+				00961CF617F1721500863246 /* FMDatabaseQueue.m in Sources */,
 				0099C9BD17A41535001516C2 /* UIButton+WebCache.m in Sources */,
 				0099C9BF17A41535001516C2 /* UIImageView+WebCache.m in Sources */,
 				0099C9EE17A41622001516C2 /* EGORefreshTableHeaderView.m in Sources */,
 				0099C9EF17A41622001516C2 /* EGOTableFootView.m in Sources */,
+				00961CFB17F1721500863246 /* LKDBUtils.m in Sources */,
 				0099C9F217A41622001516C2 /* PullingRefreshTableView.m in Sources */,
+				00961CFA17F1721500863246 /* LKDBHelper.m in Sources */,
 				0099C9F517A41622001516C2 /* MBProgressHUD.m in Sources */,
 				0099C9F617A41622001516C2 /* NSObject+SBJSON.m in Sources */,
 				0099C9F717A41622001516C2 /* NSString+SBJSON.m in Sources */,
 				0099C9F817A41622001516C2 /* SBJSON.m in Sources */,
 				0099C9F917A41622001516C2 /* SBJsonBase.m in Sources */,
+				00961CF517F1721500863246 /* FMDatabasePool.m in Sources */,
 				0099C9FA17A41622001516C2 /* SBJsonParser.m in Sources */,
 				0099C9FB17A41622001516C2 /* SBJsonWriter.m in Sources */,
 				0099C9FE17A419E5001516C2 /* RbBaseViewController.m in Sources */,
@@ -1219,17 +1334,22 @@
 				0099CA0A17A4281D001516C2 /* MoreViewController.m in Sources */,
 				0099CA0D17A42836001516C2 /* NotificationViewController.m in Sources */,
 				0099CA1017A42850001516C2 /* PHViewController.m in Sources */,
+				00961CF217F1721500863246 /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				0099CA1317A428DE001516C2 /* RbBaseModel.m in Sources */,
+				00961CFD17F1721500863246 /* NSObject+LKModel.m in Sources */,
 				0099CA1717A42E7C001516C2 /* RbUser.m in Sources */,
 				0099CA1A17A43109001516C2 /* NSFileManager+Utilities.m in Sources */,
 				0099CA2917A43868001516C2 /* RbUtility.m in Sources */,
+				00961CF917F1721500863246 /* LKDB+Mapping.m in Sources */,
 				0099CA2C17A438C2001516C2 /* RbConstant.m in Sources */,
+				00961CF817F1721500863246 /* LKDB+Manager.m in Sources */,
 				0099CA3017A50C33001516C2 /* RbTabBarViewController.m in Sources */,
 				0092825A17A56A8900B845AA /* RbScorllSecletView.m in Sources */,
 				009775E217B77AD600333ED2 /* RbTabBarItem.m in Sources */,
 				000E095917B7ACF40066A80C /* RbBadgeView.m in Sources */,
 				003AA2F517CE2AAC00B2689B /* SpinningBaseCell.m in Sources */,
 				0001222617CF1CF9000FFA2E /* SpinningNewsCell.m in Sources */,
+				00961CF317F1721500863246 /* FMDatabase.m in Sources */,
 				0001224717CF73FB000FFA2E /* SpinningPHCell.m in Sources */,
 				0001224A17CF7691000FFA2E /* SpinningNotificationCell.m in Sources */,
 				008FCFEA17D0C85800AF7201 /* CollectionViewController.m in Sources */,
@@ -1249,6 +1369,7 @@
 				00AD3AE917D182CB00CC4188 /* SpinningTopicCell.m in Sources */,
 				00AD3AEC17D19BF700CC4188 /* RbHttpConfig.m in Sources */,
 				00AD3AEF17D1A23500CC4188 /* RbHttpLog.m in Sources */,
+				00A09C6617F44E8700B99367 /* NSObject+LKDBHelper.m in Sources */,
 				00AD3AF217D2F0DD00CC4188 /* ListHttpCmd.m in Sources */,
 				00AD3AF517D2F1B000CC4188 /* NewsHttpCmd.m in Sources */,
 				00AD3AF817D2F20000CC4188 /* SpinningHttpSuffix.m in Sources */,
@@ -1271,6 +1392,7 @@
 				0092E7D417E6AAE3006C674F /* RegisterHttpCmd.m in Sources */,
 				0092E7D717E6D147006C674F /* LoginHttpCmd.m in Sources */,
 				0092E7DD17E6FB02006C674F /* CommentViewController.m in Sources */,
+				00961CF417F1721500863246 /* FMDatabaseAdditions.m in Sources */,
 				0092E7E017E6FB31006C674F /* CommentHttpCmd.m in Sources */,
 				00A26DBB17E820CA00DE46E5 /* TopicWebViewController.m in Sources */,
 				00A26DBE17E8237900DE46E5 /* SpinningCommentCell.m in Sources */,

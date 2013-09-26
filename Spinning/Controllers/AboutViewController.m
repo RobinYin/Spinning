@@ -48,7 +48,7 @@
 
 - (void)configureTableView{
     
-    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight) style:UITableViewStyleGrouped];
+    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - StatusHeaderHight) style:UITableViewStyleGrouped];
     tmpTable.separatorColor = [UIColor grayColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;

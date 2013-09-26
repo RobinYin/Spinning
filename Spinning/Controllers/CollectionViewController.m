@@ -8,11 +8,13 @@
 
 #import "CollectionViewController.h"
 #import "SpinningCollectionCell.h"
+#import "CollectionWebViewController.h"
 
 @interface CollectionViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate>
 
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
+@property (nonatomic, assign)int cursor;
 
 @end
 
@@ -20,6 +22,7 @@
 
 @synthesize tableView = _tableView;
 @synthesize arrayCurrent = _arrayCurrent;
+@synthesize cursor = _cursor;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,6 +32,14 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.tableView) {
+        [self configureOriginData];
+        [self onGetData];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,7 +51,7 @@
 
 - (void)configureAllViews
 {
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ph_bg"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self configureNavigationView];
     [self configureTableView];
 }
@@ -62,7 +73,7 @@
 
 - (void)configureTableView{
     
-    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight)];
+    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight  + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - StatusHeaderHight)];
     tmpTable.separatorColor = [UIColor clearColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
@@ -76,25 +87,12 @@
 }
 
 
-- (NSDictionary *)onNewsListJson{
-    
-    NSString* path = [[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"CollectionListTemplate"] ofType:@"json"];
-    NSData* data = [[NSData alloc] initWithContentsOfFile:path];
-    NSString* str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    SBJSON *json = [[SBJSON alloc]init];
-    NSDictionary *jsonDictionary = [json objectWithString:str error:nil];
-    NSLog(@"dictionary = %@",jsonDictionary);
-    RbSafeRelease(data);
-    RbSafeRelease(json);
-    RbSafeRelease(str)
-    return jsonDictionary;
-    
-}
-
 - (void)configureOriginData
 {
     NSMutableArray *subArray = [NSMutableArray array];
     self.arrayCurrent = subArray;
+    self.cursor = 0;
+    
 }
 
 
@@ -117,9 +115,10 @@
     
     if (self.arrayCurrent) {
         if ([self.arrayCurrent count]) {
-            NSDictionary *dic = [self.arrayCurrent objectAtIndex:indexPath.row];
-            [cell.titleLabel setText:[dic objectForKey:@"title"]];
-            [cell.cxtLabel setText:[dic objectForKey:@"content"]];
+            ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            [cell.titleLabel setText:model.title];
+            [cell.cxtLabel setText:model.content];
+            [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
         }
     }
     
@@ -131,7 +130,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (self.arrayCurrent) {
+        if ([self.arrayCurrent count]) {
+            ListModel *model = [self.arrayCurrent objectAtIndex:indexPath.row];
+            CollectionWebViewController *webViewController = [[CollectionWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            webViewController.model = model;
+            webViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:webViewController animated:YES];
+            [webViewController release];
+        }
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -144,23 +152,66 @@
 
 - (void)onGetData
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[self onNewsListJson]];
-    NSMutableArray *array = [NSMutableArray arrayWithArray:[dic objectForKey:@"list"]];
-    self.arrayCurrent = array;
+    LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+    [globalHelper createTableWithModelClass:[ListModel class]];
+    
+    NSMutableArray* array = [ListModel searchWithWhere:nil orderBy:nil offset:self.cursor count:10];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
+    if (self.cursor == 0) {
+        self.arrayCurrent = arr;
+    }else
+    {
+        [self.arrayCurrent addObjectsFromArray:arr];
+    }
+    if ([self.arrayCurrent count]) {
+    }
+    [self.tableView tableViewDidFinishedLoading];
+    if ([arr count] ==10) {
+        self.tableView.reachedTheEnd  = NO;
+    }else
+    {
+        self.tableView.reachedTheEnd  = YES;
+    }
+    self.cursor += [arr count];
     [self.tableView reloadData];
+
+//    [globalHelper search:[ListModel class] where:nil orderBy:nil offset:self.cursor count:10 callback:^(NSMutableArray *array) {
+//        
+//        
+//        NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
+//        if (self.cursor == 0) {
+//            self.arrayCurrent = array;
+//        }else
+//        {
+//            [self.arrayCurrent addObjectsFromArray:array];
+//        }
+//        if ([self.arrayCurrent count]) {
+//        }
+//        [self.tableView tableViewDidFinishedLoading];
+//        if ([array count] ==10) {
+//            self.tableView.reachedTheEnd  = NO;
+//        }else
+//        {
+//            self.tableView.reachedTheEnd  = YES;
+//        }
+//        self.cursor += [arr count];
+//        [self.tableView reloadData];
+//
+//    }];
 }
 
 #pragma mark -
 #pragma mark pullingTableViewDelegate -----------
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    self.cursor = 0;
+    [self onGetData];
 }
 
 
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView
 {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+    [self onGetData];
 }
 
 - (NSDate *)pullingTableViewRefreshingFinishedDate
@@ -182,12 +233,6 @@
     return date;
 }
 
-- (void)loadData
-{
-    [self.tableView tableViewDidFinishedLoading];
-    self.tableView.reachedTheEnd  = NO;
-    [self.tableView reloadData];
-}
 
 
 #pragma mark -

@@ -7,7 +7,8 @@
 //
 
 #import "ListHttpCmd.h"
-
+#import "LKDBHelper.h"
+#import "NSObject+LKDBHelper.h"
 @implementation ListModel
 
 @synthesize title = _title;
@@ -32,6 +33,59 @@
         self.totalcount = nil;
     }
     return self;
+}
+
+
++(void)dbWillInsert:(NSObject *)entity
+{
+    LKLog(@"will insert : %@",NSStringFromClass(self));
+}
+
++(void)dbDidInserted:(NSObject *)entity result:(BOOL)result
+{
+    LKLog(@"did insert : %@",NSStringFromClass(self));
+}
+
+
++(void)columeAttributeWithProperty:(LKDBProperty *)property
+{
+    if([property.sqlColumeName isEqualToString:@"totalcount"])
+    {
+        property.defaultValue = @"0";
+    }
+}
+
+
+//+(NSDictionary *)getTableMapping
+//{
+//    return @{@"mid":LKSQLInherit,
+//             @"title":LKSQLInherit,
+//             @"time":LKSQLInherit,
+//             @"icon":LKSQLInherit,
+//             @"content":LKSQLInherit,
+//             @"articleurl":LKSQLInherit,
+//             @"totalcount":LKSQLInherit,
+//             @"source":LKSQLInherit
+//             };
+//}
+
++(NSString *)getPrimaryKey
+{
+    return @"mid";
+}
++(NSArray *)getPrimaryKeyUnionArray
+{
+    return @[@"mid",@"time"];
+}
+
++(NSString *)getTableName
+{
+    return @"ListModel";
+}
+
++(int)getTableVersion
+{
+    return 3;
 }
 
 - (void) parseResultData:(NSDictionary*) dictionary{
