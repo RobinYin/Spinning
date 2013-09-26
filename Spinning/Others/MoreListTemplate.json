@@ -15,8 +15,8 @@
    "title" : "修改密码"
    },
    {
-   "link" : "CheckinViewController",
-   "title" : "签到"
+   "link" : "UMSocialLoginViewController",
+   "title" : "账号绑定"
    }
    ],
   [
@@ -25,8 +25,8 @@
    "title" : "我的收藏"
    },
    {
-   "link" : "HistoryViewController",
-   "title" : "历史记录"
+   "link" : "CheckinViewController",
+   "title" : "签到"
    }
    ],
   [

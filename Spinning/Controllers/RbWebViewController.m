@@ -8,6 +8,8 @@
 
 #import "RbWebViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "UIAlertView+MKBlockAdditions.h"
+#import "LoginViewController.h"
 
 @interface RbWebViewController ()<UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -51,6 +53,23 @@
 
 - (void)onRightBtn:(id)sender
 {
+    if (![RbUser sharedInstance].userid) {
+        
+        [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                message:@"请先登录后，才能进行收藏操作。"
+                      cancelButtonTitle:@"取消"
+                      otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                              onDismiss:^(int buttonIndex)
+         {
+             LoginViewController *viewController = [[LoginViewController new]autorelease];
+             [self.navigationController pushViewController:viewController animated:YES];
+         }
+                               onCancel:^()
+         {
+         }
+         ];
+        return;
+    }
     ListModel *data = [[[ListModel alloc]init]autorelease];
     data.time = self.model.time;
     data.title = self.model.title;
@@ -67,6 +86,30 @@
     [self.view makeToast:@"收藏成功！"];
 }
 
+- (void)onSubRightBtn:(id)sender
+{
+    if (![RbUser sharedInstance].userid) {
+        
+        [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                message:@"请先登录后，才能进行分享操作。"
+                      cancelButtonTitle:@"取消"
+                      otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                              onDismiss:^(int buttonIndex)
+         {
+             LoginViewController *viewController = [[LoginViewController new]autorelease];
+             [self.navigationController pushViewController:viewController animated:YES];
+         }
+                               onCancel:^()
+         {
+         }
+         ];
+        return;
+    }
+    NSString *shareText = [NSString stringWithFormat:@"掌观中国针织：%@!",self.model.title];
+    [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession]];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:nil shareToSnsNames:@[UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession] delegate:nil];
+}
+
 - (void)configureAllViews
 {
     [self configureNavigationView];
@@ -76,7 +119,7 @@
 {
     [super configureNavigationView];
 //    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
-    [self.headerImageView setImage:[UIImage imageNamed:@"title_bgxw"]];
+    [self.headerImageView setImage:[UIImage imageNamed:@"nav_bg"]];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_nomal"] forState:UIControlStateNormal];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateHighlighted];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateSelected];
@@ -84,6 +127,10 @@
     [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_nomal"] forState:UIControlStateNormal];
     [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_pressed"] forState:UIControlStateHighlighted];
     [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_pressed"] forState:UIControlStateSelected];
+    
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_nomal"] forState:UIControlStateNormal];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_pressed"] forState:UIControlStateHighlighted];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_pressed"] forState:UIControlStateSelected];
 }
 
 

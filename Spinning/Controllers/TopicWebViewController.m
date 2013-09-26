@@ -8,6 +8,8 @@
 
 #import "TopicWebViewController.h"
 #import "CommentViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
+#import "LoginViewController.h"
 @interface TopicWebViewController ()
 
 @end
@@ -32,13 +34,30 @@
 
 - (void)configureOtherView
 {
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_edit_nomal.png"] forState:UIControlStateNormal];
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_edit_pressed.png"] forState:UIControlStateHighlighted];
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_edit_pressed.png"] forState:UIControlStateSelected];
+    [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_nomal.png"] forState:UIControlStateNormal];
+    [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateHighlighted];
+    [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateSelected];
 }
 
-- (void)onRightBtn:(id)sender
+- (void)onSubLeftBtn:(id)sender
 {
+    if (![RbUser sharedInstance].userid) {
+        
+        [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                message:@"请先登录后，才能进行评论操作。"
+                      cancelButtonTitle:@"取消"
+                      otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                              onDismiss:^(int buttonIndex)
+         {
+             LoginViewController *viewController = [[LoginViewController new]autorelease];
+             [self.navigationController pushViewController:viewController animated:YES];
+         }
+                               onCancel:^()
+         {
+         }
+         ];
+        return;
+    }
     CommentViewController *viewController = [[CommentViewController new]autorelease];
     viewController.mid = self.mid;
     [self.navigationController pushViewController:viewController animated:YES];

@@ -9,6 +9,8 @@
 #import "NotificationViewController.h"
 #import "SpinningNotificationCell.h"
 #import "NotifyHttpCmd.h"
+#import "UIAlertView+MKBlockAdditions.h"
+#import "LoginViewController.h"
 @interface NotificationViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
 @property (nonatomic, retain)PullingRefreshTableView *tableView;
@@ -40,8 +42,29 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self configureNavigationView];
     [self configureTableView];
+    [self tip];
 }
 
+- (void)tip
+{
+    if (![RbUser sharedInstance].userid) {
+        
+        [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                message:@"请先登录后，才能进行评论操作。"
+                      cancelButtonTitle:@"取消"
+                      otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                              onDismiss:^(int buttonIndex)
+         {
+             LoginViewController *viewController = [[LoginViewController new]autorelease];
+             [self.navigationController pushViewController:viewController animated:YES];
+         }
+                               onCancel:^()
+         {
+         }
+         ];
+        return;
+    }
+}
 - (void)configureNavigationView
 {
     [super configureNavigationView];

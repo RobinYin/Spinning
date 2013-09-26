@@ -159,7 +159,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if (indexPath.row == 0 && indexPath.section ==0) {
         if ([RbUser sharedInstance].userid) {
             
@@ -180,11 +179,31 @@
         }
     }
     
-    if (indexPath.row == 1 && indexPath.section ==1) {
-        if (![RbUser sharedInstance].userid) {
-            
+    if (indexPath.row == 1 && indexPath.section ==2) {
+        if (![RbUser sharedInstance].userid ) {
+            NSLog(@"%@",[RbUser sharedInstance].userid);
             [UIAlertView alertViewWithTitle:@"您还没有登录!"
                                     message:@"请先登录后，才能进行签到操作。"
+                          cancelButtonTitle:@"取消"
+                          otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                                  onDismiss:^(int buttonIndex)
+             {
+                 LoginViewController *viewController = [[LoginViewController new]autorelease];
+                 [self.navigationController pushViewController:viewController animated:YES];
+             }
+                                   onCancel:^()
+             {
+             }
+             ];
+            return;
+        }
+    }
+    
+    if (indexPath.row == 0 && indexPath.section ==2) {
+        if (![RbUser sharedInstance].userid || [[RbUser sharedInstance] isKindOfClass:[NSNull class]]) {
+             NSLog(@"%@",[RbUser sharedInstance].userid);
+            [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                    message:@"请先登录后，才能进行收藏操作。"
                           cancelButtonTitle:@"取消"
                           otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
                                   onDismiss:^(int buttonIndex)

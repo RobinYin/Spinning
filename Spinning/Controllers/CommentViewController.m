@@ -165,14 +165,11 @@
 - (void)configureNavigationView
 {
     [super configureNavigationView];
-    [self.headerImageView setImage:[UIImage imageNamed:@"title_bgtz"]];
+    [self.headerImageView setImage:[UIImage imageNamed:@"title_bght"]];
     
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_nomal"] forState:UIControlStateNormal];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateHighlighted];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateSelected];
-//    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_nomal.png"] forState:UIControlStateNormal];
-//    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateHighlighted];
-//    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateSelected];
 }
 
 - (void)onLeftBtn:(id)sender
@@ -188,7 +185,7 @@
 
 - (void)configureTableView{
     
-    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - NavigationHeight)];
+    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight +StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - NavigationHeight -StatusHeaderHight)];
     tmpTable.separatorColor = [UIColor clearColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;

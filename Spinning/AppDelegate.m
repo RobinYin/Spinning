@@ -84,6 +84,7 @@
     [self onGetData];
     [self database];
     [self handleInfo];
+    [self umeng];
     return YES;
 }
 
@@ -172,5 +173,18 @@
      
 }
 
+- (void)umeng
+{
+    [UMSocialData setAppKey:UmengAppkey];
+    [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
+    //打开Qzone的SSO开关
+//    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
+//    [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+//    ;
+    //打开新浪微博的SSO开关
+    [UMSocialConfig setSupportSinaSSO:YES];
+    
+}
 
 @end

@@ -66,7 +66,7 @@
 {
     RbScorllSecletView *selectView = [[RbScorllSecletView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight, ScrollSelectWidth, ScrollSelectHeight)];
     [selectView setSelectDelegate:self];
-    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿",@"跨界观察",@"专题聚焦",@"数据挖掘",@"商务圈子"]];
+    [selectView setTitles:@[@"行业动态",@"企业追踪",@"领袖故事",@"专栏评论",@"跨界观察",@"技术前沿",@"CKIA数据",@"数说商业"]];
 //    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿"]];
     
     [self.view addSubview:selectView];

@@ -159,4 +159,6 @@
 #define CheckDetailViewHorizontalGap 10
 #define CheckDetailViewVerticalGap 15
 
+#pragma mark - UMeng constants ---------------------------------------------------------------------------------------------
+#define UmengAppkey @"5211818556240bc9ee01db2f"
 #endif
