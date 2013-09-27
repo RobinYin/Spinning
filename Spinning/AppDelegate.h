@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "InfoCountHttpCmd.h"
 #import "InfoCountSingleton.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate,RbHttpDelegate>
+#import "EAIntroPage.h"
+#import "EAIntroView.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate,RbHttpDelegate,EAIntroDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) InfoCountHttpCmd *httpCmd;

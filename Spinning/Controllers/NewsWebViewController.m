@@ -7,7 +7,6 @@
 //
 
 #import "NewsWebViewController.h"
-
 @interface NewsWebViewController ()
 
 @end

@@ -21,7 +21,9 @@
 #import "TopicReadModel.h"
 #import "NotifyReadModel.h"
 
+
 @implementation AppDelegate
+
 @synthesize tabBarController = _tabBarController;
 @synthesize httpCmd = _httpCmd;
 @synthesize timer = _timer;
@@ -98,6 +100,8 @@
     [self database];
     [self handleInfo];
     [self umeng];
+    [self guide];
+    
     return YES;
 }
 
@@ -197,18 +201,68 @@
      
 }
 
+
+#pragma mark -
+#pragma mark UMeng -----------
 - (void)umeng
 {
     [UMSocialData setAppKey:UmengAppkey];
     [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
-    //打开Qzone的SSO开关
-//    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
-//    [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-//    ;
-    //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     
 }
+
+#pragma mark -
+#pragma mark UMeng -----------
+
+- (void)guide
+{
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"guideLaunch"]) {
+        [self showIntroWithCrossDissolve];
+    }
+}
+- (void)introDidFinish {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"guideLaunch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)showIntroWithCrossDissolve {
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.title = @"掌观中国针织";
+    page1.desc = @"中国针织工业协会主办的唯一官方网站.";
+    page1.bgImage = [UIImage imageNamed:@"tutorial_background_00@2x.jpg"];
+    page1.titleImage = nil;
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title = @"我们的定位";
+    page2.desc = @"定位于打造专业、即时、客观、准确，具有公信力的协会网络服务平台.";
+    page2.bgImage = [UIImage imageNamed:@"tutorial_background_01@2x.jpg"];
+    page2.titleImage = nil;
+    
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"我们的视角";
+    page3.desc = @"紧密围绕针织行业，以新闻聚合、独家专访、热点话题讨论为特色逐步向移动互联延伸，成为针织人每日必读的行业网站.";
+    page3.bgImage = [UIImage imageNamed:@"tutorial_background_02@2x.jpg"];
+    page3.titleImage = nil;
+    
+    EAIntroPage *page4 = [EAIntroPage page];
+    page4.title = @"我们的目标";
+    page4.desc = @"兼具行业协会的网络服务功能，不断完善与会员的远程互动.";
+    page4.bgImage = [UIImage imageNamed:@"tutorial_background_03@2x.jpg"];
+    page4.titleImage = nil;
+    
+    EAIntroPage *page5 = [EAIntroPage page];
+    page5.title = @"Welcome!";
+    page5.desc = @"开始掌观中国针织之旅。";
+    page5.bgImage = [UIImage imageNamed:@"tutorial_background_04@2x.jpg"];
+    page5.titleImage = nil;
+    
+    
+    EAIntroView *intro = [[[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2,page3,page4,page5]]autorelease];
+    
+    [intro setDelegate:self];
+    [intro showInView:self.window animateDuration:0.0];
+}
+
 
 @end
