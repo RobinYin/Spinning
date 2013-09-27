@@ -34,6 +34,8 @@
 
 - (void)configureOtherView
 {
+    
+    [self.headerImageView setImage:[UIImage imageNamed:@"title_bght"]];
     [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_nomal.png"] forState:UIControlStateNormal];
     [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateHighlighted];
     [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateSelected];

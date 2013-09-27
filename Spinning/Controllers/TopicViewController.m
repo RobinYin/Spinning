@@ -178,7 +178,7 @@
             [globalHelper insertToDB:data];
             
             NSLog(@"%@",model.articleurl);
-            TopicWebViewController *webViewController = [[TopicWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            RbWebViewController *webViewController = [[TopicWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.mid = model.mid;
             webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;

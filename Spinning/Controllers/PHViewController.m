@@ -12,6 +12,7 @@
 #import "PHValueHttpCmd.h"
 #import "PHReadModel.h"
 #import "ReadModel.h"
+#import "PHWebViewController.h"
 
 @interface PHViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -174,7 +175,7 @@
             [globalHelper insertToDB:data];
             
             NSLog(@"%@",model.articleurl);
-            RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            RbWebViewController *webViewController = [[PHWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webViewController animated:YES];

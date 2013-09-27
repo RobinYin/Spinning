@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "ReadModel.h"
 #import "NotifyReadModel.h"
+#import "NotifyWebViewController.h"
 
 @interface NotificationViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -187,7 +188,7 @@
             data.mid = model.mid;
             [globalHelper insertToDB:data];
             
-            RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            RbWebViewController *webViewController = [[NotifyWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webViewController animated:YES];

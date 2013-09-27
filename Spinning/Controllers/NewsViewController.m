@@ -18,6 +18,7 @@
 #import "NewsReadModel5.h"
 #import "NewsReadModel6.h"
 #import "NewsReadModel7.h"
+#import "NewsWebViewController.h"
 
 @interface NewsViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -218,7 +219,7 @@
             data.mid = model.mid;
             [globalHelper insertToDB:data];
             
-            RbWebViewController *webViewController = [[RbWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+            RbWebViewController *webViewController = [[NewsWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.model = model;
             webViewController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webViewController animated:YES];

@@ -230,6 +230,9 @@
 		00A09CCF17F4958F00B99367 /* TopicReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CCE17F4958F00B99367 /* TopicReadModel.m */; };
 		00A09CD217F495B700B99367 /* PHReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CD117F495B700B99367 /* PHReadModel.m */; };
 		00A09CD517F495CB00B99367 /* NotifyReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CD417F495CB00B99367 /* NotifyReadModel.m */; };
+		00A1C3F117F55DF80060D916 /* NewsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A1C3F017F55DF80060D916 /* NewsWebViewController.m */; };
+		00A1C3F517F55F360060D916 /* PHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A1C3F417F55F360060D916 /* PHWebViewController.m */; };
+		00A1C3F817F55F460060D916 /* NotifyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A1C3F717F55F460060D916 /* NotifyWebViewController.m */; };
 		00A26DBB17E820CA00DE46E5 /* TopicWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */; };
 		00A26DBE17E8237900DE46E5 /* SpinningCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBD17E8237800DE46E5 /* SpinningCommentCell.m */; };
 		00A26DC117E82F9F00DE46E5 /* GrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DC017E82F9E00DE46E5 /* GrowingTextView.m */; };
@@ -639,6 +642,12 @@
 		00A09CD117F495B700B99367 /* PHReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHReadModel.m; sourceTree = "<group>"; };
 		00A09CD317F495CB00B99367 /* NotifyReadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyReadModel.h; sourceTree = "<group>"; };
 		00A09CD417F495CB00B99367 /* NotifyReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyReadModel.m; sourceTree = "<group>"; };
+		00A1C3EF17F55DF80060D916 /* NewsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsWebViewController.h; sourceTree = "<group>"; };
+		00A1C3F017F55DF80060D916 /* NewsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsWebViewController.m; sourceTree = "<group>"; };
+		00A1C3F317F55F360060D916 /* PHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHWebViewController.h; sourceTree = "<group>"; };
+		00A1C3F417F55F360060D916 /* PHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHWebViewController.m; sourceTree = "<group>"; };
+		00A1C3F617F55F460060D916 /* NotifyWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyWebViewController.h; sourceTree = "<group>"; };
+		00A1C3F717F55F460060D916 /* NotifyWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyWebViewController.m; sourceTree = "<group>"; };
 		00A26DB917E820CA00DE46E5 /* TopicWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicWebViewController.h; sourceTree = "<group>"; };
 		00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicWebViewController.m; sourceTree = "<group>"; };
 		00A26DBC17E8237800DE46E5 /* SpinningCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinningCommentCell.h; sourceTree = "<group>"; };
@@ -987,6 +996,12 @@
 				00A09C6817F457B000B99367 /* CollectionWebViewController.m */,
 				0099C9FC17A419E5001516C2 /* RbBaseViewController.h */,
 				0099C9FD17A419E5001516C2 /* RbBaseViewController.m */,
+				00A1C3F617F55F460060D916 /* NotifyWebViewController.h */,
+				00A1C3F717F55F460060D916 /* NotifyWebViewController.m */,
+				00A1C3F317F55F360060D916 /* PHWebViewController.h */,
+				00A1C3F417F55F360060D916 /* PHWebViewController.m */,
+				00A1C3EF17F55DF80060D916 /* NewsWebViewController.h */,
+				00A1C3F017F55DF80060D916 /* NewsWebViewController.m */,
 				009C544317DF6040000CECA8 /* RbWebViewController.h */,
 				009C544417DF6041000CECA8 /* RbWebViewController.m */,
 				00A26DB917E820CA00DE46E5 /* TopicWebViewController.h */,
@@ -1550,6 +1565,7 @@
 				0099C99217A410F0001516C2 /* ASIFormDataRequest.m in Sources */,
 				0099C99317A410F0001516C2 /* ASIHTTPRequest.m in Sources */,
 				0099C99417A410F0001516C2 /* ASIInputStream.m in Sources */,
+				00A1C3F517F55F360060D916 /* PHWebViewController.m in Sources */,
 				00961CF717F1721500863246 /* FMResultSet.m in Sources */,
 				0099C99517A410F0001516C2 /* ASINetworkQueue.m in Sources */,
 				0099C99917A41132001516C2 /* Reachability.m in Sources */,
@@ -1574,6 +1590,7 @@
 				0099C9F617A41622001516C2 /* NSObject+SBJSON.m in Sources */,
 				0099C9F717A41622001516C2 /* NSString+SBJSON.m in Sources */,
 				0099C9F817A41622001516C2 /* SBJSON.m in Sources */,
+				00A1C3F817F55F460060D916 /* NotifyWebViewController.m in Sources */,
 				0099C9F917A41622001516C2 /* SBJsonBase.m in Sources */,
 				00961CF517F1721500863246 /* FMDatabasePool.m in Sources */,
 				0099C9FA17A41622001516C2 /* SBJsonParser.m in Sources */,
@@ -1613,6 +1630,7 @@
 				008FCFEA17D0C85800AF7201 /* CollectionViewController.m in Sources */,
 				008FCFED17D0C86A00AF7201 /* HistoryViewController.m in Sources */,
 				008FCFF017D0C8D400AF7201 /* AboutViewController.m in Sources */,
+				00A1C3F117F55DF80060D916 /* NewsWebViewController.m in Sources */,
 				008FCFF317D0C8E800AF7201 /* CheckinViewController.mm in Sources */,
 				00A09CC617F487BA00B99367 /* NewsReadModel5.m in Sources */,
 				008FCFF617D0C8FD00AF7201 /* LoginViewController.m in Sources */,
