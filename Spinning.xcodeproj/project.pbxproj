@@ -211,13 +211,13 @@
 		00A09C9C17F45E3900B99367 /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A09C8C17F45E3800B99367 /* UMSnsAccountViewController.xib */; };
 		00A09C9D17F45E3900B99367 /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A09C8D17F45E3800B99367 /* UMSShareListController.xib */; };
 		00A09C9E17F45E3900B99367 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 00A09C8E17F45E3800B99367 /* UMSocialSDKResourcesNew.bundle */; };
-		00A09CAB17F45EC900B99367 /* UMSocialBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA117F45EC900B99367 /* UMSocialBarViewController.m */; };
+		00A09CAB17F45EC900B99367 /* UMSocialBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA117F45EC900B99367 /* UMSocialBarViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00A09CAC17F45EC900B99367 /* UMSocialBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A09CA217F45EC900B99367 /* UMSocialBarViewController.xib */; };
-		00A09CAD17F45EC900B99367 /* UMSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA417F45EC900B99367 /* UMSocialLoginViewController.m */; };
+		00A09CAD17F45EC900B99367 /* UMSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA417F45EC900B99367 /* UMSocialLoginViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00A09CAE17F45EC900B99367 /* UMSocialLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A09CA517F45EC900B99367 /* UMSocialLoginViewController.xib */; };
-		00A09CAF17F45EC900B99367 /* UMSocialSnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA717F45EC900B99367 /* UMSocialSnsViewController.m */; };
+		00A09CAF17F45EC900B99367 /* UMSocialSnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CA717F45EC900B99367 /* UMSocialSnsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00A09CB017F45EC900B99367 /* UMSocialSnsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A09CA817F45EC900B99367 /* UMSocialSnsViewController.xib */; };
-		00A09CB117F45EC900B99367 /* UMSocialTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CAA17F45EC900B99367 /* UMSocialTabBarController.m */; };
+		00A09CB117F45EC900B99367 /* UMSocialTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CAA17F45EC900B99367 /* UMSocialTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00A09CB417F4865E00B99367 /* ReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CB317F4865E00B99367 /* ReadModel.m */; };
 		00A09CB717F4876F00B99367 /* NewsReadModel0.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CB617F4876F00B99367 /* NewsReadModel0.m */; };
 		00A09CBA17F4878E00B99367 /* NewsReadModel1.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A09CB917F4878E00B99367 /* NewsReadModel1.m */; };

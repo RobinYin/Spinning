@@ -221,7 +221,7 @@
 
     NSDictionary *dic = [[self.arrayCurrent objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     NSString *string = [dic objectForKey:@"link"];
-    UIViewController *viewController = (UIViewController *)[[NSClassFromString(string) alloc]init];
+    UIViewController *viewController = [(UIViewController *)[[NSClassFromString(string) alloc]init]autorelease];
     [viewController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:viewController animated:YES];
 }

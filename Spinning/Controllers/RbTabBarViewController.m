@@ -39,7 +39,7 @@
 
 
 -(void)addTabItems:(NSArray*)tabBarItemsArray backgroundImage:(UIImage*)bgImage{
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,  0, ScreenWidth, TabBarHeight)];
+        UIImageView *imageView = [[[UIImageView alloc]initWithFrame:CGRectMake(0,  0, ScreenWidth, TabBarHeight)]autorelease];
         if (bgImage == nil) {
             imageView.backgroundColor = [UIColor blackColor];
         } else {
@@ -47,7 +47,8 @@
         }
         [self.tabBar addSubview:imageView];
         //Load all tabBarItems into local Array
-        self.tabBarItemArray= [NSMutableArray arrayWithArray:tabBarItemsArray];
+        NSMutableArray *array = [NSMutableArray arrayWithArray:tabBarItemsArray];
+        self.tabBarItemArray= array;
         
         //Alocate Array to hold the UIButtons created from the ABTabBarItems
         self.buttonArray = [NSMutableArray array];

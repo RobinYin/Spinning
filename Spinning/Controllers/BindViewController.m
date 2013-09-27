@@ -180,8 +180,8 @@
 
 -(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
-	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
+//	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
+//	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
 	
 //	if( [indexPath row] == kUsernameRow )
 //	{

@@ -353,7 +353,7 @@
 
 - (NSDate *)pullingTableViewRefreshingFinishedDate
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    NSDateFormatter *df = [[[NSDateFormatter alloc] init ]autorelease];
     df.dateFormat = @"yyyy-MM-dd HH:mm";
     NSString *dateStr = [df stringFromDate:[NSDate date]];
     NSDate *date = [df dateFromString:dateStr];
@@ -363,7 +363,7 @@
 
 - (NSDate *)pullingTableViewLoadingFinishedDate
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    NSDateFormatter *df = [[[NSDateFormatter alloc] init ]autorelease];
     df.dateFormat = @"yyyy-MM-dd HH:mm";
     NSString *dateStr = [df stringFromDate:[NSDate date]];
     NSDate *date = [df dateFromString:dateStr];

@@ -89,6 +89,7 @@
     self.subrightBtn = subnextBtn;
     
     [self.view addSubview:navbgImageView];
+    RbSafeRelease(navbgImageView);
     
 }
 

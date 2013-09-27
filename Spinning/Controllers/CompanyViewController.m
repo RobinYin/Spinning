@@ -55,7 +55,7 @@
 
 - (void)configureOtherView
 {
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 54+ StatusHeaderHight, 300, 20)];
+    UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(10, 54+ StatusHeaderHight, 300, 20)]autorelease];
     [label1 setFont: [UIFont systemFontOfSize:15]];
     [label1 setTextAlignment:UITextAlignmentCenter];
     [label1 setBackgroundColor:[UIColor clearColor]];
@@ -64,7 +64,7 @@
     [label1 setText:@"中国针织工业协会"];
     [self.view addSubview:label1];
     
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 85+ StatusHeaderHight, 300, 96)];
+    UILabel *label2 = [[[UILabel alloc] initWithFrame:CGRectMake(10, 85+ StatusHeaderHight, 300, 96)]autorelease];
     [label2 setFont: [UIFont systemFontOfSize:13]];
     [label2 setBackgroundColor:[UIColor clearColor]];
     [label2 setNumberOfLines:0];
