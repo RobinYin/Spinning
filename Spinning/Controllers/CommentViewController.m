@@ -305,7 +305,7 @@
     if ([cmd isMemberOfClass:[CommentHttpCmd class]]) {
         NSLog(@"111");
     CommentHttpCmd *httpcmd = (CommentHttpCmd *)cmd;
-    [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
+//    [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     if ([self.cursor isEqualToString:@"0"]) {
         self.arrayCurrent = array;

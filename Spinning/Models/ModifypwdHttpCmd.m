@@ -56,8 +56,12 @@
     
     if (dic) {
         RbUser *user = [RbUser sharedInstance];
-        user.password = self.password;
-        [user save];
+        if ( [defaultEmptyString([header objectForKey:kSpinningHttpKeyCode]) isEqualToString:kSpinningHttpKeyOk]) {
+            user.password = self.password;
+            [user save];
+        }
+        user.msg = defaultEmptyString([header objectForKey:kSpinningHttpKeyMsg]);
+        user.code = defaultEmptyString([header objectForKey:kSpinningHttpKeyCode]);
         self.model = user;
     }
     

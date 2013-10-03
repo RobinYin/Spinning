@@ -356,6 +356,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 
 - (void)dealloc
 {
+    [[self tableView]endWatchingForKeyboardStateChanges];
     RbSafeRelease(_tableView);
     RbSafeRelease(_arrayCurrent);
     RbSafeRelease(_httpCmd);

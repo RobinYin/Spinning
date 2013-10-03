@@ -28,20 +28,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self configureOtherView];
 	// Do any additional setup after loading the view.
 }
 
-- (void)configureOtherView
+- (void)configureNavigationView
 {
+    [super configureNavigationView];
     
     [self.headerImageView setImage:[UIImage imageNamed:@"title_bght"]];
-    [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_nomal.png"] forState:UIControlStateNormal];
-    [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateHighlighted];
-    [self.subleftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateSelected];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_nomal.png"] forState:UIControlStateNormal];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateHighlighted];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_comment_pressed.png"] forState:UIControlStateSelected];
+    
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateNormal];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateHighlighted];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateSelected];
+    
 }
 
-- (void)onSubLeftBtn:(id)sender
+
+- (void)onSubRightBtn:(id)sender
+{
+    
+}
+- (void)onRightBtn:(id)sender
 {
     if (![RbUser sharedInstance].userid) {
         
@@ -64,6 +74,8 @@
     viewController.mid = self.mid;
     [self.navigationController pushViewController:viewController animated:YES];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

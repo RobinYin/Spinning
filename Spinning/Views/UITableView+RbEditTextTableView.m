@@ -92,8 +92,11 @@
 																	
 																	[tableSelf setContentInset: edgeInsets];
 																	[tableSelf setScrollIndicatorInsets: edgeInsets];
-																	
-																	NSIndexPath *indexPath = [self indexPathForFirstResponder];
+                                                                    NSIndexPath *indexPath;
+																	if (self !=nil) {
+                                                                        indexPath = [self indexPathForFirstResponder];
+                                                                    }
+//																	NSIndexPath *indexPath = [self indexPathForFirstResponder];
 																	if( indexPath )
 																	{
 																		[self  scrollToRowAtIndexPath: indexPath atScrollPosition: UITableViewScrollPositionMiddle animated: YES];

@@ -143,8 +143,11 @@
             NSDictionary *dic = [[self.arrayCurrent objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
             [cell.textLabel setText:[dic objectForKey:@"title"]];
             if (indexPath.section == 0 && indexPath.row ==0) {
+                NSLog(@"uid = %@",[RbUser sharedInstance].userid);
                 if ([RbUser sharedInstance].userid) {
-                    [cell.textLabel setText:[NSString stringWithFormat:@"%@(已登录)",[RbUser sharedInstance].username]];
+                    if (![[RbUser sharedInstance].userid isEqualToString:@""]) {
+                        [cell.textLabel setText:[NSString stringWithFormat:@"%@(已登录)",[RbUser sharedInstance].username]];
+                    }
                 }
             }
         }
@@ -161,25 +164,26 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0 && indexPath.section ==0) {
         if ([RbUser sharedInstance].userid) {
-            
-            [UIAlertView alertViewWithTitle:@"您是否要退出登录?"
-                                    message:@"退出登录后，你不能进行评论等相应操作，并且清除您的相关个人信息。"
-                          cancelButtonTitle:@"取消"
-                          otherButtonTitles:[NSArray arrayWithObjects:@"退出登录", nil]
-                                  onDismiss:^(int buttonIndex)
-             {
-                 [[RbUser sharedInstance] clear];
-                 [self.tableView reloadData];
-             }
-                                   onCancel:^()
-             {
-             }
-             ];
-            return;
+            if (![[RbUser sharedInstance].userid isEqualToString:@""]) {
+                [UIAlertView alertViewWithTitle:@"您是否要退出登录?"
+                                        message:@"退出登录后，你不能进行评论等相应操作，并且清除您的相关个人信息。"
+                              cancelButtonTitle:@"取消"
+                              otherButtonTitles:[NSArray arrayWithObjects:@"退出登录", nil]
+                                      onDismiss:^(int buttonIndex)
+                 {
+                     [[RbUser sharedInstance] clear];
+                     [self.tableView reloadData];
+                 }
+                                       onCancel:^()
+                 {
+                 }
+                 ];
+                return;
+            }
         }
     }
     
-    if (indexPath.row == 1 && indexPath.section ==2) {
+    if (indexPath.row == 0 && indexPath.section ==1) {
         if (![RbUser sharedInstance].userid ) {
             NSLog(@"%@",[RbUser sharedInstance].userid);
             [UIAlertView alertViewWithTitle:@"您还没有登录!"
@@ -199,9 +203,29 @@
         }
     }
     
-    if (indexPath.row == 0 && indexPath.section ==2) {
+    if (indexPath.row == 1 && indexPath.section ==1) {
         if (![RbUser sharedInstance].userid || [[RbUser sharedInstance] isKindOfClass:[NSNull class]]) {
              NSLog(@"%@",[RbUser sharedInstance].userid);
+            [UIAlertView alertViewWithTitle:@"您还没有登录!"
+                                    message:@"请先登录后，才能查看历史记录。"
+                          cancelButtonTitle:@"取消"
+                          otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
+                                  onDismiss:^(int buttonIndex)
+             {
+                 LoginViewController *viewController = [[LoginViewController new]autorelease];
+                 [self.navigationController pushViewController:viewController animated:YES];
+             }
+                                   onCancel:^()
+             {
+             }
+             ];
+            return;
+        }
+    }
+    
+    if (indexPath.row == 0 && indexPath.section ==2) {
+        if (![RbUser sharedInstance].userid || [[RbUser sharedInstance] isKindOfClass:[NSNull class]]) {
+            NSLog(@"%@",[RbUser sharedInstance].userid);
             [UIAlertView alertViewWithTitle:@"您还没有登录!"
                                     message:@"请先登录后，才能进行收藏操作。"
                           cancelButtonTitle:@"取消"

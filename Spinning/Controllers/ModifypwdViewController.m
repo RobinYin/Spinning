@@ -128,6 +128,7 @@
 - (void)next:(id)sender
 {
     [self.usernameTextField resignFirstResponder];
+    [self.oldpwdTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     if ([self canNext]) {
         [self onModifyData];
@@ -161,10 +162,15 @@
     NSString *msg = nil;
     ModifypwdHttpCmd *httpcmd = (ModifypwdHttpCmd *)cmd;
     if (error) {
-        msg = [error localizedDescription];
+        msg = [NSString stringWithFormat:@"网络错误！"];
     }else
     {
-        msg = httpcmd.model.msg;
+        if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
+            msg = [NSString stringWithFormat:@"您的密码已修改成功！"];
+        }else
+        {
+            msg = httpcmd.model.msg;
+        }
     }
     [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
     if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {

@@ -331,10 +331,15 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     NSString *msg = nil;
     RegisterHttpCmd *httpcmd = (RegisterHttpCmd *)cmd;
     if (error) {
-        msg = [error localizedDescription];
+        msg = [NSString stringWithFormat:@"网络错误！"];
     }else
     {
-        msg = httpcmd.model.msg;
+        if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
+            msg = [NSString stringWithFormat:@"您已经注册成功！"];
+        }else
+        {
+            msg = httpcmd.model.msg;
+        }
     }
     [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
     
@@ -342,6 +347,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 
 - (void)dealloc
 {
+    [[self tableView]endWatchingForKeyboardStateChanges];
     RbSafeRelease(_tableView);
     RbSafeRelease(_arrayCurrent);
     RbSafeRelease(_httpCmd);

@@ -260,6 +260,7 @@
 		00ADB5BE17D630EF00B32C39 /* NotifyHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADB5BD17D630EE00B32C39 /* NotifyHttpCmd.m */; };
 		00ADB5C117D6345200B32C39 /* SingleHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADB5C017D6345100B32C39 /* SingleHttpCmd.m */; };
 		00ADB5C417D6358100B32C39 /* FeedbackHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADB5C317D6358000B32C39 /* FeedbackHttpCmd.m */; };
+		00CB4B3117F8063D0085881E /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 00CB4B3017F8063D0085881E /* divider.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -703,6 +704,7 @@
 		00ADB5C017D6345100B32C39 /* SingleHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHttpCmd.m; sourceTree = "<group>"; };
 		00ADB5C217D6357F00B32C39 /* FeedbackHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackHttpCmd.h; sourceTree = "<group>"; };
 		00ADB5C317D6358000B32C39 /* FeedbackHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackHttpCmd.m; sourceTree = "<group>"; };
+		00CB4B3017F8063D0085881E /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1243,6 +1245,7 @@
 		0099CA1417A42AFC001516C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				00CB4B3017F8063D0085881E /* divider.png */,
 				00A1C41417F571A70060D916 /* tutorial_background_00@2x.jpg */,
 				00A1C41517F571A70060D916 /* tutorial_background_01@2x.jpg */,
 				00A1C41617F571A70060D916 /* tutorial_background_02@2x.jpg */,
@@ -1562,6 +1565,7 @@
 				008FD01417D0D22700AF7201 /* title_btn_return_pressed.png in Resources */,
 				008FD01517D0D22700AF7201 /* title_btn_store_nomal.png in Resources */,
 				00A09CAE17F45EC900B99367 /* UMSocialLoginViewController.xib in Resources */,
+				00CB4B3117F8063D0085881E /* divider.png in Resources */,
 				008FD01617D0D22700AF7201 /* title_btn_store_pressed.png in Resources */,
 				008FD01B17D0D4E600AF7201 /* CollectionListTemplate.json in Resources */,
 				008FD01D17D0D71300AF7201 /* AboutListTemplate.json in Resources */,

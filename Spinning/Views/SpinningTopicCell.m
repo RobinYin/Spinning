@@ -21,7 +21,6 @@
     return self;
 }
 
-//http://192.168.66.100:8080/ckiasrv/
 - (void)configurationCellContent
 {
     [super configurationCellContent];
@@ -39,7 +38,7 @@
     [_subLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
     [self.contentView addSubview:_subLabel];
     
-    [self.seperateImgView setFrame:CGRectMake(10, TopicCellGap + TopicCellImgheight + 110, TopicCellImgWith, 1)];
+    [self.seperateImgView setFrame:CGRectMake(0, TopicCellGap + TopicCellImgheight + 110, ScreenWidth, 1)];
     
 }
 

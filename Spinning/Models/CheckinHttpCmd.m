@@ -90,7 +90,9 @@
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     if ([RbUser sharedInstance].userid) {
+        if (![[RbUser sharedInstance].userid isEqualToString:@""]) {
         [dic setObject:[RbUser sharedInstance].userid forKey:kSpinningHttpRequestKeyUserid];
+        }
     }
     [dic setObject:self.meetingcode forKey:kSpinningHttpRequestKeyMeetingcode];
     [dic setObject:self.realname forKey:kSpinningHttpRequestKeyRealname];

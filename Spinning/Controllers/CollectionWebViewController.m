@@ -26,8 +26,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self configureOtherView];
 	// Do any additional setup after loading the view.
+}
+
+- (void)configureNavigationView
+{
+    [super configureNavigationView];
+    
+    [self.headerImageView setImage:[UIImage imageNamed:@"title_bggd"]];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_edit_nomal.png"] forState:UIControlStateNormal];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_edit_pressed.png"] forState:UIControlStateHighlighted];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_edit_pressed.png"] forState:UIControlStateSelected];
+    
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateNormal];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateHighlighted];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:nil] forState:UIControlStateSelected];
+    
+}
+
+
+- (void)onSubRightBtn:(id)sender
+{
+    
 }
 
 - (void)configureOtherView

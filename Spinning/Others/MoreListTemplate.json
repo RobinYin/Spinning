@@ -7,9 +7,7 @@
    {
    "link" : "RegisterViewController",
    "title" : "注册"
-   }
-   ],
-  [
+   },
    {
    "link" : "ModifypwdViewController",
    "title" : "修改密码"
@@ -21,12 +19,18 @@
    ],
   [
    {
-   "link" : "CollectionViewController",
-   "title" : "我的收藏"
-   },
-   {
    "link" : "CheckinViewController",
    "title" : "签到"
+   },
+   {
+   "link" : "HistoryViewController",
+   "title" : "历史记录"
+   }
+   ],
+  [
+   {
+   "link" : "CollectionViewController",
+   "title" : "我的收藏"
    }
    ],
   [

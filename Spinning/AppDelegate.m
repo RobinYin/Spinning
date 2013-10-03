@@ -156,7 +156,7 @@
 
 - (void)handleInfo
 {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(onGetData) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(onGetData) userInfo:nil repeats:YES];
 }
 - (void)onGetData
 {

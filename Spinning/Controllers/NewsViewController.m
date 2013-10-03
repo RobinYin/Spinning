@@ -26,6 +26,7 @@
 @property (nonatomic, retain)NSMutableArray *arrayContainer;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
 @property (nonatomic, retain)NSMutableArray *arrayCursor;
+@property (nonatomic, retain)NSMutableArray *arrayTables;
 @property (nonatomic, retain)RbHttpCmd *httpCmd;
 
 @end
@@ -36,6 +37,7 @@
 @synthesize arrayContainer = _arrayContainer;
 @synthesize arrayCurrent = _arrayCurrent;
 @synthesize arrayCursor = _arrayCursor;
+@synthesize arrayTables = _arrayTables;
 @synthesize httpCmd = _httpCmd;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -87,9 +89,7 @@
 {
     RbScorllSecletView *selectView = [[RbScorllSecletView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight, ScrollSelectWidth, ScrollSelectHeight)];
     [selectView setSelectDelegate:self];
-    [selectView setTitles:@[@"行业动态",@"企业追踪",@"领袖故事",@"专栏评论",@"跨界观察",@"技术前沿",@"CKIA数据",@"数说商业"]];
-//    [selectView setTitles:@[@"行业动态",@"领袖观点",@"消费调查",@"技术前沿"]];
-    
+    [selectView setTitles:@[@"行业动态",@"企业追踪",@"跨界观察",@"领袖故事",@"专栏评论",@"技术前沿",@"数说商业",@"CKIA数据"]];
     [self.view addSubview:selectView];
     [selectView release];
     
@@ -117,7 +117,6 @@
     tmpTable.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tmpTable];
     self.tableView = tmpTable;
-//    [tmpTable launchRefreshing];
     RbSafeRelease(tmpTable);
     
 }
@@ -283,16 +282,23 @@
 {
     NSLog(@"%@",NSStringFromClass([cmd class]));
     NewsHttpCmd *httpcmd = (NewsHttpCmd *)cmd;
-    NSLog(@"%@",httpcmd.lists);
+    
     NSString *msg = nil;
+    
     if (error) {
-        msg = [error localizedDescription];
+        msg = [NSString stringWithFormat:@"网络错误！"];
     }else
     {
-        msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+        if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
+            msg = nil;
+        }else
+        {
+            msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+        }
     }
-    
-    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    if (msg) {
+        [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    }
     
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     NSLog(@"%@",[self.arrayCursor objectAtIndex:[httpcmd.typeId intValue] -1]);
@@ -380,6 +386,7 @@
     RbSafeRelease(_arrayCursor);
     RbSafeRelease(_arrayCurrent);
     RbSafeRelease(_arrayContainer);
+    RbSafeRelease(_arrayTables);
     RbSafeRelease(_tableView);
     RbSuperDealoc;
 }

@@ -128,10 +128,15 @@
     NSString *msg = nil;
     FeedbackHttpCmd *httpcmd = (FeedbackHttpCmd *)cmd;
     if (error) {
-        msg = [error localizedDescription];
+        msg = [NSString stringWithFormat:@"网络错误！"];
     }else
     {
-        msg = httpcmd.model.msg;
+        if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
+            msg = [NSString stringWithFormat:@"你的意见已发送！"];
+        }else
+        {
+            msg = httpcmd.model.msg;
+        }
     }
     [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
 

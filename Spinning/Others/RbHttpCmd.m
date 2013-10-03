@@ -99,9 +99,9 @@
     }
     [self parseApiError:self.resultDict];
     
-    if (![self hasError]) {
+//    if (![self hasError]) {
         [self parseResultData:self.resultDict];
-    }
+//    }
     
 }
 

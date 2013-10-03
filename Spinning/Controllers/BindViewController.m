@@ -216,5 +216,13 @@
 }
 
 
+- (void)dealloc
+{
+    [[self tableView]endWatchingForKeyboardStateChanges];
+    RbSafeRelease(_tableView);
+    RbSafeRelease(_arrayCurrent);
+    RbSuperDealoc;
+}
+
 
 @end

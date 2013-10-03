@@ -176,7 +176,7 @@ static const NSString * CSToastActivityViewKey  = @"CSToastActivityViewKey";
         if([point caseInsensitiveCompare:@"top"] == NSOrderedSame) {
             return CGPointMake(self.bounds.size.width/2, (toast.frame.size.height / 2) + CSToastVerticalPadding);
         } else if([point caseInsensitiveCompare:@"bottom"] == NSOrderedSame) {
-            return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2)) - CSToastVerticalPadding);
+            return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height -ToastDeltaHeight - (toast.frame.size.height / 2)) - CSToastVerticalPadding);
         } else if([point caseInsensitiveCompare:@"center"] == NSOrderedSame) {
             return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
         }

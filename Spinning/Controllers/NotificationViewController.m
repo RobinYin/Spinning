@@ -35,8 +35,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (self.tableView) {
-        [self.tableView reloadData];
+    [self tip];
+    if (![self.arrayCurrent count]) {
+        [self onGetData];
     }
 }
 
@@ -54,12 +55,13 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self configureNavigationView];
     [self configureTableView];
-    [self tip];
 }
 
 - (void)tip
 {
     if (![RbUser sharedInstance].userid) {
+        
+        [self configureOriginData];
         
         [UIAlertView alertViewWithTitle:@"您还没有登录!"
                                 message:@"请先登录后，才能进行评论操作。"
@@ -222,12 +224,21 @@
 - (void) httpResult:(id)cmd  error:(NSError*)error
 {
     NotifyHttpCmd *httpcmd = (NotifyHttpCmd *)cmd;
-    if (httpcmd.errorDict) {
-        if ([httpcmd.errorDict objectForKey:kSpinningHttpKeyCode]) {
-            if (![[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
-                    [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
-            }
+    NSString *msg = nil;
+    
+    if (error) {
+        msg = [NSString stringWithFormat:@"网络错误！"];
+    }else
+    {
+        if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
+            msg = nil;
+        }else
+        {
+            msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
         }
+    }
+    if (msg) {
+        [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
     }
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     if ([self.cursor isEqualToString:@"0"]) {

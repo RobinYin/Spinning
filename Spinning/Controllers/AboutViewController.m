@@ -48,11 +48,12 @@
 
 - (void)configureTableView{
     
-    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - StatusHeaderHight) style:UITableViewStyleGrouped];
+    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - StatusHeaderHight) style:UITableViewStyleGrouped];
     tmpTable.separatorColor = [UIColor grayColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
-    tmpTable.backgroundColor = [UIColor clearColor];
+    UIImageView *imageView = [[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"news_bg"]]autorelease];
+    [tmpTable setBackgroundView:imageView];
     [self.view addSubview:tmpTable];
     self.tableView = tmpTable;
     RbSafeRelease(tmpTable);

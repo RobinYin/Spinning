@@ -212,15 +212,24 @@
 {
     NSLog(@"%@",NSStringFromClass([cmd class]));
     TopicHttpCmd *httpcmd = (TopicHttpCmd *)cmd;
-    NSLog(@"%@",httpcmd);
-    NSLog(@"%@",httpcmd.lists);
-    if (httpcmd.errorDict) {
-        if ([httpcmd.errorDict objectForKey:kSpinningHttpKeyCode]) {
-            if (![[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
-                [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
-            }
+    
+    NSString *msg = nil;
+    
+    if (error) {
+        msg = [NSString stringWithFormat:@"网络错误！"];
+    }else
+    {
+        if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
+            msg = nil;
+        }else
+        {
+            msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
         }
     }
+    if (msg) {
+        [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    }
+    
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     if ([self.cursor isEqualToString:@"0"]) {
         self.arrayCurrent = array;

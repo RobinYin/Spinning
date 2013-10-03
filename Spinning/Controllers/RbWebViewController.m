@@ -51,7 +51,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)onRightBtn:(id)sender
+- (void)onSubRightBtn:(id)sender
 {
     if (![RbUser sharedInstance].userid) {
         
@@ -86,7 +86,7 @@
     [self.view makeToast:@"收藏成功！"];
 }
 
-- (void)onSubRightBtn:(id)sender
+- (void)onRightBtn:(id)sender
 {
     if (![RbUser sharedInstance].userid) {
         
@@ -118,19 +118,18 @@
 - (void)configureNavigationView
 {
     [super configureNavigationView];
-//    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [self.headerImageView setImage:[UIImage imageNamed:@"nav_bg"]];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_nomal"] forState:UIControlStateNormal];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateHighlighted];
     [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_return_pressed"] forState:UIControlStateSelected];
     
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_nomal"] forState:UIControlStateNormal];
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_pressed"] forState:UIControlStateHighlighted];
-    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_pressed"] forState:UIControlStateSelected];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_nomal"] forState:UIControlStateNormal];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_pressed"] forState:UIControlStateHighlighted];
+    [self.rightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_pressed"] forState:UIControlStateSelected];
     
-    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_nomal"] forState:UIControlStateNormal];
-    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_pressed"] forState:UIControlStateHighlighted];
-    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_forward_pressed"] forState:UIControlStateSelected];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_nomal"] forState:UIControlStateNormal];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_pressed"] forState:UIControlStateHighlighted];
+    [self.subrightBtn setBackgroundImage:[UIImage imageNamed:@"title_btn_store_pressed"] forState:UIControlStateSelected];
 }
 
 

@@ -48,8 +48,7 @@
     [self.contentView addSubview:_cxtImgView];
     
     _seperateImgView=[[UIImageView alloc]initWithFrame:CGRectZero];
-    [_seperateImgView setBackgroundColor:[UIColor whiteColor]];
-//    [_seperateImgView setImage:[UIImage imageNamed:@"tab_bg"]];
+    [_seperateImgView setImage:[UIImage imageNamed:@"divider"]];
     [self.contentView addSubview:_seperateImgView];
 }
 
