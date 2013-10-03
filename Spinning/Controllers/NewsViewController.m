@@ -28,6 +28,8 @@
 @property (nonatomic, retain)NSMutableArray *arrayCursor;
 @property (nonatomic, retain)NSMutableArray *arrayTables;
 @property (nonatomic, retain)RbHttpCmd *httpCmd;
+@property (nonatomic, retain)UIScrollView *pageScrollView;
+@property (nonatomic, retain)RbScorllSecletView *selectScrollView;
 
 @end
 
@@ -39,6 +41,8 @@
 @synthesize arrayCursor = _arrayCursor;
 @synthesize arrayTables = _arrayTables;
 @synthesize httpCmd = _httpCmd;
+@synthesize pageScrollView = _pageScrollView;
+@synthesize selectScrollView = _selectScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,7 +95,8 @@
     [selectView setSelectDelegate:self];
     [selectView setTitles:@[@"行业动态",@"企业追踪",@"跨界观察",@"领袖故事",@"专栏评论",@"技术前沿",@"数说商业",@"CKIA数据"]];
     [self.view addSubview:selectView];
-    [selectView release];
+    self.selectScrollView = selectView;
+    RbSafeRelease(selectView);
     
     UIView *arrowView = [[UIView alloc]initWithFrame:CGRectMake(ScrollSelectWidth, NavigationHeight+ StatusHeaderHight, ScrollSelectOtherWidth, ScrollSelectHeight)];
     [arrowView setBackgroundColor:[UIColor colorWithRed:0./255. green:55./255 blue:110./255 alpha:1]];
@@ -109,15 +114,36 @@
 
 - (void)configureTableView{
     
-    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + ScrollSelectHeight +StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - ScrollSelectHeight - StatusHeaderHight)];
-    tmpTable.separatorColor = [UIColor clearColor];
-    tmpTable.delegate = self;
-    tmpTable.dataSource = self;
-    tmpTable.pullingDelegate = self;
-    tmpTable.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:tmpTable];
-    self.tableView = tmpTable;
-    RbSafeRelease(tmpTable);
+    UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavigationHeight + ScrollSelectHeight +StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - ScrollSelectHeight - StatusHeaderHight)];
+    mainScrollView.contentSize = CGSizeMake(320*8, 0);
+    mainScrollView.showsHorizontalScrollIndicator = NO;
+    mainScrollView.pagingEnabled = YES;
+    mainScrollView.delegate = self;
+    self.pageScrollView = mainScrollView;
+    [self.view addSubview:mainScrollView];
+    RbSafeRelease(mainScrollView);
+    
+    for (int i = 0; i < 8; i ++) {
+        PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(320*i, 0 , ScreenWidth,self.pageScrollView.frame.size.height)];
+        tmpTable.separatorColor = [UIColor clearColor];
+        tmpTable.delegate = self;
+        tmpTable.dataSource = self;
+        tmpTable.pullingDelegate = self;
+        tmpTable.backgroundColor = [UIColor clearColor];
+        [self.pageScrollView addSubview:tmpTable];
+        [self.arrayTables addObject:tmpTable];
+        RbSafeRelease(tmpTable);
+    }
+    self.tableView =[self.arrayTables objectAtIndex:0];
+//    PullingRefreshTableView* tmpTable = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, NavigationHeight + ScrollSelectHeight +StatusHeaderHight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight - TabBarHeight - ScrollSelectHeight - StatusHeaderHight)];
+//    tmpTable.separatorColor = [UIColor clearColor];
+//    tmpTable.delegate = self;
+//    tmpTable.dataSource = self;
+//    tmpTable.pullingDelegate = self;
+//    tmpTable.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:tmpTable];
+//    self.tableView = tmpTable;
+//    RbSafeRelease(tmpTable);
     
 }
 
@@ -150,6 +176,9 @@
     self.arrayContainer = array;
     self.arrayCurrent = [array objectAtIndex:0];
     self.arrayCursor = cursor;
+    
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:8];
+    self.arrayTables = arr;
 }
 
 
@@ -242,6 +271,10 @@
 
 - (void)scrollSelectAtIndex:(NSInteger)index
 {
+    if ([self.arrayTables count]) {
+        self.tableView = [self.arrayTables objectAtIndex:index];
+        [self.pageScrollView setContentOffset:CGPointMake(ScreenWidth *index, 0) animated:YES];
+    }
     [self onGetDataAtIndex:index];
 }
 
@@ -367,13 +400,28 @@
 #pragma mark - ScrollView Method
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.tableView tableViewDidScroll:scrollView];
+    if ([scrollView isMemberOfClass:[PullingRefreshTableView class]]) {
+       [self.tableView tableViewDidScroll:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    [self.tableView tableViewDidEndDragging:scrollView];
+    if ([scrollView isMemberOfClass:[PullingRefreshTableView class]]) {
+        [self.tableView tableViewDidEndDragging:scrollView];
+    }
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == self.pageScrollView) {
+        NSInteger index = (NSInteger)scrollView.contentOffset.x/320;
+        NSLog(@"%d",index);
+        [self.selectScrollView scrollToIndex:index];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -388,6 +436,7 @@
     RbSafeRelease(_arrayContainer);
     RbSafeRelease(_arrayTables);
     RbSafeRelease(_tableView);
+    RbSafeRelease(_pageScrollView);
     RbSuperDealoc;
 }
 

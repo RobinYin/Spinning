@@ -21,4 +21,5 @@ extern NSString* const kSpinningRemark;
 extern NSString* const kSpinningGetPHValueList;
 extern NSString* const kSpinningGetNoticeList;
 extern NSString* const kSpinningSuggestion;
+extern NSString* const kSpinningGetUsermeeting;
 

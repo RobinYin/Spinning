@@ -229,10 +229,23 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 - (void)next:(id)sender
 {
     for (UIView *view in [[self tableView]subviews]){
-        if ([view isKindOfClass:[RbEditCell class]]) {
-            RbEditCell *cell = (RbEditCell *)view;
-            [cell.textField resignFirstResponder];
+        if (([[[UIDevice currentDevice] systemVersion] floatValue] < 7) ) {
+            if ([view isKindOfClass:[RbEditCell class]]) {
+                RbEditCell *cell = (RbEditCell *)view;
+                [cell.textField resignFirstResponder];
+            }
+        }else
+        {
+            for (UIView *subView in [view subviews])
+            {
+                NSLog(@"%@",subView);
+                if ([subView isKindOfClass:[RbEditCell class]]) {
+                    RbEditCell *subcell = (RbEditCell *)subView;
+                    [subcell.textField resignFirstResponder];
+                }
+            }
         }
+        
     }
     if ([self canSignup]) {
         [self onRegisterData];
@@ -287,8 +300,8 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
     if (textField.returnKeyType == UIReturnKeyDone ) {
+        [textField resignFirstResponder];
         if ([self canSignup]) {
             [self onRegisterData];
         }else

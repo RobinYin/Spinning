@@ -88,7 +88,7 @@
     CGSize size1 = [self.name sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(ScreenWidth - 2*CheckDetailViewHorizontalGap, NSIntegerMax) lineBreakMode:NSLineBreakByCharWrapping];
     NSLog(@"%@",NSStringFromCGSize(size1));
     
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(CheckDetailViewHorizontalGap, CheckDetailViewVerticalGap, ScreenWidth - 2*CheckDetailViewHorizontalGap, size1.height)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(CheckDetailViewHorizontalGap, CheckDetailViewVerticalGap + StatusHeaderHight, ScreenWidth - 2*CheckDetailViewHorizontalGap, size1.height)];
     [label1 setTextAlignment:UITextAlignmentCenter];
     [label1 setFont: [UIFont systemFontOfSize:16]];
     [label1 setBackgroundColor:[UIColor clearColor]];

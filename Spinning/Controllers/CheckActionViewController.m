@@ -98,7 +98,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 
 - (void)configureTableView{
     
-    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight) style:UITableViewStyleGrouped];
+    UITableView* tmpTable = [[UITableView alloc]initWithFrame:CGRectMake(0, NavigationHeight+ StatusHeaderHight, ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight -StatusHeaderHight) style:UITableViewStyleGrouped];
     tmpTable.separatorColor = [UIColor grayColor];
     tmpTable.delegate = self;
     tmpTable.dataSource = self;
@@ -194,13 +194,12 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     NSString *msg = nil;
     CheckinHttpCmd *httpcmd = (CheckinHttpCmd *)cmd;
     if (error) {
-        msg = [error localizedDescription];
+        msg = [NSString stringWithFormat:@"网络错误！"];
     }else
     {
         msg = httpcmd.model.msg;
     }
-    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
-    if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
+    if ([httpcmd.model.msg isEqualToString:kSpinningHttpValueOk]) {
         CheckinModel *model = (CheckinModel *)httpcmd.model;
         CheckDetailViewController *viewController = [[CheckDetailViewController new]autorelease];
         viewController.name = model.name;
@@ -210,6 +209,9 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
         viewController.address = model.address;
         viewController.date = model.date;
         [self.navigationController pushViewController:viewController animated:YES];
+    }else
+    {
+        [self.view makeToast:msg];
     }
 }
 
@@ -298,10 +300,22 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 - (void)next:(id)sender
 {
     for (UIView *view in [[self tableView]subviews]){
-        if ([view isKindOfClass:[RbEditCell class]]) {
-            RbEditCell *cell = (RbEditCell *)view;
-            [cell.textField resignFirstResponder];
+        if (([[[UIDevice currentDevice] systemVersion] floatValue] < 7) ) {
+            if ([view isKindOfClass:[RbEditCell class]]) {
+                RbEditCell *cell = (RbEditCell *)view;
+                [cell.textField resignFirstResponder];
+            }
+        }else
+        {
+            for (UIView *subView in [view subviews])
+            {
+                if ([subView isKindOfClass:[RbEditCell class]]) {
+                    RbEditCell *subcell = (RbEditCell *)subView;
+                    [subcell.textField resignFirstResponder];
+                }
+            }
         }
+        
     }
     [self onCheckinData];
 }
@@ -346,7 +360,8 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     if (textField.returnKeyType == UIReturnKeyDone ) {
-        
+        [textField resignFirstResponder];
+        [self onCheckinData];
     }else
     {
         [[self tableView] makeNextCellWithTextFieldFirstResponder];

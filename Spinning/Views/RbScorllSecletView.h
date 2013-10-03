@@ -14,6 +14,7 @@
 }
 @property (nonatomic, assign)id<ScrollSelectDelegate> selectDelegate;
 - (void)setTitles:(NSArray*)array;
+- (void)scrollToIndex:(NSInteger)index;
 @end
 
 @protocol ScrollSelectDelegate <NSObject>

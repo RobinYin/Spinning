@@ -105,7 +105,7 @@
          ];
         return;
     }
-    NSString *shareText = [NSString stringWithFormat:@"掌观中国针织：%@!",self.model.title];
+    NSString *shareText = [NSString stringWithFormat:@"%@!链接：%@（掌观中国针织）!",self.model.title,self.URL];
     [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession]];
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:nil shareToSnsNames:@[UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession] delegate:nil];
 }

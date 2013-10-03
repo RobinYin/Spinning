@@ -35,4 +35,5 @@ NSString* const kSpinningGetNoticeList = @"/getnoticelist" ;
 
 NSString* const kSpinningSuggestion = @"/suggestion" ;
 
+NSString* const kSpinningGetUsermeeting = @"/getusermeeting" ;
 

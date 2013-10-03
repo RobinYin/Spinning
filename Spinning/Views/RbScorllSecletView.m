@@ -96,6 +96,20 @@
     }
 }
 
+- (void)scrollToIndex:(NSInteger)index
+{
+    for (UIButton *b in self.buttons) {
+        [b setSelected:NO];
+    }
+    UIButton *button = [self.buttons objectAtIndex:index];
+    [button setSelected:YES];
+    
+    [self adjustScrollViewContentX:button];
+    if ([_selectDelegate respondsToSelector:@selector(scrollSelectAtIndex:)]) {
+        [_selectDelegate scrollSelectAtIndex:button.tag - TagBegin];
+    }
+}
+
 - (void)adjustScrollViewContentX:(UIButton *)sender
 {
     
@@ -108,15 +122,7 @@
         conOffset_x = self.contentSize.width-ScrollSelectWidth;
     }
      [self setContentOffset:CGPointMake(conOffset_x , 0)  animated:YES];
-  
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 @end

@@ -86,11 +86,18 @@
     self.source = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeySource]);
     self.icon = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyIcon]);
     self.content = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyContent]);
+    
+    if (self.content) {
+        self.content = [self.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        self.content = [self.content stringByReplacingOccurrencesOfString:@"&quot;" withString:@""];
+    }
+    
     self.mid = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyId]);
     self.articleurl = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyArticleurl]);
     self.totalcount = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyTotalcount]);
     
 }
+
 
 - (void)dealloc
 {

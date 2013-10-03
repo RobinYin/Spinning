@@ -12,6 +12,7 @@ NSString* const kSpinningHttpKeyExcutecmd = @"excutecmd" ;
 NSString* const kSpinningHttpKeyMsg = @"msg" ;
 NSString* const kSpinningHttpKeyCode = @"code" ;
 NSString* const kSpinningHttpKeyOk = @"200" ;
+NSString* const kSpinningHttpValueOk = @"ok" ;
 NSString* const kSpinningHttpKeyList = @"list" ;
 NSString* const kSpinningHttpKeyContent = @"content" ;
 NSString* const kSpinningHttpKeyIcon = @"icon" ;
@@ -36,6 +37,8 @@ NSString* const kSpinningHttpKeyDate = @"date";
 NSString* const kSpinningHttpKeyDescrpition = @"description";
 NSString* const kSpinningHttpKeyName = @"name";
 NSString* const kSpinningHttpKeySponsor = @"sponsor";
+NSString* const kSpinningHttpKeyUsermeeting = @"usermeeting";
+NSString* const kSpinningHttpKeyRegistertime = @"registertime";
 
 NSString* const kSpinningHttpRequestKeyId = @"id";
 NSString* const kSpinningHttpRequestKeyUserid = @"userid";

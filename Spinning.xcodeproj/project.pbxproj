@@ -53,6 +53,7 @@
 		00482CEF17E9885E002B3D90 /* ModifypwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CEE17E9885D002B3D90 /* ModifypwdViewController.m */; };
 		00482CF217E9891F002B3D90 /* ModifypwdHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CF117E9891E002B3D90 /* ModifypwdHttpCmd.m */; };
 		00482CF517E99723002B3D90 /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CF417E99722002B3D90 /* CheckDetailViewController.m */; };
+		0066B62C17FDBF79003133B3 /* HistoryHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */; };
 		008FCFE717D0C0D700AF7201 /* MoreListTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 008FCFE617D0C0D700AF7201 /* MoreListTemplate.json */; };
 		008FCFEA17D0C85800AF7201 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008FCFE917D0C85800AF7201 /* CollectionViewController.m */; };
 		008FCFED17D0C86A00AF7201 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008FCFEC17D0C86A00AF7201 /* HistoryViewController.m */; };
@@ -350,6 +351,8 @@
 		00482CF117E9891E002B3D90 /* ModifypwdHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifypwdHttpCmd.m; sourceTree = "<group>"; };
 		00482CF317E99720002B3D90 /* CheckDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailViewController.h; sourceTree = "<group>"; };
 		00482CF417E99722002B3D90 /* CheckDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailViewController.m; sourceTree = "<group>"; };
+		0066B62A17FDBF79003133B3 /* HistoryHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryHttpCmd.h; sourceTree = "<group>"; };
+		0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryHttpCmd.m; sourceTree = "<group>"; };
 		008FCFE617D0C0D700AF7201 /* MoreListTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MoreListTemplate.json; sourceTree = "<group>"; };
 		008FCFE817D0C85800AF7201 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		008FCFE917D0C85800AF7201 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
@@ -992,6 +995,8 @@
 				00ADB5BA17D6307B00B32C39 /* PHValueHttpCmd.m */,
 				00ADB5BC17D630EE00B32C39 /* NotifyHttpCmd.h */,
 				00ADB5BD17D630EE00B32C39 /* NotifyHttpCmd.m */,
+				0066B62A17FDBF79003133B3 /* HistoryHttpCmd.h */,
+				0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */,
 				0099CA1117A428DE001516C2 /* RbBaseModel.h */,
 				0099CA1217A428DE001516C2 /* RbBaseModel.m */,
 				00482C9017E85858002B3D90 /* InfoCountSingleton.h */,
@@ -1619,6 +1624,7 @@
 				00A09CD517F495CB00B99367 /* NotifyReadModel.m in Sources */,
 				0099C9BB17A41535001516C2 /* SDWebImageManager.m in Sources */,
 				0099C9BC17A41535001516C2 /* SDWebImagePrefetcher.m in Sources */,
+				0066B62C17FDBF79003133B3 /* HistoryHttpCmd.m in Sources */,
 				00961CF617F1721500863246 /* FMDatabaseQueue.m in Sources */,
 				0099C9BD17A41535001516C2 /* UIButton+WebCache.m in Sources */,
 				0099C9BF17A41535001516C2 /* UIImageView+WebCache.m in Sources */,
@@ -1842,6 +1848,7 @@
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1869,6 +1876,7 @@
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
