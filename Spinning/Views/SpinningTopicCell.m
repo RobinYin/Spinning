@@ -10,6 +10,7 @@
 
 @implementation SpinningTopicCell
 @synthesize subLabel = _subLabel;
+@synthesize badgeView = _badgeView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -38,12 +39,19 @@
     [_subLabel setTextColor:[UIColor colorWithRed:255./255 green:244./255 blue:98./255 alpha:1]];
     [self.contentView addSubview:_subLabel];
     
+    RbBadgeView *badgeView = [[RbBadgeView alloc] initWithFrame:CGRectMake(TopicCellImgWith -TopicCellGap, TopicCellGap + TopicCellImgheight + 85,16, 16)];
+    [badgeView setBadgeString:@""];
+    [self.contentView addSubview:badgeView];
+    self.badgeView = badgeView;
+    RbSafeRelease(badgeView);
+    
     [self.seperateImgView setFrame:CGRectMake(0, TopicCellGap + TopicCellImgheight + 110, ScreenWidth, 1)];
     
 }
 
 - (void)dealloc
 {
+    RbSafeRelease(_badgeView);
     RbSafeRelease(_subLabel);
     RbSuperDealoc;
 }

@@ -331,8 +331,8 @@
     {
         self.cursor = [NSString stringWithFormat:@"0"];
         [self onGetData];
-        RemarkHttpCmd *httpcmd = (RemarkHttpCmd *)cmd;
-        [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
+//        RemarkHttpCmd *httpcmd = (RemarkHttpCmd *)cmd;
+//        [self.view makeToast:[httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg]];
     }
 }
 

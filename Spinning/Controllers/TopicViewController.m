@@ -12,6 +12,7 @@
 #import "TopicWebViewController.h"
 #import "ReadModel.h"
 #import "TopicReadModel.h"
+#import "CommentcountHttpCmd.h"
 
 @interface TopicViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate,RbHttpDelegate>
 
@@ -19,6 +20,7 @@
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
 @property (nonatomic, retain)TopicHttpCmd *httpCmd;
 @property (nonatomic, retain)NSString *cursor;
+@property (nonatomic, retain)CommentcountHttpCmd *countHttpCmd;
 
 @end
 
@@ -28,6 +30,7 @@
 @synthesize arrayCurrent = _arrayCurrent;
 @synthesize httpCmd = _httpCmd;
 @synthesize cursor = _cursor;
+@synthesize countHttpCmd = _countHttpCmd;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,9 +44,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (self.tableView) {
-        [self.tableView reloadData];
-    }
+    [self onGetCount];
+//    if (self.tableView) {
+//        [self.tableView reloadData];
+//    }
 }
 
 - (void)viewDidLoad
@@ -155,6 +159,26 @@
             [cell.cxtLabel setText:model.content];
             [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
             [cell.subLabel setText:[NSString stringWithFormat:@"已有%@人参与评论",model.totalcount]];
+            [cell.badgeView setBadgeString:@""];
+            NSLog(@"totalcount = %@",model.totalcount);
+            
+            
+            [globalHelper createTableWithModelClass:[CommentcountModel class]];
+            CommentcountModel *cmdl = [[[CommentcountModel alloc]init]autorelease];
+            cmdl.mid = model.mid;
+            NSString *srch = [NSString stringWithFormat:@"mid = %@",cmdl.mid];
+            NSMutableArray* arrc = [CommentcountModel searchWithWhere:srch orderBy:nil offset:0 count:NSIntegerMax];
+            if ([arrc count]) {
+                CommentcountModel *dbmodel = [arrc objectAtIndex:0];
+                NSLog(@"dbmodle = %@",dbmodel.count);
+                if ([dbmodel.count intValue] > [model.totalcount intValue]) {
+                    [cell.badgeView setBadgeString:[NSString stringWithFormat:@"%d",[dbmodel.count intValue] - [model.totalcount intValue]]];
+                    [cell.subLabel setText:[NSString stringWithFormat:@"已有%@人参与评论",dbmodel.count]];
+                }else
+                {
+                    [cell.badgeView setBadgeString:@""];
+                }
+            }
         }
     }
     
@@ -177,6 +201,17 @@
             data.mid = model.mid;
             [globalHelper insertToDB:data];
             
+            
+            [globalHelper createTableWithModelClass:[CommentcountModel class]];
+            CommentcountModel *cmdl = [[[CommentcountModel alloc]init]autorelease];
+            cmdl.mid = model.mid;
+            NSString *srch = [NSString stringWithFormat:@"mid = %@",cmdl.mid];
+            NSMutableArray* arrc = [CommentcountModel searchWithWhere:srch orderBy:nil offset:0 count:NSIntegerMax];
+            if ([arrc count]) {
+                CommentcountModel *dbmodel = [arrc objectAtIndex:0];
+                model.totalcount = dbmodel.count;
+            }
+            
             NSLog(@"%@",model.articleurl);
             RbWebViewController *webViewController = [[TopicWebViewController alloc] initWithURL:[NSURL URLWithString:[model.articleurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             webViewController.mid = model.mid;
@@ -195,7 +230,14 @@
 
 #pragma mark -
 #pragma mark datasource -----------
-
+- (void)onGetCount
+{
+    RbHttpClient *client = [RbHttpClient sharedInstance];
+    CommentcountHttpCmd *cmd = [[[CommentcountHttpCmd alloc]init]autorelease];
+    self.countHttpCmd = cmd;
+    cmd.delegate = self;
+    [client onPostCmdAsync:self.countHttpCmd];
+}
 - (void)onGetData
 {
     RbHttpClient *client = [RbHttpClient sharedInstance];
@@ -210,51 +252,68 @@
 #pragma mark httpDelegate -----------
 - (void) httpResult:(id)cmd  error:(NSError*)error
 {
-    NSLog(@"%@",NSStringFromClass([cmd class]));
-    TopicHttpCmd *httpcmd = (TopicHttpCmd *)cmd;
-    
-    NSString *msg = nil;
-    
-    if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
-    }else
-    {
-        if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
-            msg = nil;
+    if ([cmd isMemberOfClass:[TopicHttpCmd class]]) {
+        TopicHttpCmd *httpcmd = (TopicHttpCmd *)cmd;
+        
+        NSString *msg = nil;
+        
+        if (error) {
+            msg = [NSString stringWithFormat:@"网络错误！"];
         }else
         {
-            msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+            if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
+                msg = nil;
+            }else
+            {
+                msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+            }
         }
-    }
-    if (msg) {
-        [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
-    }
-    
-    NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
-    if ([self.cursor isEqualToString:@"0"]) {
-        self.arrayCurrent = array;
-    }else
-    {
-        [self.arrayCurrent addObjectsFromArray:array];
-    }
-    if ([self.arrayCurrent count]) {
-        ListModel *model = [self.arrayCurrent lastObject];
-        if (model.mid) {
-            self.cursor = model.mid;
+        if (msg) {
+            [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
         }
-        ListModel *info = [self.arrayCurrent objectAtIndex:0];
-        if (info.mid) {
-            [InfoCountSingleton sharedInstance].topic = info.mid;
-            [[InfoCountSingleton sharedInstance] save];
+        
+        NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
+        if ([self.cursor isEqualToString:@"0"]) {
+            self.arrayCurrent = array;
+        }else
+        {
+            [self.arrayCurrent addObjectsFromArray:array];
         }
+        if ([self.arrayCurrent count]) {
+            ListModel *model = [self.arrayCurrent lastObject];
+            if (model.mid) {
+                self.cursor = model.mid;
+            }
+            ListModel *info = [self.arrayCurrent objectAtIndex:0];
+            if (info.mid) {
+                [InfoCountSingleton sharedInstance].topic = info.mid;
+                [[InfoCountSingleton sharedInstance] save];
+            }
+        }
+        [self.tableView tableViewDidFinishedLoading];
+        
+        if ([array count] ==10) {
+            self.tableView.reachedTheEnd  = NO;
+        }else
+        {
+            self.tableView.reachedTheEnd  = YES;
+        }
+
     }
-    [self.tableView tableViewDidFinishedLoading];
-    
-    if ([array count] ==10) {
-        self.tableView.reachedTheEnd  = NO;
-    }else
-    {
-        self.tableView.reachedTheEnd  = YES;
+    if ([cmd isMemberOfClass:[CommentcountHttpCmd class]]) {
+        CommentcountHttpCmd *httpcmd = (CommentcountHttpCmd *)cmd;
+        
+        NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
+        if ([array count]) {
+            for (CommentcountModel *model in array) {
+                LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+                [globalHelper createTableWithModelClass:[CommentcountModel class]];
+                CommentcountModel *data = [[[CommentcountModel alloc]init]autorelease];
+                data.mid = model.mid;
+                data.count = model.count;
+                [globalHelper insertToDB:data];
+            }
+        }
     }
     [self.tableView reloadData];
 

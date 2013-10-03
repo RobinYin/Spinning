@@ -54,6 +54,7 @@
 		00482CF217E9891F002B3D90 /* ModifypwdHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CF117E9891E002B3D90 /* ModifypwdHttpCmd.m */; };
 		00482CF517E99723002B3D90 /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CF417E99722002B3D90 /* CheckDetailViewController.m */; };
 		0066B62C17FDBF79003133B3 /* HistoryHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */; };
+		0066B63017FDDAE5003133B3 /* CommentcountHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066B62F17FDDAE5003133B3 /* CommentcountHttpCmd.m */; };
 		008FCFE717D0C0D700AF7201 /* MoreListTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 008FCFE617D0C0D700AF7201 /* MoreListTemplate.json */; };
 		008FCFEA17D0C85800AF7201 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008FCFE917D0C85800AF7201 /* CollectionViewController.m */; };
 		008FCFED17D0C86A00AF7201 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008FCFEC17D0C86A00AF7201 /* HistoryViewController.m */; };
@@ -353,6 +354,8 @@
 		00482CF417E99722002B3D90 /* CheckDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailViewController.m; sourceTree = "<group>"; };
 		0066B62A17FDBF79003133B3 /* HistoryHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryHttpCmd.h; sourceTree = "<group>"; };
 		0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryHttpCmd.m; sourceTree = "<group>"; };
+		0066B62E17FDDAE5003133B3 /* CommentcountHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentcountHttpCmd.h; sourceTree = "<group>"; };
+		0066B62F17FDDAE5003133B3 /* CommentcountHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentcountHttpCmd.m; sourceTree = "<group>"; };
 		008FCFE617D0C0D700AF7201 /* MoreListTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MoreListTemplate.json; sourceTree = "<group>"; };
 		008FCFE817D0C85800AF7201 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		008FCFE917D0C85800AF7201 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
@@ -963,6 +966,8 @@
 				00A09CC817F487C600B99367 /* NewsReadModel6.m */,
 				00A09CCA17F487D100B99367 /* NewsReadModel7.h */,
 				00A09CCB17F487D100B99367 /* NewsReadModel7.m */,
+				0066B62E17FDDAE5003133B3 /* CommentcountHttpCmd.h */,
+				0066B62F17FDDAE5003133B3 /* CommentcountHttpCmd.m */,
 				00AD3AF617D2F1FF00CC4188 /* SpinningHttpSuffix.h */,
 				00AD3AF717D2F1FF00CC4188 /* SpinningHttpSuffix.m */,
 				00AD3AF917D3564F00CC4188 /* SpinningHttpKey.h */,
@@ -1662,6 +1667,7 @@
 				00961CF917F1721500863246 /* LKDB+Mapping.m in Sources */,
 				0099CA2C17A438C2001516C2 /* RbConstant.m in Sources */,
 				00961CF817F1721500863246 /* LKDB+Manager.m in Sources */,
+				0066B63017FDDAE5003133B3 /* CommentcountHttpCmd.m in Sources */,
 				0099CA3017A50C33001516C2 /* RbTabBarViewController.m in Sources */,
 				0092825A17A56A8900B845AA /* RbScorllSecletView.m in Sources */,
 				009775E217B77AD600333ED2 /* RbTabBarItem.m in Sources */,

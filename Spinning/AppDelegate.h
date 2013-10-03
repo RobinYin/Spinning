@@ -11,6 +11,7 @@
 #import "InfoCountSingleton.h"
 #import "EAIntroPage.h"
 #import "EAIntroView.h"
+#import "CommentcountHttpCmd.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,RbHttpDelegate,EAIntroDelegate>
 
@@ -18,4 +19,5 @@
 @property (nonatomic, retain) InfoCountHttpCmd *httpCmd;
 @property (nonatomic, strong) RbTabBarViewController *tabBarController;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, retain) CommentcountHttpCmd *countHttpCmd;
 @end

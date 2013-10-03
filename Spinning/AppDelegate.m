@@ -27,12 +27,14 @@
 @synthesize tabBarController = _tabBarController;
 @synthesize httpCmd = _httpCmd;
 @synthesize timer = _timer;
+@synthesize countHttpCmd = _countHttpCmd;
 - (void)dealloc
 {
     if (_timer) {
         [_timer invalidate];
         _timer = nil;
     }
+    RbSafeRelease(_countHttpCmd);
     RbSafeRelease(_httpCmd);
     RbSafeRelease(_tabBarController);
     RbSafeRelease(_window);
@@ -168,36 +170,58 @@
     cmd.topicid = [InfoCountSingleton sharedInstance].topic;
     cmd.delegate = self;
     [client onPostCmdAsync:self.httpCmd];
+    
+    CommentcountHttpCmd *chm = [[[CommentcountHttpCmd alloc]init]autorelease];
+    self.countHttpCmd = chm;
+    chm.delegate = self;
+    [client onPostCmdAsync:self.countHttpCmd];
+
 }
 
 #pragma mark -
 #pragma mark httpDelegate -----------
 - (void) httpResult:(id)cmd  error:(NSError*)error
 {
-    NSLog(@"%@",NSStringFromClass([cmd class]));
-    InfoCountHttpCmd *httpcmd = (InfoCountHttpCmd *)cmd;
-    InfoCountModel *model = (InfoCountModel *)httpcmd.model;
-    
-    RbBadgeView *topic = (RbBadgeView *)[self.tabBarController.tabBarBadgesArray objectAtIndex:1];
-    if (model.topic) {
-        if ([model.topic intValue]) {
-            [topic setBadgeString:model.topic];
-        }else
-        {
-            [topic setBadgeString:@""];
+    if ([cmd isMemberOfClass:[InfoCountHttpCmd class]]) {
+        InfoCountHttpCmd *httpcmd = (InfoCountHttpCmd *)cmd;
+        InfoCountModel *model = (InfoCountModel *)httpcmd.model;
+        
+        RbBadgeView *topic = (RbBadgeView *)[self.tabBarController.tabBarBadgesArray objectAtIndex:1];
+        if (model.topic) {
+            if ([model.topic intValue]) {
+                [topic setBadgeString:model.topic];
+            }else
+            {
+                [topic setBadgeString:@""];
+            }
+        }
+        
+        RbBadgeView *notice = (RbBadgeView *)[self.tabBarController.tabBarBadgesArray objectAtIndex:3];
+        if (model.notice) {
+            if ([model.notice intValue]) {
+                [notice setBadgeString:model.notice];
+            }else
+            {
+                [notice setBadgeString:@""];
+            }
+        }
+         NSLog(@"%@  ---  %@",model.topic,model.notice);
+    }
+    if ([cmd isMemberOfClass:[CommentcountHttpCmd class]]) {
+        CommentcountHttpCmd *httpcmd = (CommentcountHttpCmd *)cmd;
+        NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
+        NSLog(@"%@",array);
+        if ([array count]) {
+            for (CommentcountModel *model in array) {
+                LKDBHelper* globalHelper = [LKDBHelper getUsingLKDBHelper];
+                [globalHelper createTableWithModelClass:[CommentcountModel class]];
+                CommentcountModel *data = [[[CommentcountModel alloc]init]autorelease];
+                data.mid = model.mid;
+                data.count = model.count;
+                [globalHelper insertToDB:data];
+            }
         }
     }
-    
-    RbBadgeView *notice = (RbBadgeView *)[self.tabBarController.tabBarBadgesArray objectAtIndex:3];
-    if (model.notice) {
-        if ([model.notice intValue]) {
-            [notice setBadgeString:model.notice];
-        }else
-        {
-            [notice setBadgeString:@""];
-        }
-    }
-    NSLog(@"%@  ---  %@",model.topic,model.notice);
      
 }
 

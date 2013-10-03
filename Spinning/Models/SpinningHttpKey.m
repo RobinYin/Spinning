@@ -19,6 +19,7 @@ NSString* const kSpinningHttpKeyIcon = @"icon" ;
 NSString* const kSpinningHttpKeyId = @"id" ;
 NSString* const kSpinningHttpKeyArticleurl = @"articleurl" ;
 NSString* const kSpinningHttpKeyTotalcount = @"totalcount" ;
+NSString* const kSpinningHttpKeyCount = @"count" ;
 NSString* const kSpinningHttpKeyTime = @"time" ;
 NSString* const kSpinningHttpKeyTitle = @"title" ;
 NSString* const kSpinningHttpKeySource = @"source" ;

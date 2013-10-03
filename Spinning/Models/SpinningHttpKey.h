@@ -19,6 +19,7 @@ extern NSString* const kSpinningHttpKeyIcon;
 extern NSString* const kSpinningHttpKeyId;
 extern NSString* const kSpinningHttpKeyArticleurl;
 extern NSString* const kSpinningHttpKeyTotalcount;
+extern NSString* const kSpinningHttpKeyCount;
 extern NSString* const kSpinningHttpKeyTime;
 extern NSString* const kSpinningHttpKeyTitle;
 extern NSString* const kSpinningHttpKeySource;

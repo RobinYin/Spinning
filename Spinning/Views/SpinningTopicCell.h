@@ -7,7 +7,8 @@
 //
 
 #import "SpinningBaseCell.h"
-
+#import "RbBadgeView.h"
 @interface SpinningTopicCell : SpinningBaseCell
 @property (nonatomic, retain) UILabel *subLabel;
+@property (nonatomic, retain) RbBadgeView *badgeView;
 @end
