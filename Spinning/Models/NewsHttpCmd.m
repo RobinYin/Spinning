@@ -39,6 +39,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.cursor forKey:kSpinningHttpRequestKeyId];
     [dic setObject:self.typeId forKey:kSpinningHttpRequestKeyTypeid];
+    NSLog(@"self.userid = %@",self.userId);
     if (self.userId) {
         [dic setObject:self.userId forKey:kSpinningHttpRequestKeyUserid];
     }

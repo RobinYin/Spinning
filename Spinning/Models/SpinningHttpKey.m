@@ -12,6 +12,7 @@ NSString* const kSpinningHttpKeyExcutecmd = @"excutecmd" ;
 NSString* const kSpinningHttpKeyMsg = @"msg" ;
 NSString* const kSpinningHttpKeyCode = @"code" ;
 NSString* const kSpinningHttpKeyOk = @"200" ;
+NSString* const kSpinningHttpKeyError4000 = @"4000" ;
 NSString* const kSpinningHttpValueOk = @"ok" ;
 NSString* const kSpinningHttpKeyList = @"list" ;
 NSString* const kSpinningHttpKeyContent = @"content" ;

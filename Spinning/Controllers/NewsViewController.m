@@ -286,7 +286,8 @@
         NewsHttpCmd *cmd = [[[NewsHttpCmd alloc]init]autorelease];
         self.httpCmd = cmd;
         cmd.delegate = self;
-        cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]]];
+//        cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]]];
+        cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:index]];
         cmd.userId = [RbUser sharedInstance].userid;
         cmd.typeId = [NSString stringWithFormat:@"%d",index +1];
         [client onPostCmdAsync:self.httpCmd];
@@ -326,7 +327,12 @@
             msg = nil;
         }else
         {
-            msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+//            if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyError4000]) {
+//                msg = [NSString stringWithFormat:@"成为协会会员，才有权浏览!"];
+//            }else
+//            {
+               msg = [httpcmd.errorDict objectForKey:kSpinningHttpKeyMsg];
+//            }
         }
     }
     if (msg) {

@@ -251,38 +251,60 @@
 }
 
 - (void)showIntroWithCrossDissolve {
+//    EAIntroPage *page1 = [EAIntroPage page];
+//    page1.title = @"掌观中国针织";
+//    page1.desc = @"中国针织工业协会主办的唯一官方网站.";
+//    page1.bgImage = [UIImage imageNamed:@"tutorial_background_00@2x.jpg"];
+//    page1.titleImage = nil;
+//    
+//    EAIntroPage *page2 = [EAIntroPage page];
+//    page2.title = @"我们的定位";
+//    page2.desc = @"定位于打造专业、即时、客观、准确，具有公信力的协会网络服务平台.";
+//    page2.bgImage = [UIImage imageNamed:@"tutorial_background_01@2x.jpg"];
+//    page2.titleImage = nil;
+//    
+//    EAIntroPage *page3 = [EAIntroPage page];
+//    page3.title = @"我们的视角";
+//    page3.desc = @"紧密围绕针织行业，以新闻聚合、独家专访、热点话题讨论为特色逐步向移动互联延伸，成为针织人每日必读的行业网站.";
+//    page3.bgImage = [UIImage imageNamed:@"tutorial_background_02@2x.jpg"];
+//    page3.titleImage = nil;
+//    
+//    EAIntroPage *page4 = [EAIntroPage page];
+//    page4.title = @"我们的目标";
+//    page4.desc = @"兼具行业协会的网络服务功能，不断完善与会员的远程互动.";
+//    page4.bgImage = [UIImage imageNamed:@"tutorial_background_03@2x.jpg"];
+//    page4.titleImage = nil;
+//    
+//    EAIntroPage *page5 = [EAIntroPage page];
+//    page5.title = @"Welcome!";
+//    page5.desc = @"开始掌观中国针织之旅。";
+//    page5.bgImage = [UIImage imageNamed:@"tutorial_background_04@2x.jpg"];
+//    page5.titleImage = nil;
+//    
+//    
+//    EAIntroView *intro = [[[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2,page3,page4,page5]]autorelease];
+    
     EAIntroPage *page1 = [EAIntroPage page];
-    page1.title = @"掌观中国针织";
-    page1.desc = @"中国针织工业协会主办的唯一官方网站.";
-    page1.bgImage = [UIImage imageNamed:@"tutorial_background_00@2x.jpg"];
+    page1.title = nil;
+    page1.desc = nil;
+    page1.bgImage = [UIImage imageNamed:@"help001.png"];
     page1.titleImage = nil;
     
     EAIntroPage *page2 = [EAIntroPage page];
-    page2.title = @"我们的定位";
-    page2.desc = @"定位于打造专业、即时、客观、准确，具有公信力的协会网络服务平台.";
-    page2.bgImage = [UIImage imageNamed:@"tutorial_background_01@2x.jpg"];
+    page2.title = nil;
+    page2.desc = nil;
+    page2.bgImage = [UIImage imageNamed:@"help002.png"];
     page2.titleImage = nil;
     
     EAIntroPage *page3 = [EAIntroPage page];
-    page3.title = @"我们的视角";
-    page3.desc = @"紧密围绕针织行业，以新闻聚合、独家专访、热点话题讨论为特色逐步向移动互联延伸，成为针织人每日必读的行业网站.";
-    page3.bgImage = [UIImage imageNamed:@"tutorial_background_02@2x.jpg"];
+    page3.title = nil;
+    page3.desc = nil;
+    page3.bgImage = [UIImage imageNamed:@"help003.png"];
     page3.titleImage = nil;
     
-    EAIntroPage *page4 = [EAIntroPage page];
-    page4.title = @"我们的目标";
-    page4.desc = @"兼具行业协会的网络服务功能，不断完善与会员的远程互动.";
-    page4.bgImage = [UIImage imageNamed:@"tutorial_background_03@2x.jpg"];
-    page4.titleImage = nil;
-    
-    EAIntroPage *page5 = [EAIntroPage page];
-    page5.title = @"Welcome!";
-    page5.desc = @"开始掌观中国针织之旅。";
-    page5.bgImage = [UIImage imageNamed:@"tutorial_background_04@2x.jpg"];
-    page5.titleImage = nil;
     
     
-    EAIntroView *intro = [[[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2,page3,page4,page5]]autorelease];
+    EAIntroView *intro = [[[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2,page3]]autorelease];
     
     [intro setDelegate:self];
     [intro showInView:self.window animateDuration:0.0];

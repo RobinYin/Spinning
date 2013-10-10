@@ -12,6 +12,7 @@ extern NSString* const kSpinningHttpKeyExcutecmd;
 extern NSString* const kSpinningHttpKeyMsg;
 extern NSString* const kSpinningHttpKeyCode;
 extern NSString* const kSpinningHttpKeyOk;
+extern NSString* const kSpinningHttpKeyError4000;
 extern NSString* const kSpinningHttpValueOk;
 extern NSString* const kSpinningHttpKeyList;
 extern NSString* const kSpinningHttpKeyContent;

@@ -190,6 +190,13 @@
 		009A14F617C4BF0000AD0678 /* tab_4_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 009A14EC17C4BF0000AD0678 /* tab_4_normal.png */; };
 		009A14F717C4BF0000AD0678 /* tab_4_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 009A14ED17C4BF0000AD0678 /* tab_4_pressed.png */; };
 		009A14F917C4C5A600AD0678 /* tab_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 009A14F817C4C5A600AD0678 /* tab_bg.png */; };
+		009AFA8918054929009C8997 /* help001.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA8618054929009C8997 /* help001.png */; };
+		009AFA8A18054929009C8997 /* help002.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA8718054929009C8997 /* help002.png */; };
+		009AFA8B18054929009C8997 /* help003.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA8818054929009C8997 /* help003.png */; };
+		009AFA9118055B86009C8997 /* icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA8D18055B86009C8997 /* icon-60.png */; };
+		009AFA9218055B86009C8997 /* icon-120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA8E18055B86009C8997 /* icon-120@2x.png */; };
+		009AFA9318055B86009C8997 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA8F18055B86009C8997 /* icon.png */; };
+		009AFA9418055B86009C8997 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 009AFA9018055B86009C8997 /* icon@2x.png */; };
 		009C544217DF5DA1000CECA8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009C544117DF5DA0000CECA8 /* MessageUI.framework */; };
 		009C544517DF6042000CECA8 /* RbWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C544417DF6041000CECA8 /* RbWebViewController.m */; };
 		00A08BD717A6150700D5B941 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A08BD617A6150600D5B941 /* CoreMedia.framework */; };
@@ -435,7 +442,7 @@
 		00961CF117F1721500863246 /* NSObject+LKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKModel.m"; sourceTree = "<group>"; };
 		009775E017B77AD600333ED2 /* RbTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RbTabBarItem.h; sourceTree = "<group>"; };
 		009775E117B77AD600333ED2 /* RbTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RbTabBarItem.m; sourceTree = "<group>"; };
-		0099C85C17A40C3C001516C2 /* Spinning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spinning.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0099C85C17A40C3C001516C2 /* 掌观中国针织.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌观中国针织.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0099C85F17A40C3C001516C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0099C86117A40C3C001516C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0099C86317A40C3C001516C2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -580,6 +587,13 @@
 		009A14EC17C4BF0000AD0678 /* tab_4_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_4_normal.png; sourceTree = "<group>"; };
 		009A14ED17C4BF0000AD0678 /* tab_4_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_4_pressed.png; sourceTree = "<group>"; };
 		009A14F817C4C5A600AD0678 /* tab_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bg.png; sourceTree = "<group>"; };
+		009AFA8618054929009C8997 /* help001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help001.png; sourceTree = "<group>"; };
+		009AFA8718054929009C8997 /* help002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help002.png; sourceTree = "<group>"; };
+		009AFA8818054929009C8997 /* help003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help003.png; sourceTree = "<group>"; };
+		009AFA8D18055B86009C8997 /* icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60.png"; sourceTree = "<group>"; };
+		009AFA8E18055B86009C8997 /* icon-120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120@2x.png"; sourceTree = "<group>"; };
+		009AFA8F18055B86009C8997 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		009AFA9018055B86009C8997 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		009C544117DF5DA0000CECA8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		009C544317DF6040000CECA8 /* RbWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RbWebViewController.h; sourceTree = "<group>"; };
 		009C544417DF6041000CECA8 /* RbWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RbWebViewController.m; sourceTree = "<group>"; };
@@ -836,7 +850,7 @@
 		0099C85D17A40C3C001516C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0099C85C17A40C3C001516C2 /* Spinning.app */,
+				0099C85C17A40C3C001516C2 /* 掌观中国针织.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -888,6 +902,10 @@
 		0099C86617A40C3C001516C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				009AFA8D18055B86009C8997 /* icon-60.png */,
+				009AFA8E18055B86009C8997 /* icon-120@2x.png */,
+				009AFA8F18055B86009C8997 /* icon.png */,
+				009AFA9018055B86009C8997 /* icon@2x.png */,
 				0099C86717A40C3C001516C2 /* Spinning-Info.plist */,
 				0099C86817A40C3C001516C2 /* InfoPlist.strings */,
 				0099C86B17A40C3C001516C2 /* main.mm */,
@@ -1255,6 +1273,9 @@
 		0099CA1417A42AFC001516C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				009AFA8618054929009C8997 /* help001.png */,
+				009AFA8718054929009C8997 /* help002.png */,
+				009AFA8818054929009C8997 /* help003.png */,
 				00CB4B3017F8063D0085881E /* divider.png */,
 				00A1C41417F571A70060D916 /* tutorial_background_00@2x.jpg */,
 				00A1C41517F571A70060D916 /* tutorial_background_01@2x.jpg */,
@@ -1444,7 +1465,7 @@
 			);
 			name = Spinning;
 			productName = Spinning;
-			productReference = 0099C85C17A40C3C001516C2 /* Spinning.app */;
+			productReference = 0099C85C17A40C3C001516C2 /* 掌观中国针织.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1518,6 +1539,7 @@
 				0099C9ED17A41622001516C2 /* blueArrowFoot.png in Resources */,
 				0099C9F017A41622001516C2 /* grayArrow.png in Resources */,
 				0099C9F117A41622001516C2 /* grayArrow@2x.png in Resources */,
+				009AFA8918054929009C8997 /* help001.png in Resources */,
 				00A1C41C17F571A70060D916 /* tutorial_background_03@2x.jpg in Resources */,
 				0099C9F317A41622001516C2 /* whiteArrow.png in Resources */,
 				0099C9F417A41622001516C2 /* whiteArrow@2x.png in Resources */,
@@ -1558,11 +1580,14 @@
 				0001224E17CF7E05000FFA2E /* ph_bg.png in Resources */,
 				008FCFE717D0C0D700AF7201 /* MoreListTemplate.json in Resources */,
 				008FCFFB17D0CEFD00AF7201 /* HistoryListTemplate.json in Resources */,
+				009AFA8A18054929009C8997 /* help002.png in Resources */,
 				00A09CAC17F45EC900B99367 /* UMSocialBarViewController.xib in Resources */,
 				008FD00B17D0D22700AF7201 /* title_btn_add_nomal.png in Resources */,
 				00A09C9017F45E3800B99367 /* UMSocialLocalizable.strings in Resources */,
 				008FD00C17D0D22700AF7201 /* title_btn_add_pressed.png in Resources */,
 				008FD00D17D0D22700AF7201 /* title_btn_comment_nomal.png in Resources */,
+				009AFA8B18054929009C8997 /* help003.png in Resources */,
+				009AFA9118055B86009C8997 /* icon-60.png in Resources */,
 				008FD00E17D0D22700AF7201 /* title_btn_comment_pressed.png in Resources */,
 				008FD00F17D0D22700AF7201 /* title_btn_edit_nomal.png in Resources */,
 				008FD01017D0D22700AF7201 /* title_btn_edit_pressed.png in Resources */,
@@ -1575,6 +1600,7 @@
 				008FD01417D0D22700AF7201 /* title_btn_return_pressed.png in Resources */,
 				008FD01517D0D22700AF7201 /* title_btn_store_nomal.png in Resources */,
 				00A09CAE17F45EC900B99367 /* UMSocialLoginViewController.xib in Resources */,
+				009AFA9418055B86009C8997 /* icon@2x.png in Resources */,
 				00CB4B3117F8063D0085881E /* divider.png in Resources */,
 				008FD01617D0D22700AF7201 /* title_btn_store_pressed.png in Resources */,
 				008FD01B17D0D4E600AF7201 /* CollectionListTemplate.json in Resources */,
@@ -1591,8 +1617,10 @@
 				0099E85117E44AB700BDEB91 /* btn_normal.png in Resources */,
 				0099E85217E44AB700BDEB91 /* btn_ok.png in Resources */,
 				00A09C9C17F45E3900B99367 /* UMSnsAccountViewController.xib in Resources */,
+				009AFA9218055B86009C8997 /* icon-120@2x.png in Resources */,
 				00A09C9A17F45E3900B99367 /* UMShareEditViewControlleriPad.xib in Resources */,
 				00A26DCB17E8325C00DE46E5 /* ok_Btn.png in Resources */,
+				009AFA9318055B86009C8997 /* icon.png in Resources */,
 				00A26DCC17E8325C00DE46E5 /* ok_Btn@2x.png in Resources */,
 				00A09CB017F45EC900B99367 /* UMSocialSnsViewController.xib in Resources */,
 				00482CEC17E97E1C002B3D90 /* CheckactionListTemplate.json in Resources */,
@@ -1853,7 +1881,7 @@
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0/frameworks/Wechat,
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "掌观中国针织";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1881,7 +1909,7 @@
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0/frameworks/Wechat,
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "掌观中国针织";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
