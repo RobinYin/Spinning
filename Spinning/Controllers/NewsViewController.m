@@ -30,6 +30,7 @@
 @property (nonatomic, retain)RbHttpCmd *httpCmd;
 @property (nonatomic, retain)UIScrollView *pageScrollView;
 @property (nonatomic, retain)RbScorllSecletView *selectScrollView;
+@property (nonatomic, assign)NSInteger cursorId;
 
 @end
 
@@ -43,6 +44,7 @@
 @synthesize httpCmd = _httpCmd;
 @synthesize pageScrollView = _pageScrollView;
 @synthesize selectScrollView = _selectScrollView;
+@synthesize cursorId = _cursorId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -177,6 +179,8 @@
     self.arrayCurrent = [array objectAtIndex:0];
     self.arrayCursor = cursor;
     
+    self.cursorId = 0;
+    
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:8];
     self.arrayTables = arr;
 }
@@ -280,6 +284,7 @@
 
 - (void)onGetDataAtIndex:(NSInteger)index
 {
+    self.cursorId = index;
     
     if (![[self.arrayContainer objectAtIndex:index]count]) {
         RbHttpClient *client = [RbHttpClient sharedInstance];
@@ -305,7 +310,8 @@
     NewsHttpCmd *cmd = [[[NewsHttpCmd alloc]init]autorelease];
     self.httpCmd = cmd;
     cmd.delegate = self;
-    cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]]];
+    cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:index]];
+//    cmd.cursor = [NSString stringWithString:[self.arrayCursor objectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]]];
     cmd.userId = [RbUser sharedInstance].userid;
     cmd.typeId = [NSString stringWithFormat:@"%d",index +1];
     [client onPostCmdAsync:self.httpCmd];
@@ -348,6 +354,7 @@
         [[self.arrayContainer objectAtIndex:[httpcmd.typeId intValue] -1]addObjectsFromArray:array];
     }
     self.arrayCurrent = [self.arrayContainer objectAtIndex:[httpcmd.typeId intValue] -1];
+    NSLog(@"self.arrayCurrent = %@",self.arrayCurrent);
     if ([self.arrayCurrent count]) {
         ListModel *model = [self.arrayCurrent lastObject];
         if (model.mid) {
@@ -365,14 +372,16 @@
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView
 {
     NSMutableString *string = [NSMutableString stringWithFormat:@"0"];
-    [self.arrayCursor replaceObjectAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent] withObject:string];
-    [self onUpdateAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]];
+    [self.arrayCursor replaceObjectAtIndex:self.cursorId withObject:string];
+    NSLog(@"%d",[self.arrayContainer indexOfObject:self.arrayCurrent]);
+    [self onUpdateAtIndex:self.cursorId];
+//    [self onUpdateAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]];
 }
 
 
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView
 {
-    [self onUpdateAtIndex:[self.arrayContainer indexOfObject:self.arrayCurrent]];
+    [self onUpdateAtIndex:self.cursorId];
 }
 
 - (NSDate *)pullingTableViewRefreshingFinishedDate
