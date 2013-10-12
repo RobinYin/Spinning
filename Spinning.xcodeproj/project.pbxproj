@@ -102,6 +102,7 @@
 		00961CFA17F1721500863246 /* LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CEB17F1721500863246 /* LKDBHelper.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00961CFB17F1721500863246 /* LKDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CED17F1721500863246 /* LKDBUtils.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00961CFD17F1721500863246 /* NSObject+LKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961CF117F1721500863246 /* NSObject+LKModel.m */; };
+		00971B60180795D300E3E3F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00971B5F180795D300E3E3F9 /* Images.xcassets */; };
 		009775E217B77AD600333ED2 /* RbTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 009775E117B77AD600333ED2 /* RbTabBarItem.m */; };
 		0099C86017A40C3C001516C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C85F17A40C3C001516C2 /* UIKit.framework */; };
 		0099C86217A40C3C001516C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C86117A40C3C001516C2 /* Foundation.framework */; };
@@ -440,6 +441,7 @@
 		00961CED17F1721500863246 /* LKDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBUtils.m; sourceTree = "<group>"; };
 		00961CF017F1721500863246 /* NSObject+LKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKModel.h"; sourceTree = "<group>"; };
 		00961CF117F1721500863246 /* NSObject+LKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKModel.m"; sourceTree = "<group>"; };
+		00971B5F180795D300E3E3F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		009775E017B77AD600333ED2 /* RbTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RbTabBarItem.h; sourceTree = "<group>"; };
 		009775E117B77AD600333ED2 /* RbTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RbTabBarItem.m; sourceTree = "<group>"; };
 		0099C85C17A40C3C001516C2 /* 掌观中国针织.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌观中国针织.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -894,6 +896,7 @@
 				0099C88117A40D48001516C2 /* Controllers */,
 				0099C88017A40D40001516C2 /* Models */,
 				0099C87F17A40D39001516C2 /* Views */,
+				00971B5F180795D300E3E3F9 /* Images.xcassets */,
 				0099C86617A40C3C001516C2 /* Supporting Files */,
 			);
 			path = Spinning;
@@ -1568,6 +1571,7 @@
 				0001223017CF4A2E000FFA2E /* arrow.png in Resources */,
 				00A09C9617F45E3900B99367 /* UMSCommentDetailController.xib in Resources */,
 				0001223117CF4A2E000FFA2E /* arrow@2x.png in Resources */,
+				00971B60180795D300E3E3F9 /* Images.xcassets in Resources */,
 				0001223817CF611C000FFA2E /* img_defaul.png in Resources */,
 				0001223A17CF6C2D000FFA2E /* NewsListTemplate1.json in Resources */,
 				0001223C17CF6C3B000FFA2E /* NewsListTemplate2.json in Resources */,
@@ -1862,6 +1866,7 @@
 		0099C87A17A40C3D001516C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI,
@@ -1890,6 +1895,7 @@
 		0099C87B17A40C3D001516C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI,
