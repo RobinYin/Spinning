@@ -194,7 +194,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     NSString *msg = nil;
     CheckinHttpCmd *httpcmd = (CheckinHttpCmd *)cmd;
     if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
+        msg = [NSString stringWithFormat:@"网络错误"];
     }else
     {
         msg = httpcmd.model.msg;
@@ -211,7 +211,12 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
         [self.navigationController pushViewController:viewController animated:YES];
     }else
     {
-        [self.view makeToast:msg];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:[NSString stringWithFormat:@"%@!",msg]
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
     }
 }
 

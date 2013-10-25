@@ -251,7 +251,14 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
         [self onRegisterData];
     }else
     {
-        [self.view makeToast:@"输入的注册信息不全。"];
+        
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:@"输入的注册信息不全！"
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
+        
     }
 }
 #pragma mark-
@@ -306,7 +313,12 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
             [self onRegisterData];
         }else
         {
-            [self.view makeToast:@"输入的注册信息不全。"];
+            [YRDropdownView showDropdownInView:self.view
+                                         title:@"提示！"
+                                        detail:@"输入的注册信息不全！"
+                                         image:[UIImage imageNamed:@"dropdown-alert"]
+                                      animated:YES
+                                     hideAfter:3];
         }
     }else
     {
@@ -344,7 +356,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     NSString *msg = nil;
     RegisterHttpCmd *httpcmd = (RegisterHttpCmd *)cmd;
     if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
+        msg = [NSString stringWithFormat:@"网络错误"];
     }else
     {
         if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
@@ -354,7 +366,14 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
             msg = httpcmd.model.msg;
         }
     }
-    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+//    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    
+    [YRDropdownView showDropdownInView:self.view
+                                 title:@"提示！"
+                                detail:[NSString stringWithFormat:@"%@!",msg]
+                                 image:[UIImage imageNamed:@"dropdown-alert"]
+                              animated:YES
+                             hideAfter:3];
     
 }
 

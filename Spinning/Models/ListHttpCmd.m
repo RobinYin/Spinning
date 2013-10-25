@@ -81,6 +81,8 @@
         return;
     }
     
+    NSLog(@"%@",dictionary);
+    
     self.time = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyTime]);
     self.title = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyTitle]);
     self.source = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeySource]);
@@ -89,13 +91,28 @@
     
     if (self.content) {
         self.content = [self.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        self.content = [self.content stringByReplacingOccurrencesOfString:@"&quot;" withString:@""];
+        self.content = [self filterHtmlTag:self.content];
     }
     
     self.mid = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyId]);
     self.articleurl = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyArticleurl]);
     self.totalcount = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyTotalcount]);
     
+}
+
+- (NSString *)filterHtmlTag:(NSString *)originHtmlStr{
+    NSString *result = nil;
+    NSRange arrowTagStartRange = [originHtmlStr rangeOfString:@"["];
+    if (arrowTagStartRange.location != NSNotFound) {
+        NSRange arrowTagEndRange = [originHtmlStr rangeOfString:@"]"];
+        result = [originHtmlStr stringByReplacingCharactersInRange:NSMakeRange(arrowTagStartRange.location, arrowTagEndRange.location - arrowTagStartRange.location + 1) withString:@""];
+        return [self filterHtmlTag:result];
+    }else{
+        result = [originHtmlStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        result = [originHtmlStr stringByReplacingOccurrencesOfString:@"&quot;" withString:@""];;
+        result = [originHtmlStr stringByReplacingOccurrencesOfString:@"—" withString:@""];;
+    }
+    return result;
 }
 
 

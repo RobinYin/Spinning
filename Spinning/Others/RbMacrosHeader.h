@@ -84,9 +84,9 @@
 #pragma mark - Global constants ---------------------------------------------------------------------------------------------
 
 #define NavigationHorizonGap 0
-#define NavigationVerticalGap 2
-#define NavigationBtnWith 40
-#define NavigationBtnheight 40
+#define NavigationVerticalGap 4
+#define NavigationBtnWith 36
+#define NavigationBtnheight 36
 #define NavigationHeight 44
 #define TabBarHeight 50
 #define TagBegin 1000

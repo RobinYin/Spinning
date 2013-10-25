@@ -83,7 +83,14 @@
     [globalHelper createTableWithModelClass:[ListModel class]];
     [globalHelper insertToDB:data];
     
-    [self.view makeToast:@"收藏成功！"];
+//    [self.view makeToast:@"收藏成功！"];
+    
+    [YRDropdownView showDropdownInView:self.view
+                                 title:@"提示！"
+                                detail:@"收藏成功！"
+                                 image:[UIImage imageNamed:@"dropdown-alert"]
+                              animated:YES
+                             hideAfter:3];
 }
 
 - (void)onRightBtn:(id)sender

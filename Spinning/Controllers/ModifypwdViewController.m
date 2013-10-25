@@ -134,7 +134,12 @@
         [self onModifyData];
     }else
     {
-        [self.view makeToast:@"输入的信息不能为空。"];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:@"输入的信息不能为空!"
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
     }
 }
 
@@ -162,7 +167,7 @@
     NSString *msg = nil;
     ModifypwdHttpCmd *httpcmd = (ModifypwdHttpCmd *)cmd;
     if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
+        msg = [NSString stringWithFormat:@"网络错误"];
     }else
     {
         if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
@@ -172,7 +177,12 @@
             msg = httpcmd.model.msg;
         }
     }
-    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    [YRDropdownView showDropdownInView:self.view
+                                 title:@"提示！"
+                                detail:[NSString stringWithFormat:@"%@!",msg]
+                                 image:[UIImage imageNamed:@"dropdown-alert"]
+                              animated:YES
+                             hideAfter:3];
     if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
         [RbUser sharedInstance].password = md5(self.passwordTextField.text);
         [self.navigationController popViewControllerAnimated:YES];
@@ -195,7 +205,12 @@
         [self onModifyData];
     }else
     {
-        [self.view makeToast:@"输入的信息不能为空。"];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:@"输入的信息不能为空!"
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
     }
     return YES;
 }

@@ -64,7 +64,7 @@
         [self configureOriginData];
         
         [UIAlertView alertViewWithTitle:@"您还没有登录!"
-                                message:@"请先登录后，才能进行评论操作。"
+                                message:@"请先登录后，才能查看通知。"
                       cancelButtonTitle:@"取消"
                       otherButtonTitles:[NSArray arrayWithObjects:@"登录", nil]
                               onDismiss:^(int buttonIndex)
@@ -227,7 +227,7 @@
     NSString *msg = nil;
     
     if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
+        msg = [NSString stringWithFormat:@"网络错误"];
     }else
     {
         if ([[httpcmd.errorDict objectForKey:kSpinningHttpKeyCode] isEqualToString:kSpinningHttpKeyOk]) {
@@ -238,7 +238,14 @@
         }
     }
     if (msg) {
-        [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+        if (![msg isEqualToString: @"您尚未登录"]) {
+            [YRDropdownView showDropdownInView:self.view
+                                         title:@"提示！"
+                                        detail:[NSString stringWithFormat:@"%@!",msg]
+                                         image:[UIImage imageNamed:@"dropdown-alert"]
+                                      animated:YES
+                                     hideAfter:3];
+        }
     }
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];
     if ([self.cursor isEqualToString:@"0"]) {

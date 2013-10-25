@@ -102,7 +102,12 @@
         [self onFeedbackData];
     }else
     {
-        [self.view makeToast:@"输入的反馈信息不能为空。"];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:[NSString stringWithFormat:@"输入的反馈信息不能为空!"]
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
     }
 }
 
@@ -128,7 +133,7 @@
     NSString *msg = nil;
     FeedbackHttpCmd *httpcmd = (FeedbackHttpCmd *)cmd;
     if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
+        msg = [NSString stringWithFormat:@"网络错误"];
     }else
     {
         if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
@@ -138,7 +143,12 @@
             msg = httpcmd.model.msg;
         }
     }
-    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    [YRDropdownView showDropdownInView:self.view
+                                 title:@"提示！"
+                                detail:[NSString stringWithFormat:@"%@!",msg]
+                                 image:[UIImage imageNamed:@"dropdown-alert"]
+                              animated:YES
+                             hideAfter:3];
 
 }
 
@@ -157,7 +167,19 @@
         [self onFeedbackData];
     }else
     {
-        [self.view makeToast:@"输入的反馈信息不能为空。"];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:@"输入的反馈信息不能为空!"
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
+        
+        //        [YRDropdownView showDropdownInView:self.view
+        //                                     title:@"提示！"
+        //                                    detail:[NSString stringWithFormat:@"%@!",msg]
+        //                                     image:[UIImage imageNamed:@"dropdown-alert"]
+        //                                  animated:YES
+        //                                 hideAfter:3];
     }
     return YES;
 }

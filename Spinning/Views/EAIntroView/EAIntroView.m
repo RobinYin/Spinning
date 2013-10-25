@@ -71,20 +71,20 @@
 }
 
 - (void)buildBackgroundImage {
-    self.bgImageView = [[UIImageView alloc] initWithFrame:self.frame];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - 20)];
     self.bgImageView.backgroundColor = [UIColor clearColor];
     self.bgImageView.contentMode = UIViewContentModeScaleToFill;
     self.bgImageView.autoresizesSubviews = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self addSubview:self.bgImageView];
     
-    self.pageBgBack = [[UIImageView alloc] initWithFrame:self.frame];
+    self.pageBgBack = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - 20)];
     self.pageBgBack.backgroundColor = [UIColor clearColor];
     self.pageBgBack.contentMode = UIViewContentModeScaleToFill;
     self.pageBgBack.autoresizesSubviews = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.pageBgBack.alpha = 0;
     [self addSubview:self.pageBgBack];
     
-    self.pageBgFront = [[UIImageView alloc] initWithFrame:self.frame];
+    self.pageBgFront = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - 20)];
     self.pageBgFront.backgroundColor = [UIColor clearColor];
     self.pageBgFront.contentMode = UIViewContentModeScaleToFill;
     self.pageBgFront.autoresizesSubviews = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -94,7 +94,7 @@
 
 - (void)buildScrollViewWithFrame:(CGRect)frame {
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - 20)];
     
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;

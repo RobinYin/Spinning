@@ -79,7 +79,12 @@
          [globalHelper createTableWithModelClass:[ListModel class]];
          [globalHelper deleteToDB:data];
          
-         [self.view makeToast:@"删除成功！"];
+         [YRDropdownView showDropdownInView:self.view
+                                      title:@"提示！"
+                                     detail:@"删除成功!"
+                                      image:[UIImage imageNamed:@"dropdown-alert"]
+                                   animated:YES
+                                  hideAfter:3];
          
          [self.navigationController popViewControllerAnimated:YES];
      }

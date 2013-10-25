@@ -304,7 +304,7 @@
     
     
     
-    EAIntroView *intro = [[[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2,page3]]autorelease];
+    EAIntroView *intro = [[[EAIntroView alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth, ScreenHeight) andPages:@[page1,page2,page3]]autorelease];
     
     [intro setDelegate:self];
     [intro showInView:self.window animateDuration:0.0];

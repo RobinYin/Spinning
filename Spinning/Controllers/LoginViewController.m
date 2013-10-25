@@ -117,7 +117,13 @@
         [self onLoginData];
     }else
     {
-        [self.view makeToast:@"输入的反馈信息不能为空。"];
+//        [self.view makeToast:@"输入的反馈信息不能为空。"];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:@"输入的反馈信息不能为空！"
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
     }
 }
 
@@ -144,7 +150,7 @@
     NSString *msg = nil;
     LoginHttpCmd *httpcmd = (LoginHttpCmd *)cmd;
     if (error) {
-        msg = [NSString stringWithFormat:@"网络错误！"];
+        msg = [NSString stringWithFormat:@"网络错误"];
     }else
     {
         if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
@@ -154,7 +160,12 @@
             msg = httpcmd.model.msg;
         }
     }
-    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
+    [YRDropdownView showDropdownInView:self.view
+                                 title:@"提示！"
+                                detail:[NSString stringWithFormat:@"%@!",msg]
+                                 image:[UIImage imageNamed:@"dropdown-alert"]
+                              animated:YES
+                             hideAfter:3];
     if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
          [RbUser sharedInstance].password = md5(self.passwordTextField.text);
         [self.navigationController popViewControllerAnimated:YES];
@@ -177,7 +188,12 @@
         [self onLoginData];
     }else
     {
-        [self.view makeToast:@"输入的反馈信息不能为空。"];
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"提示！"
+                                    detail:@"输入的反馈信息不能为空!"
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:3];
     }
     return YES;
 }
