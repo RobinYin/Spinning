@@ -16,6 +16,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 @interface CheckActionViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,RbHttpDelegate>
 @property (nonatomic, retain)UITableView *tableView;
 @property (nonatomic, retain)NSMutableArray *arrayCurrent;
+@property (nonatomic, retain)NSMutableArray *userArray;
 @property (nonatomic, retain)RbHttpCmd *httpCmd;
 
 @property (nonatomic, retain) NSString *realname;
@@ -30,6 +31,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 
 @synthesize tableView = _tableView;
 @synthesize arrayCurrent = _arrayCurrent;
+@synthesize userArray = _userArray;
 @synthesize meetingcode = _meetingcode;
 @synthesize httpCmd = _httpCmd;
 
@@ -52,7 +54,6 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.meetingcode = @"ckia13091013900636";
     [self configureOriginData];
     [self configureAllViews];
     [self onGetData];
@@ -117,12 +118,20 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 {
     NSMutableArray *array = [NSMutableArray arrayWithArray:[self onRegisterListJson]];
     self.arrayCurrent = array;
+    
+    
+    NSMutableArray *subArray = [NSMutableArray arrayWithObjects:[RbUser sharedInstance].realname,[RbUser sharedInstance].position,[RbUser sharedInstance].company,[RbUser sharedInstance].address,[RbUser sharedInstance].usercell,[RbUser sharedInstance].email, nil];
+    
+    self.userArray = subArray;
     [self.tableView reloadData];
 }
 - (void)configureOriginData
 {
     NSMutableArray *subArray = [NSMutableArray array];
     self.arrayCurrent = subArray;
+    
+    NSMutableArray *array = [NSMutableArray array];
+    self.userArray = array;
 }
 
 
@@ -216,7 +225,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
                                     detail:[NSString stringWithFormat:@"%@!",msg]
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
+                                 hideAfter:TipTime];
     }
 }
 
@@ -249,6 +258,10 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     if ([self.arrayCurrent count]) {
         cell.textLabel.text = [[self.arrayCurrent objectAtIndex:indexPath.row] objectForKey:kSpinningHttpKeyTitle];
         cell.textField.placeholder = [[self.arrayCurrent objectAtIndex:indexPath.row] objectForKey:kSpinningHttpKeyMsg];
+        
+        if ([self.userArray count]) {
+        cell.textField.text = [self.userArray objectAtIndex:indexPath.row];
+        }
     }
     cell.textField.delegate = self;
     if (indexPath.row == [self.arrayCurrent count] -1) {

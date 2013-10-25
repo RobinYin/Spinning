@@ -45,9 +45,6 @@
 {
     [super viewDidAppear:animated];
     [self onGetCount];
-//    if (self.tableView) {
-//        [self.tableView reloadData];
-//    }
 }
 
 - (void)viewDidLoad
@@ -159,13 +156,14 @@
             [cell.cxtLabel setText:model.content];
             [cell.cxtImgView setImageWithURL:[NSURL URLWithString:[model.icon stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"img_defaul"]];
             [cell.subLabel setText:[NSString stringWithFormat:@"已有%@人参与评论",model.totalcount]];
-            [cell.badgeView setBadgeString:@""];
+//            [cell.badgeView setBadgeString:@""];
             NSLog(@"totalcount = %@",model.totalcount);
             
             
             [globalHelper createTableWithModelClass:[CommentcountModel class]];
             CommentcountModel *cmdl = [[[CommentcountModel alloc]init]autorelease];
-            cmdl.mid = model.mid;
+            cmdl.mid = [NSString stringWithFormat:@"%@",model.mid];
+//            cmdl.mid = model.mid;
             NSString *srch = [NSString stringWithFormat:@"mid = %@",cmdl.mid];
             NSMutableArray* arrc = [CommentcountModel searchWithWhere:srch orderBy:nil offset:0 count:NSIntegerMax];
             if ([arrc count]) {
@@ -274,7 +272,7 @@
                                         detail:[NSString stringWithFormat:@"%@!",msg]
                                          image:[UIImage imageNamed:@"dropdown-alert"]
                                       animated:YES
-                                     hideAfter:3];
+                                     hideAfter:TipTime];
         }
         
         NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];

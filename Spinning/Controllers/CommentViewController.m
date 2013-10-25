@@ -398,6 +398,7 @@
     RbSafeRelease(_mid);
     RbSafeRelease(_cursor);
     RbSafeRelease(_httpCmd);
+    RbSafeRelease(_remarkCmd);
     RbSafeRelease(_tableView);
     RbSafeRelease(_arrayCurrent);
     RbSuperDealoc;

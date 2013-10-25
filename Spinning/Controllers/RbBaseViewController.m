@@ -68,7 +68,7 @@
     
     UIButton *subackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     subackBtn.backgroundColor = [UIColor clearColor];
-    subackBtn.frame = CGRectMake(NavigationHorizonGap + NavigationBtnWith+NavigationHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
+    subackBtn.frame = CGRectMake(NavigationHorizonGap + NavigationBtnWith+NavigationSubHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
     [subackBtn addTarget:self action:@selector(onSubLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     [navbgImageView addSubview:subackBtn];
     self.subleftBtn = subackBtn;
@@ -83,7 +83,7 @@
     
     UIButton *subnextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     subnextBtn.backgroundColor = [UIColor clearColor];
-    subnextBtn.frame = CGRectMake(ScreenWidth - 2*NavigationBtnWith -2*NavigationHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
+    subnextBtn.frame = CGRectMake(ScreenWidth - 2*NavigationBtnWith -NavigationHorizonGap -NavigationSubHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
     [subnextBtn addTarget:self action:@selector(onSubRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     [navbgImageView addSubview:subnextBtn];
     self.subrightBtn = subnextBtn;

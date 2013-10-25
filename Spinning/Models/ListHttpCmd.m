@@ -90,6 +90,7 @@
     self.content = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyContent]);
     
     if (self.content) {
+        self.content = [self.content stringByReplacingOccurrencesOfString:@"&quot;" withString:@""];
         self.content = [self.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         self.content = [self filterHtmlTag:self.content];
     }

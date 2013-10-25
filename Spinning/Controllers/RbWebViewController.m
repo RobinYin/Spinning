@@ -90,7 +90,7 @@
                                 detail:@"收藏成功！"
                                  image:[UIImage imageNamed:@"dropdown-alert"]
                               animated:YES
-                             hideAfter:3];
+                             hideAfter:TipTime];
 }
 
 - (void)onRightBtn:(id)sender

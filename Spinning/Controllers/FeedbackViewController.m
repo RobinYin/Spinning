@@ -107,7 +107,7 @@
                                     detail:[NSString stringWithFormat:@"输入的反馈信息不能为空!"]
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
+                                 hideAfter:TipTime];
     }
 }
 
@@ -148,7 +148,7 @@
                                 detail:[NSString stringWithFormat:@"%@!",msg]
                                  image:[UIImage imageNamed:@"dropdown-alert"]
                               animated:YES
-                             hideAfter:3];
+                             hideAfter:TipTime];
 
 }
 
@@ -172,14 +172,8 @@
                                     detail:@"输入的反馈信息不能为空!"
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
-        
-        //        [YRDropdownView showDropdownInView:self.view
-        //                                     title:@"提示！"
-        //                                    detail:[NSString stringWithFormat:@"%@!",msg]
-        //                                     image:[UIImage imageNamed:@"dropdown-alert"]
-        //                                  animated:YES
-        //                                 hideAfter:3];
+                                 hideAfter:TipTime];
+
     }
     return YES;
 }

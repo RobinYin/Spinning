@@ -229,7 +229,7 @@
                                     detail:[NSString stringWithFormat:@"%@!",msg]
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
+                                 hideAfter:TipTime];
     }
     
     NSMutableArray *array = [NSMutableArray arrayWithArray:httpcmd.lists];

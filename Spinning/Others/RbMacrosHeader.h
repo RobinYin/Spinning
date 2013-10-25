@@ -83,7 +83,8 @@
 
 #pragma mark - Global constants ---------------------------------------------------------------------------------------------
 
-#define NavigationHorizonGap 0
+#define NavigationHorizonGap 4
+#define NavigationSubHorizonGap 0
 #define NavigationVerticalGap 4
 #define NavigationBtnWith 36
 #define NavigationBtnheight 36
@@ -161,4 +162,6 @@
 
 #pragma mark - UMeng constants ---------------------------------------------------------------------------------------------
 #define UmengAppkey @"5211818556240bc9ee01db2f"
+
+#define TipTime 1.0
 #endif

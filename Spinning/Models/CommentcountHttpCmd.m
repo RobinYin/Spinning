@@ -54,7 +54,7 @@
 }
 +(NSArray *)getPrimaryKeyUnionArray
 {
-    return @[@"mid",@"count"];
+    return @[@"mid"];
 }
 
 +(NSString *)getTableName

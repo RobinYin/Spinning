@@ -139,7 +139,7 @@
                                     detail:@"输入的信息不能为空!"
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
+                                 hideAfter:TipTime];
     }
 }
 
@@ -182,7 +182,7 @@
                                 detail:[NSString stringWithFormat:@"%@!",msg]
                                  image:[UIImage imageNamed:@"dropdown-alert"]
                               animated:YES
-                             hideAfter:3];
+                             hideAfter:TipTime];
     if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
         [RbUser sharedInstance].password = md5(self.passwordTextField.text);
         [self.navigationController popViewControllerAnimated:YES];
@@ -210,7 +210,7 @@
                                     detail:@"输入的信息不能为空!"
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
+                                 hideAfter:TipTime];
     }
     return YES;
 }

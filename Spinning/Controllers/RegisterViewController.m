@@ -257,7 +257,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
                                     detail:@"输入的注册信息不全！"
                                      image:[UIImage imageNamed:@"dropdown-alert"]
                                   animated:YES
-                                 hideAfter:3];
+                                 hideAfter:TipTime];
         
     }
 }
@@ -318,7 +318,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
                                         detail:@"输入的注册信息不全！"
                                          image:[UIImage imageNamed:@"dropdown-alert"]
                                       animated:YES
-                                     hideAfter:3];
+                                     hideAfter:TipTime];
         }
     }else
     {
@@ -373,7 +373,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
                                 detail:[NSString stringWithFormat:@"%@!",msg]
                                  image:[UIImage imageNamed:@"dropdown-alert"]
                               animated:YES
-                             hideAfter:3];
+                             hideAfter:TipTime];
     
 }
 

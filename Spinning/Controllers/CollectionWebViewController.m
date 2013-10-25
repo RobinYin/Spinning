@@ -84,7 +84,7 @@
                                      detail:@"删除成功!"
                                       image:[UIImage imageNamed:@"dropdown-alert"]
                                    animated:YES
-                                  hideAfter:3];
+                                  hideAfter:TipTime];
          
          [self.navigationController popViewControllerAnimated:YES];
      }
