@@ -1840,6 +1840,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1871,6 +1872,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1889,6 +1891,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI,
@@ -1909,6 +1912,7 @@
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0,
 				);
 				PRODUCT_NAME = "掌观中国针织";
+				PROVISIONING_PROFILE = "C44B166D-B5CA-4781-9DF1-B5F5D9643DC8";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1918,6 +1922,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI,
@@ -1938,6 +1944,7 @@
 					/Users/Robin/Desktop/Working/RepoSpring/Spinning/Library/UMSocial_Sdk_3.0,
 				);
 				PRODUCT_NAME = "掌观中国针织";
+				PROVISIONING_PROFILE = "C44B166D-B5CA-4781-9DF1-B5F5D9643DC8";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
