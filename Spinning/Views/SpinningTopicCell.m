@@ -29,7 +29,7 @@
 //    [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 33, TopicCellImgWith, 64)];
     [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 23, TopicCellImgWith, 64)];
     [self.cxtImgView setFrame:CGRectMake(TopicCellGap, TopicCellGap, TopicCellImgWith, TopicCellImgheight)];
-    [self.cxtImgView setImage:[UIImage imageNamed:@"img_defaul"]];
+    [self.cxtImgView setImage:[UIImage imageNamed:@"cell_img"]];
 //    [self.seperateImgView setFrame:CGRectMake(10, TopicCellGap +TopicCellImgheight + 28, ScreenWidth, 1)];
     
     _subLabel = [[UILabel alloc] initWithFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 90, TopicCellImgWith, 16)];

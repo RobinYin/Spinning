@@ -9,6 +9,7 @@
 #ifndef Spinning_RbConfigureHeader_h
 #define Spinning_RbConfigureHeader_h
 
+#import "UITableViewCell+iOS7GroundViewCell.h"
 #import "YRDropdownView.h"
 #import "UMSocial.h"
 #import "LKDBHelper.h"

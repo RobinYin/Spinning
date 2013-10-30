@@ -275,6 +275,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    [cell groundToCellInTableView:tableView atIndexPath:indexPath];
     return cell;
 }
 

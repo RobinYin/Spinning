@@ -186,6 +186,8 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    [cell groundToCellInTableView:tableView atIndexPath:indexPath];
+    
     return cell;
 }
 

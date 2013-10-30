@@ -83,11 +83,14 @@
 
 #pragma mark - Global constants ---------------------------------------------------------------------------------------------
 
-#define NavigationHorizonGap 4
+#define kGroudCellRadius (5)
+#define kGroudCellGap (10)
+
+#define NavigationHorizonGap 7
 #define NavigationSubHorizonGap 0
-#define NavigationVerticalGap 4
-#define NavigationBtnWith 36
-#define NavigationBtnheight 36
+#define NavigationVerticalGap 7
+#define NavigationBtnWith 30
+#define NavigationBtnheight 30
 #define NavigationHeight 44
 #define TabBarHeight 50
 #define TagBegin 1000

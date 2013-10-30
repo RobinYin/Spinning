@@ -140,7 +140,7 @@
             [cell.textLabel setText:[dic objectForKey:@"title"]];
         }
     }
-    
+    [cell groundToCellInTableView:tableView atIndexPath:indexPath];
     return cell;
 }
 

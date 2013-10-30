@@ -53,6 +53,9 @@
 		00482CEF17E9885E002B3D90 /* ModifypwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CEE17E9885D002B3D90 /* ModifypwdViewController.m */; };
 		00482CF217E9891F002B3D90 /* ModifypwdHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CF117E9891E002B3D90 /* ModifypwdHttpCmd.m */; };
 		00482CF517E99723002B3D90 /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00482CF417E99722002B3D90 /* CheckDetailViewController.m */; };
+		0048B3691820AD8E0019ABBB /* cell_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B3671820AD8E0019ABBB /* cell_img.png */; };
+		0048B36A1820AD8E0019ABBB /* cell_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0048B3681820AD8E0019ABBB /* cell_img@2x.png */; };
+		0048B36D182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0048B36C182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.m */; };
 		0066B62C17FDBF79003133B3 /* HistoryHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */; };
 		0066B63017FDDAE5003133B3 /* CommentcountHttpCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066B62F17FDDAE5003133B3 /* CommentcountHttpCmd.m */; };
 		008FCFE717D0C0D700AF7201 /* MoreListTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 008FCFE617D0C0D700AF7201 /* MoreListTemplate.json */; };
@@ -248,11 +251,6 @@
 		00A1C3F817F55F460060D916 /* NotifyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A1C3F717F55F460060D916 /* NotifyWebViewController.m */; };
 		00A1C40817F56FC10060D916 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A1C40517F56FC10060D916 /* EAIntroPage.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		00A1C40917F56FC10060D916 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A1C40717F56FC10060D916 /* EAIntroView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		00A1C41917F571A70060D916 /* tutorial_background_00@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00A1C41417F571A70060D916 /* tutorial_background_00@2x.jpg */; };
-		00A1C41A17F571A70060D916 /* tutorial_background_01@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00A1C41517F571A70060D916 /* tutorial_background_01@2x.jpg */; };
-		00A1C41B17F571A70060D916 /* tutorial_background_02@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00A1C41617F571A70060D916 /* tutorial_background_02@2x.jpg */; };
-		00A1C41C17F571A70060D916 /* tutorial_background_03@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00A1C41717F571A70060D916 /* tutorial_background_03@2x.jpg */; };
-		00A1C41D17F571A70060D916 /* tutorial_background_04@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00A1C41817F571A70060D916 /* tutorial_background_04@2x.jpg */; };
 		00A26DBB17E820CA00DE46E5 /* TopicWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */; };
 		00A26DBE17E8237900DE46E5 /* SpinningCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DBD17E8237800DE46E5 /* SpinningCommentCell.m */; };
 		00A26DC117E82F9F00DE46E5 /* GrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A26DC017E82F9E00DE46E5 /* GrowingTextView.m */; };
@@ -363,6 +361,10 @@
 		00482CF117E9891E002B3D90 /* ModifypwdHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifypwdHttpCmd.m; sourceTree = "<group>"; };
 		00482CF317E99720002B3D90 /* CheckDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailViewController.h; sourceTree = "<group>"; };
 		00482CF417E99722002B3D90 /* CheckDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailViewController.m; sourceTree = "<group>"; };
+		0048B3671820AD8E0019ABBB /* cell_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_img.png; sourceTree = "<group>"; };
+		0048B3681820AD8E0019ABBB /* cell_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_img@2x.png"; sourceTree = "<group>"; };
+		0048B36B182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+iOS7GroundViewCell.h"; sourceTree = "<group>"; };
+		0048B36C182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+iOS7GroundViewCell.m"; sourceTree = "<group>"; };
 		0066B62A17FDBF79003133B3 /* HistoryHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryHttpCmd.h; sourceTree = "<group>"; };
 		0066B62B17FDBF79003133B3 /* HistoryHttpCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryHttpCmd.m; sourceTree = "<group>"; };
 		0066B62E17FDDAE5003133B3 /* CommentcountHttpCmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentcountHttpCmd.h; sourceTree = "<group>"; };
@@ -689,11 +691,6 @@
 		00A1C40517F56FC10060D916 /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
 		00A1C40617F56FC10060D916 /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
 		00A1C40717F56FC10060D916 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
-		00A1C41417F571A70060D916 /* tutorial_background_00@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_00@2x.jpg"; sourceTree = "<group>"; };
-		00A1C41517F571A70060D916 /* tutorial_background_01@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_01@2x.jpg"; sourceTree = "<group>"; };
-		00A1C41617F571A70060D916 /* tutorial_background_02@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_02@2x.jpg"; sourceTree = "<group>"; };
-		00A1C41717F571A70060D916 /* tutorial_background_03@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_03@2x.jpg"; sourceTree = "<group>"; };
-		00A1C41817F571A70060D916 /* tutorial_background_04@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_04@2x.jpg"; sourceTree = "<group>"; };
 		00A26DB917E820CA00DE46E5 /* TopicWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicWebViewController.h; sourceTree = "<group>"; };
 		00A26DBA17E820CA00DE46E5 /* TopicWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicWebViewController.m; sourceTree = "<group>"; };
 		00A26DBC17E8237800DE46E5 /* SpinningCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinningCommentCell.h; sourceTree = "<group>"; };
@@ -942,6 +939,8 @@
 			isa = PBXGroup;
 			children = (
 				00A1C40317F56FC10060D916 /* EAIntroView */,
+				0048B36B182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.h */,
+				0048B36C182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.m */,
 				00A26DC217E82FBC00DE46E5 /* TextViewInternal.h */,
 				00A26DC317E82FBC00DE46E5 /* TextViewInternal.m */,
 				00A26DBF17E82F9E00DE46E5 /* GrowingTextView.h */,
@@ -1295,15 +1294,12 @@
 		0099CA1417A42AFC001516C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0048B3671820AD8E0019ABBB /* cell_img.png */,
+				0048B3681820AD8E0019ABBB /* cell_img@2x.png */,
 				009AFA8618054929009C8997 /* help001.png */,
 				009AFA8718054929009C8997 /* help002.png */,
 				009AFA8818054929009C8997 /* help003.png */,
 				00CB4B3017F8063D0085881E /* divider.png */,
-				00A1C41417F571A70060D916 /* tutorial_background_00@2x.jpg */,
-				00A1C41517F571A70060D916 /* tutorial_background_01@2x.jpg */,
-				00A1C41617F571A70060D916 /* tutorial_background_02@2x.jpg */,
-				00A1C41717F571A70060D916 /* tutorial_background_03@2x.jpg */,
-				00A1C41817F571A70060D916 /* tutorial_background_04@2x.jpg */,
 				00A26DC717E8325C00DE46E5 /* ok_Btn.png */,
 				00A26DC817E8325C00DE46E5 /* ok_Btn@2x.png */,
 				0099E84B17E44AB700BDEB91 /* btn_ failure.png */,
@@ -1550,11 +1546,9 @@
 				0099C87417A40C3D001516C2 /* Default@2x.png in Resources */,
 				0099C87617A40C3D001516C2 /* Default-568h@2x.png in Resources */,
 				0099C9E717A41622001516C2 /* blackArrow.png in Resources */,
-				00A1C41D17F571A70060D916 /* tutorial_background_04@2x.jpg in Resources */,
 				0099C9E817A41622001516C2 /* blackArrow@2x.png in Resources */,
 				00A09C9817F45E3900B99367 /* UMSCommentInputControlleriPad.xib in Resources */,
 				0099C9E917A41622001516C2 /* blueArrow.png in Resources */,
-				00A1C41B17F571A70060D916 /* tutorial_background_02@2x.jpg in Resources */,
 				0099C9EA17A41622001516C2 /* blueArrow@2x.png in Resources */,
 				0099C9EB17A41622001516C2 /* blueArrowDown.png in Resources */,
 				0099C9EC17A41622001516C2 /* blueArrowDown@2x.png in Resources */,
@@ -1562,7 +1556,7 @@
 				0099C9F017A41622001516C2 /* grayArrow.png in Resources */,
 				0099C9F117A41622001516C2 /* grayArrow@2x.png in Resources */,
 				009AFA8918054929009C8997 /* help001.png in Resources */,
-				00A1C41C17F571A70060D916 /* tutorial_background_03@2x.jpg in Resources */,
+				0048B3691820AD8E0019ABBB /* cell_img.png in Resources */,
 				0099C9F317A41622001516C2 /* whiteArrow.png in Resources */,
 				0099C9F417A41622001516C2 /* whiteArrow@2x.png in Resources */,
 				0099CA2117A434DC001516C2 /* nav_bg.png in Resources */,
@@ -1583,6 +1577,7 @@
 				003AA2DD17CDD13A00B2689B /* title_bggd.png in Resources */,
 				003AA2DE17CDD13A00B2689B /* title_bght.png in Resources */,
 				003AA2DF17CDD13A00B2689B /* title_bgQD.png in Resources */,
+				0048B36A1820AD8E0019ABBB /* cell_img@2x.png in Resources */,
 				003AA2E017CDD13A00B2689B /* title_bgtz.png in Resources */,
 				003AA2E117CDD13A00B2689B /* title_bgxw.png in Resources */,
 				003AA2E517CDD58500B2689B /* title_bgph.png in Resources */,
@@ -1619,7 +1614,6 @@
 				008FD01017D0D22700AF7201 /* title_btn_edit_pressed.png in Resources */,
 				00A09C9D17F45E3900B99367 /* UMSShareListController.xib in Resources */,
 				008FD01117D0D22700AF7201 /* title_btn_forward_nomal.png in Resources */,
-				00A1C41917F571A70060D916 /* tutorial_background_00@2x.jpg in Resources */,
 				008FD01217D0D22700AF7201 /* title_btn_forward_pressed.png in Resources */,
 				008FD01317D0D22700AF7201 /* title_btn_return_nomal.png in Resources */,
 				00A09C9717F45E3900B99367 /* UMSCommentInputController.xib in Resources */,
@@ -1639,7 +1633,6 @@
 				0099E84F17E44AB700BDEB91 /* btn_ failure.png in Resources */,
 				00A09C9B17F45E3900B99367 /* UMSLoginViewController.xib in Resources */,
 				0099E85017E44AB700BDEB91 /* btn_ing.png in Resources */,
-				00A1C41A17F571A70060D916 /* tutorial_background_01@2x.jpg in Resources */,
 				0099E85117E44AB700BDEB91 /* btn_normal.png in Resources */,
 				0099E85217E44AB700BDEB91 /* btn_ok.png in Resources */,
 				00A09C9C17F45E3900B99367 /* UMSnsAccountViewController.xib in Resources */,
@@ -1742,6 +1735,7 @@
 				00A1C3F117F55DF80060D916 /* NewsWebViewController.m in Sources */,
 				008FCFF317D0C8E800AF7201 /* CheckinViewController.mm in Sources */,
 				00A09CC617F487BA00B99367 /* NewsReadModel5.m in Sources */,
+				0048B36D182104290019ABBB /* UITableViewCell+iOS7GroundViewCell.m in Sources */,
 				008FCFF617D0C8FD00AF7201 /* LoginViewController.m in Sources */,
 				008FCFF917D0C93000AF7201 /* BindViewController.m in Sources */,
 				008FCFFE17D0CF7200AF7201 /* SpinningHistoryCell.m in Sources */,
