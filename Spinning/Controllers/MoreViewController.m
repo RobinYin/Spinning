@@ -136,19 +136,8 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
         [cell.textLabel setTextColor:[UIColor blackColor]];
         [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
-        [cell setBackgroundColor:[UIColor clearColor]];
-        
-//        UIBezierPath *maskPath = [UIBezierPath bezierPath];
-//        
-//        [maskPath moveToPoint:CGPointMake(10, 0)];
-//        [maskPath addLineToPoint:CGPointMake(300, 0)];
-//        [maskPath addLineToPoint:CGPointMake(300, 44)];
-//        [maskPath addLineToPoint:CGPointMake(10, 44)];
-//        [maskPath addLineToPoint:CGPointMake(5, 0)];
-        
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 300, 44)];
-        [view setBackgroundColor:[UIColor whiteColor]];
-        [cell setBackgroundView:view];
+        [cell setBackgroundColor:[UIColor whiteColor]];
+
         
     }
     

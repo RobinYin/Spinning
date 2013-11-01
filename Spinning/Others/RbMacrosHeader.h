@@ -86,11 +86,13 @@
 #define kGroudCellRadius (5)
 #define kGroudCellGap (10)
 
-#define NavigationHorizonGap 7
-#define NavigationSubHorizonGap 0
-#define NavigationVerticalGap 7
-#define NavigationBtnWith 30
-#define NavigationBtnheight 30
+#define NavigationHorizonGap 2
+#define NavigationSubHorizonGap 4
+#define NavigationVerticalGap 10
+#define NavigationBtnWith 24
+#define NavigationBtnheight 24
+#define NavigationLeftBtnheight 22
+#define NavigationLeftVerticalGap 11
 #define NavigationHeight 44
 #define TabBarHeight 50
 #define TagBegin 1000

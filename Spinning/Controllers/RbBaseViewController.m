@@ -61,7 +61,7 @@
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.backgroundColor = [UIColor clearColor];
-    backBtn.frame = CGRectMake(NavigationHorizonGap, StatusHeaderHight + NavigationVerticalGap, NavigationBtnWith, NavigationBtnheight);
+    backBtn.frame = CGRectMake(NavigationHorizonGap, StatusHeaderHight + NavigationLeftVerticalGap, NavigationBtnWith, NavigationLeftBtnheight);
     [backBtn addTarget:self action:@selector(onLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     [navbgImageView addSubview:backBtn];
     self.leftBtn = backBtn;
