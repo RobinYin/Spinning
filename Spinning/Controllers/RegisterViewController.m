@@ -362,15 +362,14 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     }else
     {
         if ([httpcmd.model.code isEqualToString:kSpinningHttpKeyOk]) {
+            [self.navigationController popViewControllerAnimated:YES];
             msg = [NSString stringWithFormat:@"您已经注册成功！"];
         }else
         {
             msg = httpcmd.model.msg;
         }
     }
-//    [self.view makeToast:[NSString stringWithFormat:@"%@",msg]];
-    
-    [YRDropdownView showDropdownInView:self.view
+    [YRDropdownView showDropdownInView: [msg isEqualToString:@"您已经注册成功！"] ?[UIApplication sharedApplication].delegate.window : self.view
                                  title:@"提示！"
                                 detail:[NSString stringWithFormat:@"%@!",msg]
                                  image:[UIImage imageNamed:@"dropdown-alert"]

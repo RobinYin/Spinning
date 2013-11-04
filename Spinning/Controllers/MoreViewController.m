@@ -137,8 +137,6 @@
         [cell.textLabel setTextColor:[UIColor blackColor]];
         [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
         [cell setBackgroundColor:[UIColor whiteColor]];
-
-        
     }
     
     if (self.arrayCurrent) {

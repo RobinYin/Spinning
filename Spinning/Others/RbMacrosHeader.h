@@ -135,9 +135,14 @@
 
 #pragma mark - TopicCell constants ---------------------------------------------------------------------------------------------
 #define TopicCellGap 10
+#define TopicCellImgGap 10
 #define TopicCellImgWith 300
-#define TopicCellImgheight 150
-#define TopicCellHeight 277
+#define TopicCellReimgWith 300
+//#define TopicCellImgWith 300
+//#define TopicCellImgheight 150
+//#define TopicCellHeight 277
+#define TopicCellImgheight 204
+#define TopicCellHeight 331
 
 #pragma mark - LoginView constants ---------------------------------------------------------------------------------------------
 #define LoginViewVerticalGap 20

@@ -164,7 +164,8 @@
     _mainWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth,ScreenHeight - StatusBarHeight - NavigationHeight)];
     _mainWebView.delegate = self;
     _mainWebView.scalesPageToFit = YES;
-//    [_mainWebView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
+    [_mainWebView setBackgroundColor:[UIColor clearColor]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"news_bg"]]];
     [_mainWebView loadRequest:[NSURLRequest requestWithURL:self.URL]];
     [self.view addSubview:_mainWebView];
     [self configureAllViews];

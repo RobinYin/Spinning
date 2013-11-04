@@ -39,6 +39,9 @@
     if (![self.arrayCurrent count]) {
         [self onGetData];
     }
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)viewDidLoad

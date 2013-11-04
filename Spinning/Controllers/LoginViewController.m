@@ -160,7 +160,7 @@
             msg = httpcmd.model.msg;
         }
     }
-    [YRDropdownView showDropdownInView:self.view
+    [YRDropdownView showDropdownInView:[msg isEqualToString:@"登录成功！"] ?[UIApplication sharedApplication].delegate.window : self.view
                                  title:@"提示！"
                                 detail:[NSString stringWithFormat:@"%@!",msg]
                                  image:[UIImage imageNamed:@"dropdown-alert"]

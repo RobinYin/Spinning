@@ -28,7 +28,7 @@
     [self.titleLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap +TopicCellImgheight + 5 , TopicCellImgWith, 18)];
 //    [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 33, TopicCellImgWith, 64)];
     [self.cxtLabel setFrame:CGRectMake(TopicCellGap, TopicCellGap + TopicCellImgheight + 23, TopicCellImgWith, 64)];
-    [self.cxtImgView setFrame:CGRectMake(TopicCellGap, TopicCellGap, TopicCellImgWith, TopicCellImgheight)];
+    [self.cxtImgView setFrame:CGRectMake(TopicCellImgGap, TopicCellGap, TopicCellReimgWith, TopicCellImgheight)];
     [self.cxtImgView setImage:[UIImage imageNamed:@"cell_img"]];
 //    [self.seperateImgView setFrame:CGRectMake(10, TopicCellGap +TopicCellImgheight + 28, ScreenWidth, 1)];
     
