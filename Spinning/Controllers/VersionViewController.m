@@ -69,13 +69,13 @@
 
 - (void)configureOtherView
 {
-    UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(10, 54 + StatusHeaderHight, 300, 20)]autorelease];
+    UILabel *label1 = [[[UILabel alloc] initWithFrame:CGRectMake(10, 54 + StatusHeaderHight, 300, 40)]autorelease];
     [label1 setFont: [UIFont systemFontOfSize:15]];
     [label1 setTextAlignment:UITextAlignmentCenter];
     [label1 setBackgroundColor:[UIColor clearColor]];
     [label1 setNumberOfLines:0];
     [label1 setTextColor:[UIColor whiteColor]];
-    [label1 setText:@"中国针织工业协会CKIAv1.0版本"];
+    [label1 setText:@"掌观中国针织V1.0版本\n中国针织工业协会版权所有"];
     [self.view addSubview:label1];
 }
 

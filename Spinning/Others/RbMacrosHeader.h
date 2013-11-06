@@ -86,13 +86,20 @@
 #define kGroudCellRadius (5)
 #define kGroudCellGap (10)
 
-#define NavigationHorizonGap 2
-#define NavigationSubHorizonGap 4
-#define NavigationVerticalGap 10
-#define NavigationBtnWith 24
-#define NavigationBtnheight 24
-#define NavigationLeftBtnheight 22
-#define NavigationLeftVerticalGap 11
+//#define NavigationHorizonGap 2
+//#define NavigationSubHorizonGap 4
+//#define NavigationVerticalGap 10
+//#define NavigationBtnWith 24
+//#define NavigationBtnheight 24
+//#define NavigationLeftBtnheight 22
+//#define NavigationLeftVerticalGap 11
+#define NavigationHorizonGap 0
+#define NavigationSubHorizonGap -10
+#define NavigationVerticalGap 4
+#define NavigationBtnWith 36
+#define NavigationBtnheight 36
+#define NavigationLeftBtnheight 36
+#define NavigationLeftVerticalGap 4
 #define NavigationHeight 44
 #define TabBarHeight 50
 #define TagBegin 1000
@@ -122,7 +129,7 @@
 
 #pragma mark - NotificationCell constants ---------------------------------------------------------------------------------------------
 #define NotificationCellGap 10
-#define NotificationCellTitleWith 200
+#define NotificationCellTitleWith 300
 #define NotificationCellHeight 72
 
 #pragma mark - MoreCell constants ---------------------------------------------------------------------------------------------

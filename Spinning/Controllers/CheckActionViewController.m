@@ -25,6 +25,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 @property (nonatomic, retain) NSString *company;
 @property (nonatomic, retain) NSString *position;
 @property (nonatomic, retain) NSString *usercell;
+@property (nonatomic, assign) int curIndex;
 @end
 
 @implementation CheckActionViewController
@@ -41,6 +42,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 @synthesize company = _company;
 @synthesize position = _position;
 @synthesize usercell = _usercell;
+@synthesize curIndex = _curIndex;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -121,8 +123,14 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     
     
     NSMutableArray *subArray = [NSMutableArray arrayWithObjects:[RbUser sharedInstance].realname,[RbUser sharedInstance].position,[RbUser sharedInstance].company,[RbUser sharedInstance].address,[RbUser sharedInstance].usercell,[RbUser sharedInstance].email, nil];
-    
     self.userArray = subArray;
+    
+    self.realname =[RbUser sharedInstance].realname;
+    self.position =[RbUser sharedInstance].position;
+    self.company =[RbUser sharedInstance].company;
+    self.address =[RbUser sharedInstance].address;
+    self.usercell =[RbUser sharedInstance].usercell;
+    self.email =[RbUser sharedInstance].email;
     [self.tableView reloadData];
 }
 - (void)configureOriginData
@@ -132,6 +140,8 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     
     NSMutableArray *array = [NSMutableArray array];
     self.userArray = array;
+    
+    _curIndex = -1;
 }
 
 
@@ -275,6 +285,45 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    if (_curIndex !=-1) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                [cell.textField setText:self.realname];
+            }
+                break;
+            case 1:
+            {
+                [cell.textField setText:self.position];
+            }
+                break;
+            case 2:
+            {
+                [cell.textField setText:self.company];
+            }
+                break;
+            case 3:
+            {
+                [cell.textField setText:self.address];
+            }
+                break;
+            case 4:
+            {
+                [cell.textField setText:self.usercell];
+            }
+                break;
+            case 5:
+            {
+                [cell.textField setText:self.email];
+            }
+                break;
+                
+            default:
+                break;
+        }
+
+    }
+    
     [cell groundToCellInTableView:tableView atIndexPath:indexPath];
     return cell;
 }
@@ -345,33 +394,111 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 
 -(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
+    NSString *txt = [[textField text] stringByReplacingCharactersInRange: range withString: string];
+    NSString *text = [NSString stringWithString:txt];
+//	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
 	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
 	
     if( [indexPath row] == kCheckinNameRow )
 	{
-		self.realname = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.realname = nil;
+            }else
+            {
+                self.realname = text;
+            }
+        }else
+        {
+            self.realname = text;
+        }
+        _curIndex =kCheckinNameRow;
+//		self.realname = text;
 	}
 	else if( [indexPath row] == kCheckinPositionRow )
 	{
-		self.position = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.position = nil;
+            }else
+            {
+                self.position = text;
+            }
+        }else
+        {
+            self.position = text;
+        }
+        _curIndex =kCheckinPositionRow;
+//		self.position = text;
 	}
     else if( [indexPath row] == kCheckinCompanyRow )
 	{
-		self.company = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.company = nil;
+            }else
+            {
+                self.company = text;
+            }
+        }else
+        {
+            self.company = text;
+        }
+        _curIndex =kCheckinCompanyRow;
+//		self.company = text;
 	}
     else if( [indexPath row] == kCheckinAddressRow )
 	{
-		self.address = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.address = nil;
+            }else
+            {
+                self.address = text;
+            }
+        }else
+        {
+            self.address = text;
+        }
+        _curIndex =kCheckinAddressRow;
+//		self.address = text;
 	}
     else if( [indexPath row] == kCheckinPhoneRow )
 	{
-		self.usercell = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.usercell = nil;
+            }else
+            {
+                self.usercell = text;
+            }
+        }else
+        {
+            self.usercell = text;
+        }
+        _curIndex =kCheckinPhoneRow;
+//		self.usercell = text;
 	}
     else if( [indexPath row] == kCheckinEmailRow )
 	{
-		self.email = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.email = nil;
+            }else
+            {
+                self.email = text;
+            }
+        }else
+        {
+            self.email = text;
+        }
+        _curIndex =kCheckinEmailRow;
+//		self.email = text;
 	}
+    
+    
+
+
     
 	return YES;
 }

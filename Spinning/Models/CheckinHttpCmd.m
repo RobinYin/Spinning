@@ -38,7 +38,7 @@
     
     self.name = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyName]);
     self.description = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyDescrpition]);
-    self.date = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyData]);
+    self.date = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyDate]);
     self.sponsor = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeySponsor]);
     self.address = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyAddress]);
     self.code = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyCode]);

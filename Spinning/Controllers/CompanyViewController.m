@@ -69,7 +69,7 @@
     [label2 setBackgroundColor:[UIColor clearColor]];
     [label2 setNumberOfLines:0];
     [label2 setTextColor:[UIColor whiteColor]];
-    [label2 setText:@"中国针织工业协会定位于打造专业、即时、客观、准确，具有公信力的协会网络服务平台，紧密围绕针织行业，以新闻聚合、独家专访、热点话题讨论为特色逐步向移动互联延伸，成为针织人每日必读的行业网站。同时，兼具行业协会的网络服务功能，不断完善与会员的远程互动。"];
+    [label2 setText:@"掌观中国针织系中国针织工业协会全力打造的行业服务平台。定位于打造专业、即时、客观、准确，具有公信力的信息服务，以新闻聚合、独家专访、热点话题讨论为特色逐步向移动互联延伸，及时收取协会通知、了解协会动态，成为每位业内人士的掌中宝。"];
     [self.view addSubview:label2];
 }
 - (void)configureNavigationView

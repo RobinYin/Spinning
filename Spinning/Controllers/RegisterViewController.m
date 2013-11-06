@@ -27,6 +27,8 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 @property (nonatomic, retain) NSString *position;
 @property (nonatomic, retain) NSString *usercell;
 
+@property (nonatomic, assign) int curIndex;
+
 @end
 
 @implementation RegisterViewController
@@ -41,6 +43,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 @synthesize company = _company;
 @synthesize position = _position;
 @synthesize usercell = _usercell;
+@synthesize curIndex = _curIndex;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -124,6 +127,8 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 {
     NSMutableArray *subArray = [NSMutableArray array];
     self.arrayCurrent = subArray;
+    
+    _curIndex = -1;
 }
 
 
@@ -172,6 +177,9 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
         cell.textField.placeholder = [[self.arrayCurrent objectAtIndex:indexPath.row] objectForKey:kSpinningHttpKeyMsg];
         if (indexPath.row ==1) {
             [cell.textField setSecureTextEntry:YES];
+        }else
+        {
+            [cell.textField setSecureTextEntry:NO];
         }
     }
     cell.textField.delegate = self;
@@ -186,6 +194,53 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    switch (indexPath.row) {
+        case 0:
+        {
+            [cell.textField setText:self.username];
+        }
+            break;
+        case 1:
+        {
+            [cell.textField setText:self.password];
+        }
+            break;
+        case 2:
+        {
+            [cell.textField setText:self.realname];
+        }
+            break;
+        case 3:
+        {
+            [cell.textField setText:self.position];
+        }
+            break;
+        case 4:
+        {
+            NSLog(@"%@",self.company);
+            [cell.textField setText:self.company];
+        }
+            break;
+        case 5:
+        {
+            [cell.textField setText:self.address];
+        }
+            break;
+        case 6:
+        {
+            [cell.textField setText:self.usercell];
+        }
+            break;
+        case 7:
+        {
+            [cell.textField setText:self.email];
+        }
+            break;
+            
+        default:
+            break;
+    }
+
     [cell groundToCellInTableView:tableView atIndexPath:indexPath];
     
     return cell;
@@ -268,42 +323,139 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 
 -(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
+
+	NSString *txt = [[textField text] stringByReplacingCharactersInRange: range withString: string];
+    NSString *text = [NSString stringWithString:txt];
 	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
-	
+
 	if( [indexPath row] == kAccountRow )
 	{
-		self.username = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.username = nil;
+            }else
+            {
+                self.username = text;
+            }
+        }else
+        {
+            self.username = text;
+        }
+//		self.username = text;
+        _curIndex =kAccountRow;
 	}
 	else if( [indexPath row] == kPasswordRow )
 	{
-		self.password = md5(text);
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.password = nil;
+            }else
+            {
+                self.password = text;
+            }
+        }else
+        {
+            self.password = text;
+        }
+//        self.password = text;
+        _curIndex =kPasswordRow;
 	}
 	else if( [indexPath row] == kNameRow )
 	{
-		self.realname = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.realname = nil;
+            }else
+            {
+                self.realname = text;
+            }
+        }else
+        {
+            self.realname = text;
+        }
+//		self.realname = text;
+        _curIndex =kNameRow;
 	}
 	else if( [indexPath row] == kPositionRow )
 	{
-		self.position = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.position = nil;
+            }else
+            {
+                self.position = text;
+            }
+        }else
+        {
+            self.position = text;
+        }
+//		self.position = text;
+        _curIndex =kPositionRow;
 	}
     else if( [indexPath row] == kCompanyRow )
 	{
-		self.company = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.company = nil;
+            }else
+            {
+                self.company = text;
+            }
+        }else
+        {
+            self.company = text;
+        }
+//		self.company = text;
+        _curIndex =kCompanyRow;
 	}
     else if( [indexPath row] == kAddressRow )
 	{
-		self.address = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.address = nil;
+            }else
+            {
+                self.address = text;
+            }
+        }else
+        {
+            self.address = text;
+        }
+//		self.address = text;
+        _curIndex =kAddressRow;
 	}
     else if( [indexPath row] == kPhoneRow )
 	{
-		self.usercell = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.usercell = nil;
+            }else
+            {
+                self.usercell = text;
+            }
+        }else
+        {
+            self.usercell = text;
+        }
+//		self.usercell = text;
+        _curIndex =kPhoneRow;
 	}
     else if( [indexPath row] == kEmailRow )
 	{
-		self.email = text;
+        if (_curIndex !=-1 && _curIndex != indexPath.row) {
+            if ([string isEqualToString:@""]) {
+                self.email = nil;
+            }else
+            {
+                self.email = text;
+            }
+        }else
+        {
+            self.email = text;
+        }
+//		self.email = text;
+        _curIndex =kEmailRow;
 	}
-    
 	return YES;
 }
 
@@ -340,7 +492,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     RegisterHttpCmd *cmd = [[[RegisterHttpCmd alloc]init]autorelease];
     self.httpCmd = cmd;
     cmd.username = self.username;
-    cmd.password = self.password;
+    cmd.password = md5(self.password);
     cmd.realname = self.realname;
     cmd.address = self.address;
     cmd.email = self.email;
@@ -348,6 +500,7 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
     cmd.position = self.position;
     cmd.usercell = self.usercell;
     cmd.delegate = self;
+    NSLog(@"%@",cmd);
     [client onPostCmdAsync:self.httpCmd];
 }
 

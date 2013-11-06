@@ -79,7 +79,7 @@
          [globalHelper createTableWithModelClass:[ListModel class]];
          [globalHelper deleteToDB:data];
          
-         [YRDropdownView showDropdownInView:self.view
+         [YRDropdownView showDropdownInView:[UIApplication sharedApplication].delegate.window
                                       title:@"提示！"
                                      detail:@"删除成功!"
                                       image:[UIImage imageNamed:@"dropdown-alert"]
