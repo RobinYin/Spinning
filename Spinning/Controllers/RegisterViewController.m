@@ -217,7 +217,6 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
             break;
         case 4:
         {
-            NSLog(@"%@",self.company);
             [cell.textField setText:self.company];
         }
             break;
@@ -320,142 +319,82 @@ enum { kAccountRow=0, kPasswordRow, kNameRow,kPositionRow, kCompanyRow, kAddress
 }
 #pragma mark-
 #pragma mark UITextFieldDelegate -----------
-
--(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-
-	NSString *txt = [[textField text] stringByReplacingCharactersInRange: range withString: string];
-    NSString *text = [NSString stringWithString:txt];
-	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
-
+    NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
+    
 	if( [indexPath row] == kAccountRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.username = nil;
-            }else
-            {
-                self.username = text;
-            }
-        }else
-        {
-            self.username = text;
-        }
-//		self.username = text;
         _curIndex =kAccountRow;
 	}
 	else if( [indexPath row] == kPasswordRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.password = nil;
-            }else
-            {
-                self.password = text;
-            }
-        }else
-        {
-            self.password = text;
-        }
-//        self.password = text;
         _curIndex =kPasswordRow;
 	}
 	else if( [indexPath row] == kNameRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.realname = nil;
-            }else
-            {
-                self.realname = text;
-            }
-        }else
-        {
-            self.realname = text;
-        }
-//		self.realname = text;
         _curIndex =kNameRow;
 	}
 	else if( [indexPath row] == kPositionRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.position = nil;
-            }else
-            {
-                self.position = text;
-            }
-        }else
-        {
-            self.position = text;
-        }
-//		self.position = text;
         _curIndex =kPositionRow;
 	}
     else if( [indexPath row] == kCompanyRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.company = nil;
-            }else
-            {
-                self.company = text;
-            }
-        }else
-        {
-            self.company = text;
-        }
-//		self.company = text;
         _curIndex =kCompanyRow;
 	}
     else if( [indexPath row] == kAddressRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.address = nil;
-            }else
-            {
-                self.address = text;
-            }
-        }else
-        {
-            self.address = text;
-        }
-//		self.address = text;
         _curIndex =kAddressRow;
 	}
     else if( [indexPath row] == kPhoneRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.usercell = nil;
-            }else
-            {
-                self.usercell = text;
-            }
-        }else
-        {
-            self.usercell = text;
-        }
-//		self.usercell = text;
         _curIndex =kPhoneRow;
 	}
     else if( [indexPath row] == kEmailRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.email = nil;
-            }else
-            {
-                self.email = text;
-            }
-        }else
-        {
-            self.email = text;
-        }
-//		self.email = text;
         _curIndex =kEmailRow;
 	}
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSString *text =[textField text];
+	if( _curIndex == kAccountRow )
+	{
+        self.username = text;
+	}
+	else if( _curIndex == kPasswordRow )
+	{
+        self.password = text;
+	}
+	else if( _curIndex == kNameRow )
+	{
+        self.realname = text;
+	}
+	else if( _curIndex == kPositionRow )
+	{
+	    self.position = text;
+	}
+    else if( _curIndex == kCompanyRow )
+	{
+        self.company = text;
+	}
+    else if( _curIndex == kAddressRow )
+	{
+        self.address = text;
+	}
+    else if( _curIndex == kPhoneRow )
+	{
+            self.usercell = text;
+	}
+    else if( _curIndex == kEmailRow )
+	{
+        self.email = text;
+	}
+
+}
+-(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
 	return YES;
 }
 

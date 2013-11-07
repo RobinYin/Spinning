@@ -391,115 +391,72 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 
 #pragma mark-
 #pragma mark UITextFieldDelegate -----------
-
--(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    NSString *txt = [[textField text] stringByReplacingCharactersInRange: range withString: string];
-    NSString *text = [NSString stringWithString:txt];
-//	NSString *text = [[textField text] stringByReplacingCharactersInRange: range withString: string];
-	NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
-	
+    NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
+    
     if( [indexPath row] == kCheckinNameRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.realname = nil;
-            }else
-            {
-                self.realname = text;
-            }
-        }else
-        {
-            self.realname = text;
-        }
         _curIndex =kCheckinNameRow;
-//		self.realname = text;
+        //		self.realname = text;
 	}
 	else if( [indexPath row] == kCheckinPositionRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.position = nil;
-            }else
-            {
-                self.position = text;
-            }
-        }else
-        {
-            self.position = text;
-        }
-        _curIndex =kCheckinPositionRow;
-//		self.position = text;
+        //		self.position = text;
 	}
     else if( [indexPath row] == kCheckinCompanyRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.company = nil;
-            }else
-            {
-                self.company = text;
-            }
-        }else
-        {
-            self.company = text;
-        }
         _curIndex =kCheckinCompanyRow;
-//		self.company = text;
+        //		self.company = text;
 	}
     else if( [indexPath row] == kCheckinAddressRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.address = nil;
-            }else
-            {
-                self.address = text;
-            }
-        }else
-        {
-            self.address = text;
-        }
         _curIndex =kCheckinAddressRow;
-//		self.address = text;
+        //		self.address = text;
 	}
     else if( [indexPath row] == kCheckinPhoneRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.usercell = nil;
-            }else
-            {
-                self.usercell = text;
-            }
-        }else
-        {
-            self.usercell = text;
-        }
         _curIndex =kCheckinPhoneRow;
-//		self.usercell = text;
+        //		self.usercell = text;
 	}
     else if( [indexPath row] == kCheckinEmailRow )
 	{
-        if (_curIndex !=-1 && _curIndex != indexPath.row) {
-            if ([string isEqualToString:@""]) {
-                self.email = nil;
-            }else
-            {
-                self.email = text;
-            }
-        }else
-        {
-            self.email = text;
-        }
         _curIndex =kCheckinEmailRow;
-//		self.email = text;
+        //		self.email = text;
 	}
-    
-    
 
+}
 
-    
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSString *text = [textField text];
+    if( _curIndex == kCheckinNameRow )
+	{
+		self.realname = text;
+	}
+	else if( _curIndex == kCheckinPositionRow )
+	{
+		self.position = text;
+	}
+    else if( _curIndex == kCheckinCompanyRow )
+	{
+		self.company = text;
+	}
+    else if( _curIndex == kCheckinAddressRow )
+	{
+		self.address = text;
+	}
+    else if( _curIndex == kCheckinPhoneRow )
+	{
+		self.usercell = text;
+	}
+    else if( _curIndex == kCheckinEmailRow )
+	{
+		self.email = text;
+	}
+}
+-(BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
 	return YES;
 }
 
