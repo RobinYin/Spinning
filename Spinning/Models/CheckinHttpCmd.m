@@ -42,7 +42,6 @@
     self.sponsor = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeySponsor]);
     self.address = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyAddress]);
     self.code = defaultEmptyString([dictionary objectForKey:kSpinningHttpKeyCode]);
-    
 }
 
 - (void)dealloc

@@ -23,8 +23,8 @@
 - (void)configurationCellContent
 {
     [super configurationCellContent];
-    [self.titleLabel setFrame:CGRectMake(PHCellGap, PHCellGap, NotificationCellTitleWith, 36)];
-    [self.cxtLabel setFrame:CGRectMake(PHCellGap, PHCellGap + 36, ScreenWidth - 2*PHCellGap, 16)];
+    [self.titleLabel setFrame:CGRectMake(NotificationCellGap, NotificationCellGap, NotificationCellTitleWith, 36)];
+    [self.cxtLabel setFrame:CGRectMake(NotificationCellGap, NotificationCellGap + 36, ScreenWidth - 2*NotificationCellGap, 16)];
     [self.seperateImgView setFrame:CGRectMake(0, NotificationCellHeight - 1, ScreenWidth, 1)];
 }
 

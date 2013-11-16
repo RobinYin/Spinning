@@ -163,18 +163,18 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    if ([self canNext]) {
-        [self onFeedbackData];
-    }else
-    {
-        [YRDropdownView showDropdownInView:self.view
-                                     title:@"提示！"
-                                    detail:@"输入的反馈信息不能为空!"
-                                     image:[UIImage imageNamed:@"dropdown-alert"]
-                                  animated:YES
-                                 hideAfter:TipTime];
-
-    }
+//    if ([self canNext]) {
+//        [self onFeedbackData];
+//    }else
+//    {
+//        [YRDropdownView showDropdownInView:self.view
+//                                     title:@"提示！"
+//                                    detail:@"输入的反馈信息不能为空!"
+//                                     image:[UIImage imageNamed:@"dropdown-alert"]
+//                                  animated:YES
+//                                 hideAfter:TipTime];
+//
+//    }
     return YES;
 }
 

@@ -53,6 +53,14 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [self configureOriginData];
+//    [self configureAllViews];
+//    [self onGetData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -217,8 +225,26 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     }else
     {
         msg = httpcmd.model.msg;
+        RbUser *user = [RbUser sharedInstance];
+        user.realname = httpcmd.realname;
+        user.address = httpcmd.address;
+        user.email = httpcmd.email;
+        user.company = httpcmd.company;
+        user.position = httpcmd.position;
+        user.usercell = httpcmd.usercell;
+        [user save];
     }
     if ([httpcmd.model.msg isEqualToString:kSpinningHttpValueOk]) {
+
+//        RbUser *user = [RbUser sharedInstance];
+//        user.realname = httpcmd.realname;
+//        user.address = httpcmd.address;
+//        user.email = httpcmd.email;
+//        user.company = httpcmd.company;
+//        user.position = httpcmd.position;
+//        user.usercell = httpcmd.usercell;
+//        [user save];
+
         CheckinModel *model = (CheckinModel *)httpcmd.model;
         CheckDetailViewController *viewController = [[CheckDetailViewController new]autorelease];
         viewController.name = model.name;
@@ -230,6 +256,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
         [self.navigationController pushViewController:viewController animated:YES];
     }else
     {
+        [[self tableView]reloadData];
         [YRDropdownView showDropdownInView:self.view
                                      title:@"提示！"
                                     detail:[NSString stringWithFormat:@"%@!",msg]
@@ -285,7 +312,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
     cell.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
     
-    if (_curIndex !=-1) {
+//    if (_curIndex !=-1) {
         switch (indexPath.row) {
             case 0:
             {
@@ -322,8 +349,8 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
                 break;
         }
 
-    }
-    
+//    }
+//
     [cell groundToCellInTableView:tableView atIndexPath:indexPath];
     return cell;
 }
@@ -395,6 +422,8 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 {
     NSIndexPath *indexPath = [[self tableView] indexPathForFirstResponder];
     
+    NSLog(@"%d",indexPath.row);
+    
     if( [indexPath row] == kCheckinNameRow )
 	{
         _curIndex =kCheckinNameRow;
@@ -402,6 +431,7 @@ enum {  kCheckinNameRow = 0,kCheckinPositionRow, kCheckinCompanyRow, kCheckinAdd
 	}
 	else if( [indexPath row] == kCheckinPositionRow )
 	{
+        _curIndex = kCheckinPositionRow;
         //		self.position = text;
 	}
     else if( [indexPath row] == kCheckinCompanyRow )

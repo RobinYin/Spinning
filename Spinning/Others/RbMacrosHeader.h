@@ -128,8 +128,8 @@
 #define PHCellHeight 70
 
 #pragma mark - NotificationCell constants ---------------------------------------------------------------------------------------------
-#define NotificationCellGap 10
-#define NotificationCellTitleWith 300
+#define NotificationCellGap 8
+#define NotificationCellTitleWith 304
 #define NotificationCellHeight 72
 
 #pragma mark - MoreCell constants ---------------------------------------------------------------------------------------------

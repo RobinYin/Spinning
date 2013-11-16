@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* const kSpinningRegisterUser;	
+extern NSString* const kSpinningRegisterUser;
 extern NSString* const kSpinningLoginUser;
 extern NSString* const kSpinningModifyPwd;
 extern NSString* const kSpinningGetMeeting;
